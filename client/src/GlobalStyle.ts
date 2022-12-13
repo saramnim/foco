@@ -46,5 +46,4 @@ html, body, div, span, applet, object, iframe,
   a {
     text-decoration: none;
   }
- 
 `;

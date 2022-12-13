@@ -15,6 +15,7 @@ export const Title = styled.span`
 `;
 export const Icons = styled.div`
   display: flex;
+
   & svg {
     font-size: 23px;
     padding: 10px;
