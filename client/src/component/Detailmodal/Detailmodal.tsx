@@ -1,5 +1,20 @@
 import React from 'react';
-import * as style from './Modalstyle';
+import {
+  ModalBackground,
+  ModalBg,
+  ModalTitle,
+  Img,
+  Box,
+  ItemBox,
+  Item,
+  ItemText,
+  Content,
+  TextBox,
+  TextTitle,
+  Text,
+  Scroll,
+} from './Modalstyle';
+import { AiFillStar } from 'react-icons/ai';
 // import { AiOutlineDash } from 'react-icons/ai';
 
 const Detailmodal = () => {
@@ -7,39 +22,61 @@ const Detailmodal = () => {
     // 해당 이미지 상세페이지 url 받아서 open!
   };
   return (
-    <style.ModalBg>
-      <style.Img src={require('./receiptTitle.png')}></style.Img>
-      <style.Box>
-        <style.ItemBox>
-          <style.Item src={require('./img2.png')} />
-          <style.ItemText>한우 꽃등심 스테이크</style.ItemText>
-        </style.ItemBox>
-        <style.ItemBox>
-          <style.Item src={require('./img2.png')} />
-          <style.ItemText>한우 꽃등심 스테이크</style.ItemText>
-        </style.ItemBox>
-        <style.ItemBox>
-          <style.Item src={require('./img2.png')} />
-          <style.ItemText>한우 꽃등심 스테이크</style.ItemText>
-        </style.ItemBox>
-      </style.Box>
-      <style.Scroll />
-      <style.Content>
-        <style.TextBox>
-          <style.Text>where: 혜지네 밥집</style.Text>
-          <style.Text>who: 맛잘알 혜찌</style.Text>
-          <style.Text>mood: #data, #romantic</style.Text>
-          <style.Text>score: 별별별별별 (4.0)</style.Text>
-        </style.TextBox>
-        <style.Img src={require('./DashLine.png')}></style.Img>
-        <style.ContentBox>
-          <style.ContentText>Comment</style.ContentText>
-          <style.ContentText>comment</style.ContentText>
-        </style.ContentBox>
-        <style.Img src={require('./DashLine.png')}></style.Img>
-        <style.TextBox>Detailed Location</style.TextBox>
-      </style.Content>
-    </style.ModalBg>
+    <ModalBackground>
+      <ModalBg>
+        <ModalTitle>혜지네 밥집</ModalTitle>
+        <Img src={require('./DashLine.png')}></Img>
+        <Box>
+          <ItemBox>
+            <Item src={require('./img2.png')} />
+            <ItemText>한우 꽃등심 스테이크</ItemText>
+            <ItemText>$23.80</ItemText>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img2.png')} />
+            <ItemText>한우 꽃등심 스테이크</ItemText>
+            <ItemText>$23.80</ItemText>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img2.png')} />
+            <ItemText>한우 꽃등심 스테이크</ItemText>
+            <ItemText>$23.80</ItemText>
+          </ItemBox>
+        </Box>
+        <Scroll />
+        <Content>
+          <TextBox>
+            <TextTitle>
+              mood<Text>#data, #romantic</Text>
+            </TextTitle>
+            <TextTitle>
+              score
+              <Text>
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar /> (4.0)
+              </Text>
+            </TextTitle>
+          </TextBox>
+          <Img src={require('./DashLine.png')}></Img>
+          <TextBox>
+            <TextTitle>
+              Comment
+              <Text>
+                It's very delicious.
+                <br />
+                If you don't have anything, just don't do that!
+              </Text>
+            </TextTitle>
+          </TextBox>
+          <Img src={require('./DashLine.png')}></Img>
+          <TextTitle>
+            Detailed Location<Text>In your Heart</Text>
+          </TextTitle>
+        </Content>
+      </ModalBg>
+    </ModalBackground>
   );
 };
 

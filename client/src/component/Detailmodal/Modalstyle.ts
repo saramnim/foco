@@ -1,17 +1,43 @@
 import styled from 'styled-components';
 
+export const ModalBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 export const ModalBg = styled.div`
-  background: url('receipt.png');
-  background: #e5e5e5;
+  background: no-repeat
+    url('https://cdn.discordapp.com/attachments/1025667513629016165/1052643859542315018/image.png');
+  back-ground-size: contain;
+  font-family: 'Kaushan Script', cursive;
+  position: absolute;
+
+  width: auto;
+  height: 100%;
+  margin: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
+`;
+export const ModalTitle = styled.div`
+  font-weight: 700;
+  font-size: 40px;
+  text-align: center;
+  color: #000000;
+  margin-bottom: 20px;
 `;
 export const Img = styled.img`
-  width: 29.4vw;
+  align-items: center;
+  width: 50%;
+  margin-bottom: 5px;
 `;
 export const Box = styled.div`
   display: flex;
@@ -19,22 +45,27 @@ export const Box = styled.div`
   margin: 1rem;
 `;
 export const ItemBox = styled.div`
-  displays: flex;
-  flex-direction: column;
+  text-align: center;
 `;
 export const Item = styled.img`
-  width: 17.5vw;
-  margin-right: 0.8rem;
-  vertical-align: middle;
+  width: 80%;
+  border-radius: 5px;
+
+  :hover {
+    width: 29.4vw;
+    transform: scale(1.5);
+    transition: transform 0.5s;
+  }
 `;
 export const ItemText = styled.li`
+  width: 100%;
+  height: 2.5vh;
+  padding: 7px;
+
+  list-style-type: none;
   text-align: center;
   font-size: 12px;
-  width: 17.5vw;
-  height: 2.5vh;
-  list-style-type: none;
-  background: rgba(255, 216, 216, 0.51);
-  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
 `;
 export const Content = styled.div`
   display: flex;
@@ -42,34 +73,32 @@ export const Content = styled.div`
   align-items: center;
   padding: 1rem;
 `;
-export const TextBox = styled.ul`
+export const TextBox = styled.div`
   display: flex;
-  justify-content: center;
-  font-size: 20px;
+  justify-content: space-evenly;
   margin: 1rem;
+  width: 100%;
+  // height: 100%;
+  font-size: 20px;
+`;
+export const TextTitle = styled.ul`
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
 `;
 export const Text = styled.li`
-  font-size: 15px;
-  margin: 0.5rem;
-`;
-export const ContentBox = styled.ul`
-  margin: 0.5rem;
-`;
-export const ContentText = styled.li`
-  margin: 0.5rem;
+  margin-top: 1rem;
+  font-size: 16px;
+  list-style-type: none;
 `;
 export const Scroll = styled.div`
-  width: 220px;
+  width: 80%;
   height: 8px;
   margin: 0.5rem;
   background: #d9d9d9;
   border-radius: 11px;
 `;
-
-// export const Title = styled.div`
-//   font-size: 60px;
-// `;
-// export const Dash = styled.div``;
 
 // ModalBg 구역.div
 //   (

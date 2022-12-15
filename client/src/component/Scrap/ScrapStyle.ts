@@ -3,23 +3,19 @@ import styled from 'styled-components';
 // 폰트 추가
 export const ScrapPage = styled.div`
   padding: 5rem 5%;
-  // background: ;
-  margin: auto;
+  // margin: auto;
 `;
 // 상단타이틀 구역
 export const TitleWrapper = styled.div`
   display: flex;
   margin: 1rem 5rem;
-  position: relative;
 `;
 export const Title = styled.span`
   font-family: 'Kaushan Script', cursive;
-  font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   font-size: 64px;
   line-height: 93px;
   color: #000000;
-
   cursor: pointer;
 `;
 export const UnderStar = styled.div`
@@ -38,7 +34,7 @@ export const UpperStar = styled.div`
 `;
 export const Country = styled.div`
   font-family: 'Kaushan Script', cursive;
-  font-weight: 00;
+  font-weight: 550;
   font-size: 30px;
   color: #000000;
   padding-top: 3rem;
@@ -49,25 +45,23 @@ export const Content = styled.div`
 `;
 // 좌측 필터구역
 export const Filter = styled.div`
-  position: sticky;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
   margin: 8%;
 `;
-export const Detail = styled.div`
+export const FilterTitle = styled.div`
   display: flex;
   align-items: center;
   margin: 1rem;
   font-family: 'Kaushan Script', cursive;
 `;
-export const DetailInput = styled.input`
+export const FilterInput = styled.input`
   text-align: center;
   margin: 0 0.5rem;
   font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
-  line-height: 17px;
+  // line-height: 17px;
   border-radius: 0.5rem;
   border: none;
   background: #d9d9d9;
@@ -79,21 +73,17 @@ export const ItemBox = styled.div`
   display: grid;
   // flex-wrap: wrap;
   grid-template-rows: repeat(auto-fill, 300px, 300px);
-  grid-template-columns: 300px 300px;
+  grid-template-columns: 300px 300px 300px;
   margin: 1rem;
   margin-left: 78px;
 `;
 export const Item = styled.img`
-  // width: 40%;
-  // height: 30%;
-  // width: 13rem;
-  // height: 10rem;
-  width: 300px;
-  // height: 180px;
-  // object-fit: scale-down;
-  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  // border-radius: 100px;
   margin: 0.5rem;
-  padding-right: 10%;
+  padding-right: 5%;
 `;
 export const ItemStar = styled.div`
   display: flex;
@@ -102,24 +92,24 @@ export const ItemStar = styled.div`
   height: 30px;
 `;
 // 스크롤 구역
-// export const Scroll = styled.div`
-//   width: 8px;
-//   height: 220px;
-//   background: #d9d9d9;
-//   border-radius: 11px;
-//   .scrollBar::-webkit-scrollbar {
-//     width: 10px;
-//   }
-//   .scrollBar::-webkit-scrollbar-thumb {
-//     background-color: #2f3542;
-//     border-radius: 10px;
-//   }
-//   .scrollBar::-webkit-scrollbar-track {
-//     background-color: grey;
-//     border-radius: 10px;
-//     box-shadow: inset 0px 0px 5px white;
-//   }
-// `;
+export const Scroll = styled.div`
+  width: 8px;
+  height: 220px;
+  background: #d9d9d9;
+  border-radius: 11px;
+  .scrollBar::-webkit-scrollbar {
+    width: 10px;
+  }
+  .scrollBar::-webkit-scrollbar-thumb {
+    background-color: #2f3542;
+    border-radius: 10px;
+  }
+  .scrollBar::-webkit-scrollbar-track {
+    background-color: grey;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+`;
 
 //
 // TitleWrapper 구역.div

@@ -1,5 +1,20 @@
 import React from 'react';
-import * as style from './ScrapStyle';
+import {
+  ScrapPage,
+  TitleWrapper,
+  Title,
+  UnderStar,
+  UpperStar,
+  Country,
+  Content,
+  Filter,
+  FilterTitle,
+  FilterInput,
+  ItemBox,
+  Item,
+  ItemStar,
+  Scroll,
+} from './ScrapStyle';
 import { AiFillStar } from 'react-icons/ai';
 
 // 사진 api 추가해야됨~ 근디 css 왜 이따구~
@@ -9,42 +24,42 @@ const Scrap = () => {
     // 해당 이미지 상세페이지 url 받아서 open!
   };
   return (
-    <style.ScrapPage>
-      <style.TitleWrapper>
-        <style.Title>Mine</style.Title>
-        <style.UnderStar>
+    <ScrapPage>
+      <TitleWrapper>
+        <Title>Mine</Title>
+        <UnderStar>
           <AiFillStar />
-        </style.UnderStar>
-        <style.UpperStar>
+        </UnderStar>
+        <UpperStar>
           <AiFillStar />
-        </style.UpperStar>
-        <style.Country>in Korea</style.Country>
-      </style.TitleWrapper>
-      <style.Content>
-        <style.Filter>
-          <style.Detail>
+        </UpperStar>
+        <Country>in Korea</Country>
+      </TitleWrapper>
+      <Content>
+        <Filter>
+          <FilterTitle>
             Detail
-            <style.DetailInput />
-          </style.Detail>
-          <style.Detail>
-            Detail
-            <style.DetailInput />
-          </style.Detail>
-          <style.Detail>
-            Detail
-            <style.DetailInput />
-          </style.Detail>
-        </style.Filter>
-        <style.ItemBox>
-          <style.Item src={require('./img1.png')} onClick={handleClick} />
-          <style.Item src={require('./img3.png')} onClick={handleClick} />
-          <style.Item src={require('./img1.png')} onClick={handleClick} />
-          <style.Item src={require('./img1.png')} onClick={handleClick} />
-          <style.Item src={require('./img1.png')} onClick={handleClick} />
-        </style.ItemBox>
-        {/* <style.Scroll id="scrollBar" /> */}
-      </style.Content>
-    </style.ScrapPage>
+            <FilterInput />
+          </FilterTitle>
+          <FilterTitle>
+            Food
+            <FilterInput />
+          </FilterTitle>
+          <FilterTitle>
+            Price
+            <FilterInput />
+          </FilterTitle>
+        </Filter>
+        <ItemBox>
+          <Item src={require('./img1.png')} onClick={handleClick} />
+          <Item src={require('./img3.png')} onClick={handleClick} />
+          <Item src={require('./img3.png')} onClick={handleClick} />
+          <Item src={require('./img1.png')} onClick={handleClick} />
+          <Item src={require('./img1.png')} onClick={handleClick} />
+        </ItemBox>
+        {/* <Scroll id="scrollBar" /> */}
+      </Content>
+    </ScrapPage>
   );
 };
 
