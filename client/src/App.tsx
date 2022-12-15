@@ -4,7 +4,6 @@ import Header from './component/Header/Header';
 import MainMap from './component/MainMap/MainMap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-import GoolgeMap from './component/GoogleMap/GoogleMap';
 
 function App() {
   return (
@@ -14,7 +13,6 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainMap />} />
-          <Route path="/googlemap" element={<GoolgeMap />} />
         </Routes>
       </BrowserRouter>
     </div>

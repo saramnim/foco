@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const RankingWrapper = styled.div`
-  width: 30vw;
+  width: 40vw;
   height: 80vh;
   background-color: #fff;
-  margin: 0 60px;
+  margin: 0 50px;
   padding: 30px;
   box-sizing: border-box;
   border-radius: 10px;
@@ -32,7 +32,23 @@ export const Button = styled.button`
   border: none;
   font-size: 30px;
   background-color: transparent;
+  cursor: pointer;
 `;
+
+export const MoreButton = styled(Button)`
+  background-color: #d8aaaa;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin: 15px 0;
+  font-size: 18px;
+  color: #fff;
+  font-weight: 600;
+  float: right;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 40%) 0px 2px 4px 0px inset;
+  }
+`;
+
 export const Main = styled.div``;
 
 export const ContentBox = styled.div`
@@ -44,7 +60,6 @@ export const ContentBox = styled.div`
   box-sizing: border-box;
   background-color: #f5f5f5;
   border-radius: 10px;
-
   & img {
     width: 60%;
     border-radius: 10px;
@@ -57,6 +72,10 @@ export const Left = styled.div`
   justify-content: space-between;
 `;
 
+export const StoreName = styled.span`
+  font-weight: 600;
+`;
+
 export const Number = styled.div`
   font-size: 25px;
   font-weight: bold;
@@ -65,12 +84,6 @@ export const Number = styled.div`
 export const ContentWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-
-  & span {
-    align-self: flex-end;
-    font-weight: 700;
-    font-size: 18px;
-  }
 `;
 
 export const Like = styled.div`
@@ -81,7 +94,8 @@ export const Like = styled.div`
     color: red;
     margin-right: 5px;
   }
-  & span {
-    color: #939393;
-  }
+`;
+
+export const TotalLike = styled.span`
+  color: #939393;
 `;

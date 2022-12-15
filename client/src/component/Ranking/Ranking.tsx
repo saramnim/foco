@@ -1,32 +1,46 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   RankingWrapper,
   Header,
   Title,
   Button,
+  MoreButton,
   Main,
   Number,
   ContentBox,
-  ContentWrapper,
   Left,
   Like,
+  StoreName,
+  TotalLike,
 } from './style';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { HiHeart } from 'react-icons/hi';
 import axios from 'axios';
 
-const Ranking = (props: any) => {
+interface Iprops {
+  country: string;
+  closeModal: () => void;
+  showWholeMap: () => void;
+}
+
+interface Icontent {
+  country: string;
+  like: number;
+  store: string;
+  image: string;
+}
+
+const Ranking = (props: Iprops) => {
   const { country, closeModal, showWholeMap } = props;
-
   const [data, setData] = useState<any[]>([]);
-
   const getPostData = () => {
     return axios({
       method: 'get',
+      // 임시 mock data 연결
       url: 'http://localhost:3001/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
-      console.log(res.data.data[0].image);
     });
   };
   useEffect(() => {
@@ -50,9 +64,12 @@ const Ranking = (props: any) => {
           <IoCloseCircleOutline />
         </Button>
       </Header>
-      {data.map((content: any, index: number) => {
+      <Link to={`/list/${country}`}>
+        <MoreButton>more</MoreButton>
+      </Link>
+      {data.map((content: Icontent, index: number) => {
         return (
-          <Main>
+          <Main key={index}>
             {content.country === country ? (
               <ContentBox>
                 <Left>
@@ -60,12 +77,12 @@ const Ranking = (props: any) => {
                     <Number>{index + 1}</Number>
                     <Like>
                       <HiHeart />
-                      <span>{content.like}</span>
+                      <TotalLike>{content.like}</TotalLike>
                     </Like>
                   </div>
-                  <span>{content.store}</span>
+                  <StoreName>{content.store}</StoreName>
                 </Left>
-                <img src={content.image}></img>
+                <img src={content.image} alt={content.store}></img>
               </ContentBox>
             ) : (
               <></>

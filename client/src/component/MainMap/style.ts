@@ -1,21 +1,17 @@
 import styled from 'styled-components';
 
-export const WorldMapWrapper = styled.div`
+export const MapWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
-  background: #222;
-  box-sizing: border-box;
-`;
-
-export const WorldMap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 60vw;
-  height: 70vh;
-  margin: 0 50px;
+  padding: 120px;
+  background-color: #222;
+  & .map {
+    width: 100vw;
+    height: 80vh;
+  }
 `;
 
 export const SVG = styled.svg`
@@ -23,12 +19,4 @@ export const SVG = styled.svg`
   align-items: center;
   justify-content: center;
   height: 70vh;
-`;
-
-export const Path = styled.path`
-  fill: #555;
-  cursor: pointer;
-  &:hover {
-    fill: skyblue;
-  }
 `;
