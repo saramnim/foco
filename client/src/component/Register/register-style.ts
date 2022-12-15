@@ -15,7 +15,7 @@ export const RegisterContainer = styled.div`
   height: 700px;
   //border: 1px solid #dfdfdf;
   border-radius: 30px;
-  box-shadow: #dfdfdf 10px 10px 20px 4px;
+  box-shadow: 10px 10px 20px 4px #dfdfdf;
   text-align: center;
 `;
 
