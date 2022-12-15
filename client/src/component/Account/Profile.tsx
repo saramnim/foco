@@ -16,7 +16,7 @@ const Profile = () => {
         <InfoItem>
           <Label htmlFor="nickname">
             <p>Nickname</p>
-            <FixedValue>kailey@gmail.com</FixedValue>
+            <FixedValue>kailey224@gmail.com</FixedValue>
           </Label>
         </InfoItem>
         <InfoItem>

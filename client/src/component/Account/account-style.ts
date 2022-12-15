@@ -152,7 +152,7 @@ export const SecurityBox = styled(Box)`
   margin-bottom: 20px;
 `;
 
-//Deactivate Style
+//Deactivate
 export const DeactivateBox = styled(Box)`
   flex-direction: column;
   align-items: flex-start;

@@ -5,7 +5,7 @@ const Menu = () => {
   return (
     <MenuContainer>
       <ItemBox>
-        <Username>Kailey</Username>
+        <Username>Kaile</Username>
         <Item>
           <Icon>
             <HiUserCircle />

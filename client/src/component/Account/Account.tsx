@@ -10,9 +10,9 @@ const Account = () => {
       <Title>My Account</Title>
       <ContentsBox>
         <Menu />
-        {/* <Profile /> */}
+        <Profile />
         {/* <Security /> */}
-        <Deactivate />
+        {/* <Deactivate /> */}
       </ContentsBox>
     </AccountContainer>
   );

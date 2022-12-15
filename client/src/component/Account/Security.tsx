@@ -15,7 +15,7 @@ const Security = () => {
         <InfoItem>
           <Label htmlFor="nickname">
             <p>Email</p>
-            <FixedValue>kailey@gmail.com</FixedValue>
+            <FixedValue>kailey224@gmail.com</FixedValue>
           </Label>
         </InfoItem>
         <InfoItem>
