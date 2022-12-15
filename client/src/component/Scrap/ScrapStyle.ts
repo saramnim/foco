@@ -1,0 +1,146 @@
+import styled from 'styled-components';
+
+// 폰트 추가
+export const ScrapPage = styled.div`
+  padding: 5rem 5%;
+  // background: ;
+  margin: auto;
+`;
+// 상단타이틀 구역
+export const TitleWrapper = styled.div`
+  display: flex;
+  margin: 1rem 5rem;
+  position: relative;
+`;
+export const Title = styled.span`
+  font-family: 'Kaushan Script', cursive;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 93px;
+  color: #000000;
+
+  cursor: pointer;
+`;
+export const UnderStar = styled.div`
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  color: #ffe600;
+  margin-top: auto;
+`;
+export const UpperStar = styled.div`
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-top: 50px;
+  color: #ffe600;
+`;
+export const Country = styled.div`
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 00;
+  font-size: 30px;
+  color: #000000;
+  padding-top: 3rem;
+`;
+// 중앙 본문 구역
+export const Content = styled.div`
+  display: flex;
+`;
+// 좌측 필터구역
+export const Filter = styled.div`
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  margin: 8%;
+`;
+export const Detail = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  font-family: 'Kaushan Script', cursive;
+`;
+export const DetailInput = styled.input`
+  text-align: center;
+  margin: 0 0.5rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  border-radius: 0.5rem;
+  border: none;
+  background: #d9d9d9;
+  color: #000000;
+`;
+// food, price 만들기
+// 우측 상세페이지 구역
+export const ItemBox = styled.div`
+  display: grid;
+  // flex-wrap: wrap;
+  grid-template-rows: repeat(auto-fill, 300px, 300px);
+  grid-template-columns: 300px 300px;
+  margin: 1rem;
+  margin-left: 78px;
+`;
+export const Item = styled.img`
+  // width: 40%;
+  // height: 30%;
+  // width: 13rem;
+  // height: 10rem;
+  width: 300px;
+  // height: 180px;
+  // object-fit: scale-down;
+  border-radius: 15px;
+  margin: 0.5rem;
+  padding-right: 10%;
+`;
+export const ItemStar = styled.div`
+  display: flex;
+  margin: 12px;
+  width: 30px;
+  height: 30px;
+`;
+// 스크롤 구역
+// export const Scroll = styled.div`
+//   width: 8px;
+//   height: 220px;
+//   background: #d9d9d9;
+//   border-radius: 11px;
+//   .scrollBar::-webkit-scrollbar {
+//     width: 10px;
+//   }
+//   .scrollBar::-webkit-scrollbar-thumb {
+//     background-color: #2f3542;
+//     border-radius: 10px;
+//   }
+//   .scrollBar::-webkit-scrollbar-track {
+//     background-color: grey;
+//     border-radius: 10px;
+//     box-shadow: inset 0px 0px 5px white;
+//   }
+// `;
+
+//
+// TitleWrapper 구역.div
+//   (
+//     Title.span(Mine),
+//   Icons.div(AiFillStar, AiFillStar),
+//   country.div(In Korea)
+//   )
+// Content 구역.div
+// 왼쪽: 필터구역.div
+//   (
+//     detail.div(detail.input),
+//   food.div(food.input)
+//   price.div(price.input)
+//   )
+// 오른쪽: 상세페이지 구역.div
+//   (
+//     item.div(스크랩한 음식 대표 사진만 뜨도록),
+//     ItemStar.div(스크랩 표시)
+//     scroll.div(스크롤~!)
+//   )
+
+//   모달페이지에 좋아요/스크랩버튼이 필요할듯
+// 모달 페이지 컴포넌트화 => 찜목록, 상세페이지, 작성한 글 내역 등에서 모두 연결될 수 있도록 해야할듯;;
