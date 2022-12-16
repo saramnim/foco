@@ -4,7 +4,10 @@ import Header from './component/Header/Header';
 import MainMap from './component/MainMap/MainMap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-// import Dropdown from './component/DropDown/DropDown';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//components
+import Review from './component/Post/Post';
 
 function App() {
   return (
@@ -14,6 +17,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainMap />} />
+          <Route path="/review" element={<Review />} />
         </Routes>
       </BrowserRouter>
     </div>
