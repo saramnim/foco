@@ -43,6 +43,5 @@ export const PostSchema = new Schema<PostInterface>({
 },
 {
     timestamps: true,
-    strictQuery: false,
 }
 )
