@@ -31,7 +31,7 @@ export const InnerBox = styled.div`
 export const Greeting = styled.h2`
   margin: 20px 0 50px 0;
   font-family: 'Rubik Spray Paint', cursive;
-  font-size: 62px;
+  font-size: 50px;
   font-weight: 100;
 `;
 

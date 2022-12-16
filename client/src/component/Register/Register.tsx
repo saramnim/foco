@@ -1,5 +1,5 @@
-import { ChangeEventHandler, useReducer } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+//import { useNavigate, Link } from 'react-router-dom';
 import {
   RegisterContainer,
   InnerBox,
@@ -13,159 +13,94 @@ import {
   SubmitBtn,
 } from './register-style';
 
-interface RegisterState {
-  nickname: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  nicknameError: string;
-  emailError: string;
-  passwordError: string;
-  confirmPasswordError: string;
-  buttonDisabled: boolean;
-}
-
-const initialState: RegisterState = {
-  nickname: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
-  nicknameError: '',
-  emailError: '',
-  passwordError: '',
-  confirmPasswordError: '',
-  buttonDisabled: true,
-};
-
-type RegisterAction =
-  | {
-      type: 'nickname-change';
-      nickname: string;
-      nicknameError: string;
-      buttonDisabled: boolean;
-    }
-  | {
-      type: 'email-change';
-      email: string;
-      emailError: string;
-      buttonDisabled: boolean;
-    }
-  | {
-      type: 'password-change';
-      password: string;
-      passwordError: string;
-      buttonDisabled: boolean;
-    }
-  | {
-      type: 'confirmPassword-change';
-      confirmPassword: string;
-      confirmPasswordError: string;
-      buttonDisabled: boolean;
-    };
-
-const registerReducer = (
-  state: RegisterState,
-  action: RegisterAction
-): RegisterState => {
-  switch (action.type) {
-    case 'nickname-change':
-      return {
-        ...state,
-        nickname: action.nickname,
-        nicknameError: action.nicknameError,
-        buttonDisabled: action.buttonDisabled,
-      };
-    case 'email-change':
-      return {
-        ...state,
-        email: action.email,
-        emailError: action.emailError,
-        buttonDisabled: action.buttonDisabled,
-      };
-    case 'password-change':
-      return {
-        ...state,
-        password: action.password,
-        passwordError: action.passwordError,
-        buttonDisabled: action.buttonDisabled,
-      };
-    case 'confirmPassword-change':
-      return {
-        ...state,
-        confirmPassword: action.confirmPassword,
-        confirmPasswordError: action.confirmPasswordError,
-        buttonDisabled: action.buttonDisabled,
-      };
-  }
-};
-
 const Register = () => {
-  const [state, dispatch] = useReducer(registerReducer, initialState);
+  const [state, setState] = useState({
+    nickname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
 
-  const handleNicknameChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const isNickname = e.target.value;
-    const validateNickname = (isNickname: string) => {
-      const Regex = /^[a-z][a-z0-9]*$/i;
-      return Regex.test(isNickname);
-    };
-    const isNicknameValid = validateNickname(isNickname);
+  const [nicknameError, setNicknameError] = useState('');
+  const [emailError, setemailError] = useState('');
+  const [passwordError, setpasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
 
-    dispatch({
-      type: 'nickname-change',
-      nickname: isNickname,
-      nicknameError: isNicknameValid ? '' : 'English only',
-      buttonDisabled: isNicknameValid ? false : true,
-    });
+  const validateNickname = (e: string) => {
+    const Regex = /^[a-z][a-z0-9]*$/i;
+    return Regex.test(e);
   };
 
-  const handleEmailChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const isEmail = e.target.value;
-    const validateEmail = (email: string) => {
-      const Regex =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return Regex.test(email);
-    };
-    const isEmailValid = validateEmail(isEmail);
-
-    dispatch({
-      type: 'email-change',
-      email: isEmail,
-      emailError: isEmailValid ? '' : 'This is not a valid email',
-      buttonDisabled: isEmailValid ? false : true,
-    });
+  const validateEmail = (e: string) => {
+    const Regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return Regex.test(e);
   };
 
-  const handlePasswordChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const isPassword = e.target.value;
-    const isPasswordValid = isPassword.length > 5;
-
-    dispatch({
-      type: 'password-change',
-      password: isPassword,
-      passwordError: isPasswordValid ? '' : 'Must be at 6 characters',
-      buttonDisabled: isPasswordValid ? false : true,
-    });
+  const validatePassword = (e: string) => {
+    return e.length > 7;
   };
 
-  const handleConfirmPasswordChange: ChangeEventHandler<HTMLInputElement> = (
-    e
-  ) => {
-    const isConfirm = e.target.value;
-    const validateConfirm = (password: string) => {
-      return password === state.password;
-    };
-    const isConfirmValid = validateConfirm(isConfirm);
+  const validateConfirmPassword = (e: string) => {
+    return e === state.password;
+  };
 
-    dispatch({
-      type: 'confirmPassword-change',
-      confirmPassword: isConfirm,
-      confirmPasswordError: isConfirmValid ? '' : 'Passwords do not match',
-      buttonDisabled: isConfirmValid ? false : true,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === 'nickname') {
+      if (!validateNickname(e.target.value)) {
+        setNicknameError('English only');
+      } else {
+        setNicknameError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    } else if (e.target.name === 'email') {
+      if (!validateEmail(e.target.value)) {
+        setemailError('This is not a valid email');
+      } else {
+        setemailError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    } else if (e.target.name === 'password') {
+      if (!validatePassword(e.target.value)) {
+        setpasswordError('Must be at 8 characters');
+      } else {
+        setpasswordError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    } else if (e.target.name === 'confirmPassword') {
+      if (!validateConfirmPassword(e.target.value)) {
+        setConfirmPasswordError('Passwords do not match');
+      } else {
+        setConfirmPasswordError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    }
   };
 
   const handleSubmit = () => {
-    alert('로그인 성공');
+    if (
+      nicknameError === '' &&
+      emailError === '' &&
+      passwordError === '' &&
+      confirmPasswordError === ''
+    ) {
+      alert('로그인 성공');
+      console.log(state);
+    } else {
+      alert('내용확인!');
+    }
   };
 
   return (
@@ -176,50 +111,45 @@ const Register = () => {
           <Nickname
             type="text"
             name="nickname"
-            onChange={handleNicknameChange}
+            onChange={handleChange}
             placeholder="nickname"
           />
           <Errormsg>
-            <p>{state.nicknameError}</p>
+            <p>{nicknameError}</p>
           </Errormsg>
           <Email
             type="text"
             name="email"
-            onChange={handleEmailChange}
+            onChange={handleChange}
             placeholder="example@email.com"
           />
           <Errormsg>
-            <p>{state.emailError}</p>
+            <p>{emailError}</p>
           </Errormsg>
           <Password
             type="password"
             name="password"
-            onChange={handlePasswordChange}
+            onChange={handleChange}
             placeholder="password"
           />
           <Errormsg>
-            <p>{state.passwordError}</p>
+            <p>{passwordError}</p>
           </Errormsg>
           <ConfirnPassword
             type="password"
-            name="confirm-password"
-            onChange={handleConfirmPasswordChange}
+            name="confirmPassword"
+            onChange={handleChange}
             placeholder="confirm password"
           />
           <Errormsg>
-            <p>{state.confirmPasswordError}</p>
+            <p>{confirmPasswordError}</p>
           </Errormsg>
         </Form>
-        <SubmitBtn
-          type="submit"
-          disabled={state.buttonDisabled}
-          onClick={handleSubmit}
-        >
+        <SubmitBtn type="submit" onClick={handleSubmit}>
           Register
         </SubmitBtn>
       </InnerBox>
     </RegisterContainer>
   );
 };
-
 export default Register;

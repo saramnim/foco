@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useReducer } from 'react';
+import React, { useState } from 'react';
 import {
   LoginContainer,
   InnerBox,
@@ -12,68 +12,56 @@ import {
   Register,
 } from './login-style';
 
-interface LoginState {
-  email: string;
-  password: string;
-  emailError: string;
-  passwordError: string;
-}
-
-const initialState: LoginState = {
-  email: '',
-  password: '',
-  emailError: '',
-  passwordError: '',
-};
-
-type LoginAction =
-  | { type: 'email-Change'; email: string; emailError: string }
-  | { type: 'password-Change'; password: string; passwordError: string };
-
-const loginReducer = (state: LoginState, action: LoginAction): LoginState => {
-  switch (action.type) {
-    case 'email-Change':
-      return {
-        ...state,
-        email: action.email,
-        emailError: action.emailError,
-      };
-    case 'password-Change':
-      return {
-        ...state,
-        password: action.password,
-        passwordError: action.passwordError,
-      };
-  }
-};
-
 const Login = () => {
-  const [state, dispatch] = useReducer(loginReducer, initialState);
-  const handleEmailChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const isEmail = e.target.value;
-    const validateEmail = (email: string) => {
-      const Regex =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return Regex.test(email);
-    };
-    const isEmailValid = validateEmail(isEmail);
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+  });
 
-    dispatch({
-      type: 'email-Change',
-      email: isEmail,
-      emailError: isEmailValid ? '' : 'This is not a valid email',
-    });
+  const [emailError, setemailError] = useState('');
+  const [passwordError, setpasswordError] = useState('');
+
+  const validateEmail = (e: string) => {
+    const Regex =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return Regex.test(e);
   };
 
-  const handlePasswordChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    const isPassword = e.target.value;
-    const isPasswordValid = isPassword.length > 5;
+  const validatePassword = (e: string) => {
+    return e.length > 7;
+  };
 
-    dispatch({
-      type: 'password-Change',
-      password: isPassword,
-      passwordError: isPasswordValid ? '' : 'Must be at 6 characters',
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.name === 'email') {
+      if (!validateEmail(e.target.value)) {
+        setemailError('This is not a valid email');
+      } else {
+        setemailError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    } else if (e.target.name === 'password') {
+      if (!validatePassword(e.target.value)) {
+        setpasswordError('Must be at 8 characters');
+      } else {
+        setpasswordError('');
+        setState((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+      }
+    }
+  };
+
+  const handleSubmit = () => {
+    if (emailError === '' && passwordError === '') {
+      alert('로그인 성공');
+      console.log(state);
+    } else {
+      alert('내용확인!');
+    }
   };
 
   return (
@@ -84,24 +72,26 @@ const Login = () => {
           <Email
             type="text"
             name="email"
-            onChange={handleEmailChange}
+            onChange={handleChange}
             placeholder="example@email.com"
           />
           <Errormsg>
-            <p>{state.emailError}</p>
+            <p>{emailError}</p>
           </Errormsg>
           <Password
             type="password"
             name="password"
-            onChange={handlePasswordChange}
+            onChange={handleChange}
             placeholder="password"
           />
           <Errormsg>
-            <p>{state.passwordError}</p>
+            <p>{passwordError}</p>
           </Errormsg>
           <ForgotPassword>Forgot Password</ForgotPassword>
         </Form>
-        <SubmitBtn type="submit">Log in</SubmitBtn>
+        <SubmitBtn type="submit" onClick={handleSubmit}>
+          Log in
+        </SubmitBtn>
         <Register>
           Don't have an account? <span>Register</span>
         </Register>
