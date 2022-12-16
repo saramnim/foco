@@ -1,7 +1,7 @@
 import {Schema} from "mongoose";
 
 export interface PostInterface {
-    id: string;
+    uid: string;
     storeName: string;
     grade: number;
     img?: string;
@@ -11,7 +11,7 @@ export interface PostInterface {
 }   
 
 export const PostSchema = new Schema<PostInterface>({
-    id: {
+    uid: {
         type: String,
         required: true
     },
@@ -42,6 +42,7 @@ export const PostSchema = new Schema<PostInterface>({
     
 },
 {
-    timestamps: true
+    timestamps: true,
+    strictQuery: false,
 }
 )
