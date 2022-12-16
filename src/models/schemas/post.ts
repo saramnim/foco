@@ -1,17 +1,21 @@
 import {Schema} from "mongoose";
 
 export interface PostInterface {
-    uid: string;
+    user: string;
     storeName: string;
     grade: number;
     img?: string;
     review: string;
-    location: string;
+    city: string;
+    address: string;
     price: number;
+    like: number;
+    lat: number;
+    lng: number;
 }   
 
 export const PostSchema = new Schema<PostInterface>({
-    uid: {
+    user: {
         type: String,
         required: true
     },
@@ -31,11 +35,27 @@ export const PostSchema = new Schema<PostInterface>({
         type: String,
         required: false
     },
-    location: {
+    city: {
+        type: String,
+        required: true
+    },
+    address: {
         type: String,
         required: true
     },
     price: {
+        type: Number,
+        required: true
+    },
+    like: {
+        type: Number,
+        required: true
+    },
+    lat: {
+        type: Number,
+        required: true
+    },
+    lng: {
         type: Number,
         required: true
     }
