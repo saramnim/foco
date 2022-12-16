@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import './App.css';
 import Header from './component/Header/Header';
 import MainMap from './component/MainMap/MainMap';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
+// import Dropdown from './component/DropDown/DropDown';
 
 function App() {
   return (
