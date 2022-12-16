@@ -7,6 +7,7 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   padding: 30px 50px;
+  color: #fff;
 `;
 export const Title = styled.span`
   font-size: 40px;
@@ -15,7 +16,6 @@ export const Title = styled.span`
 `;
 export const Icons = styled.div`
   display: flex;
-
   & svg {
     font-size: 23px;
     padding: 10px;
