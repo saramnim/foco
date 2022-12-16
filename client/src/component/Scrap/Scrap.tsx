@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   ScrapPage,
   TitleWrapper,
@@ -16,10 +16,16 @@ import {
   Scroll,
 } from './ScrapStyle';
 import { AiFillStar } from 'react-icons/ai';
-
-// 사진 api 추가해야됨~ 근디 css 왜 이따구~
+import Dropdown from '../Filter/CoutryDropdown';
+// import cityFilter from '../Filter/cityFilter';
+// import TagFilter from '../Filter/TagFilter';
 
 const Scrap = () => {
+  const [value, setValue] = useState('');
+
+  const handleChangeValue = (value: string) => {
+    setValue(value);
+  };
   const handleClick = () => {
     // 해당 이미지 상세페이지 url 받아서 open!
   };
@@ -37,18 +43,28 @@ const Scrap = () => {
       </TitleWrapper>
       <Content>
         <Filter>
-          <FilterTitle>
-            Detail
-            <FilterInput />
-          </FilterTitle>
-          <FilterTitle>
-            Food
-            <FilterInput />
-          </FilterTitle>
-          <FilterTitle>
-            Price
-            <FilterInput />
-          </FilterTitle>
+          {/* Detail
+            <FilterInput
+              placeholder="where?"
+              value={value}
+              // onChange={(string) => onchange()}
+            /> */}
+          <Dropdown></Dropdown>
+          {/* <cityFilter></cityFilter> */}
+          {/* <TagFilter
+            food={''}
+            mood={''}
+            onchange={function (food: string, mood: string): void {
+              throw new Error('Function not implemented.');
+            }}
+          ></TagFilter>
+          <TagFilter
+            food={''}
+            mood={''}
+            onchange={function (food: string, mood: string): void {
+              throw new Error('Function not implemented.');
+            }}
+          ></TagFilter> */}
         </Filter>
         <ItemBox>
           <Item src={require('./img1.png')} onClick={handleClick} />

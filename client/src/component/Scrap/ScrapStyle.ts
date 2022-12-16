@@ -81,7 +81,7 @@ export const Item = styled.img`
   width: 100%;
   height: 100%;
   object-fit: scale-down;
-  // border-radius: 100px;
+  border-radius: 100px;
   margin: 0.5rem;
   padding-right: 5%;
 `;
