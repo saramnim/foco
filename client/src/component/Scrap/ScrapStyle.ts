@@ -69,21 +69,28 @@ export const FilterInput = styled.input`
 `;
 // food, price 만들기
 // 우측 상세페이지 구역
+export const ItemWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+`;
 export const ItemBox = styled.div`
   display: grid;
+  // display: flex;
   // flex-wrap: wrap;
-  grid-template-rows: repeat(auto-fill, 300px, 300px);
-  grid-template-columns: 300px 300px 300px;
-  margin: 1rem;
-  margin-left: 78px;
+  grid-template-rows: repeat(auto-fill, auto-fill, auto-fill);
+  // grid-template-columns: 300px 300px 300px;
+  // margin: 1rem;
+  // margin-left: 78px;
+  margin-right: 20px;
+  justify-items: end;
 `;
 export const Item = styled.img`
   width: 100%;
-  height: 100%;
-  object-fit: scale-down;
-  border-radius: 100px;
-  margin: 0.5rem;
-  padding-right: 5%;
+  // height: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  // margin-right: 200px;
+  // padding-right: 5%;
 `;
 export const ItemStar = styled.div`
   display: flex;
@@ -110,7 +117,14 @@ export const Scroll = styled.div`
     box-shadow: inset 0px 0px 5px white;
   }
 `;
+export const Likes = styled.div`
+  width: 100px;
+  height: 1px;
+  font-size: 20px;
+  // margin-top: 50px;
 
+  color: #f13b3b;
+`;
 //
 // TitleWrapper 구역.div
 //   (

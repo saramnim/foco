@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-import { FilterWrapper, FilterTitle, DropdownBar } from './CoutryDropdownStyle';
+import {
+  FilterWrapper,
+  FilterTitle,
+  InputBox,
+  DropdownBar,
+} from './CoutryDropdownStyle';
 
 // type DropdownProps = {
 //   country: string;
@@ -13,7 +18,9 @@ const Dropdown = () => {
   return (
     <FilterWrapper>
       <FilterTitle>country</FilterTitle>
-      <DropdownBar placeholder="where?" value={value} />
+      <InputBox>
+        <DropdownBar placeholder="where?" value={value} />
+      </InputBox>
     </FilterWrapper>
   );
 };

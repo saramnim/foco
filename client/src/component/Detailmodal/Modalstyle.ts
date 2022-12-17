@@ -28,16 +28,17 @@ export const ModalBg = styled.div`
   justify-content: center;
 `;
 export const ModalTitle = styled.div`
+  position: absolute;
   font-weight: 700;
   font-size: 40px;
   text-align: center;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 80vh;
 `;
 export const Img = styled.img`
-  align-items: center;
-  width: 50%;
-  margin-bottom: 5px;
+  // align-items: center;
+  width: 15vw;
+  margin-top: auto;
 `;
 export const Box = styled.div`
   display: flex;
@@ -48,11 +49,11 @@ export const ItemBox = styled.div`
   text-align: center;
 `;
 export const Item = styled.img`
-  width: 80%;
+  width: 12vw;
   border-radius: 5px;
-
+  padding: 0.2vw;
   :hover {
-    width: 29.4vw;
+    width: 15vw;
     transform: scale(1.5);
     transition: transform 0.5s;
   }
@@ -81,16 +82,20 @@ export const TextBox = styled.div`
   // height: 100%;
   font-size: 20px;
 `;
-export const TextTitle = styled.ul`
+export const TextTitle = styled.span`
   margin-bottom: 0.5rem;
   text-align: center;
   font-weight: 400;
   font-size: 20px;
+  line-height: 100%;
 `;
-export const Text = styled.li`
+export const Text = styled.div`
   margin-top: 1rem;
   font-size: 16px;
   list-style-type: none;
+  + li {
+    padding: 0.5rem;
+  }
 `;
 export const Scroll = styled.div`
   width: 80%;

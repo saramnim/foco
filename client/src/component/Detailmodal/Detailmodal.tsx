@@ -47,6 +47,9 @@ const Detailmodal = () => {
         <Content>
           <TextBox>
             <TextTitle>
+              food<Text>#steak, #pasta</Text>
+            </TextTitle>
+            <TextTitle>
               mood<Text>#data, #romantic</Text>
             </TextTitle>
             <TextTitle>
@@ -65,6 +68,20 @@ const Detailmodal = () => {
               Comment
               <Text>
                 It's very delicious.
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
+                <br />
+                If you don't have anything, just don't do that!
                 <br />
                 If you don't have anything, just don't do that!
               </Text>

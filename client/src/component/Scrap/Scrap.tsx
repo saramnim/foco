@@ -10,12 +10,14 @@ import {
   Filter,
   FilterTitle,
   FilterInput,
+  ItemWrapper,
   ItemBox,
   Item,
   ItemStar,
   Scroll,
+  Likes,
 } from './ScrapStyle';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiFillHeart } from 'react-icons/ai';
 import Dropdown from '../Filter/CoutryDropdown';
 // import cityFilter from '../Filter/cityFilter';
 // import TagFilter from '../Filter/TagFilter';
@@ -50,6 +52,9 @@ const Scrap = () => {
               // onChange={(string) => onchange()}
             /> */}
           <Dropdown></Dropdown>
+          <Dropdown></Dropdown>
+          <Dropdown></Dropdown>
+          <Dropdown></Dropdown>
           {/* <cityFilter></cityFilter> */}
           {/* <TagFilter
             food={''}
@@ -66,13 +71,45 @@ const Scrap = () => {
             }}
           ></TagFilter> */}
         </Filter>
-        <ItemBox>
-          <Item src={require('./img1.png')} onClick={handleClick} />
-          <Item src={require('./img3.png')} onClick={handleClick} />
-          <Item src={require('./img3.png')} onClick={handleClick} />
-          <Item src={require('./img1.png')} onClick={handleClick} />
-          <Item src={require('./img1.png')} onClick={handleClick} />
-        </ItemBox>
+        <ItemWrapper>
+          <ItemBox>
+            <Item src={require('./img1.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img1.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img3.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+
+          <ItemBox>
+            <Item src={require('./img3.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img1.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+          <ItemBox>
+            <Item src={require('./img1.png')} onClick={handleClick} />
+            <Likes>
+              <AiFillHeart />
+            </Likes>
+          </ItemBox>
+        </ItemWrapper>
         {/* <Scroll id="scrollBar" /> */}
       </Content>
     </ScrapPage>
