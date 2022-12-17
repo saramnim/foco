@@ -9,8 +9,8 @@ import {
   Geography,
   Marker,
 } from 'react-simple-maps';
-import { MapWrapper, SVG } from './style';
-
+import { MapWrapper, SVG, TopWrapper, BottomWrapper } from './style';
+import DropDown from '../DropDown/DropDown';
 const MainMap = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [country, setCountry] = useState<string>('');
@@ -19,7 +19,7 @@ const MainMap = () => {
   const getPostData = () => {
     return axios({
       method: 'get',
-      url: 'http://localhost:3001/Data/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -111,52 +111,74 @@ const MainMap = () => {
     openModal();
     setCountry(name);
   };
+
+  const zoomInMapDropDown = (
+    name: string,
+    lat: number,
+    lng: number,
+    width: number,
+    height: number
+  ) => {
+    gsap.to(`.map`, 1, {
+      attr: {
+        viewBox: `${lat} ${lng} ${width} ${height}`,
+      },
+    });
+    openModal();
+    setCountry(name);
+  };
+
   return (
     <MapWrapper>
-      <ComposableMap
-        className="map"
-        projection="geoEquirectangular"
-        projectionConfig={{ scale: 180 }}
-      >
-        <Geographies geography="/worldmap.json">
-          {({ geographies }) =>
-            geographies.map((geo: any) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                name={geo.properties}
-                onClick={(e: any) => {
-                  const { name } = geo.properties;
-                  zoomInMap(e, name);
-                }}
-                style={{
-                  default: {
-                    fill: '#555',
-                    outline: 'none',
-                  },
-                  hover: {
-                    fill: 'skyblue',
-                    outline: 'none',
-                    cursor: 'pointer',
-                  },
-                  pressed: {
-                    fill: 'skyblue',
-                    outline: 'none',
-                  },
-                }}
-              />
-            ))
-          }
-        </Geographies>
-        {mapMarker}
-      </ComposableMap>
-      {modalOpen && (
-        <Ranking
-          country={country}
-          closeModal={closeModal}
-          showWholeMap={showWholeMap}
-        ></Ranking>
-      )}
+      <TopWrapper>
+        <DropDown zoomInMap={zoomInMapDropDown} />
+      </TopWrapper>
+      <BottomWrapper>
+        <ComposableMap
+          className="map"
+          projection="geoEquirectangular"
+          projectionConfig={{ scale: 180 }}
+        >
+          <Geographies geography="/Data/worldmap.json">
+            {({ geographies }) =>
+              geographies.map((geo: any) => (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  name={geo.properties}
+                  onClick={(e: any) => {
+                    const { name } = geo.properties;
+                    zoomInMap(e, name);
+                  }}
+                  style={{
+                    default: {
+                      fill: '#555',
+                      outline: 'none',
+                    },
+                    hover: {
+                      fill: 'skyblue',
+                      outline: 'none',
+                      cursor: 'pointer',
+                    },
+                    pressed: {
+                      fill: 'skyblue',
+                      outline: 'none',
+                    },
+                  }}
+                />
+              ))
+            }
+          </Geographies>
+          {mapMarker}
+        </ComposableMap>
+        {modalOpen && (
+          <Ranking
+            country={country}
+            closeModal={closeModal}
+            showWholeMap={showWholeMap}
+          ></Ranking>
+        )}
+      </BottomWrapper>
     </MapWrapper>
   );
 };

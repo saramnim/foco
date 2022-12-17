@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const RankingWrapper = styled.div`
-  width: 40vw;
+  width: 30vw;
   height: 80vh;
   background-color: #fff;
   margin: 0 50px;

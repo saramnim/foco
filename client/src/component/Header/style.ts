@@ -2,12 +2,23 @@ import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
   position: fixed;
   width: 100%;
   padding: 30px 50px;
   color: #fff;
+
+  & svg {
+    font-size: 23px;
+    padding: 10px;
+    cursor: pointer;
+  }
+`;
+
+export const TopWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 export const Title = styled.span`
   font-size: 40px;
@@ -16,9 +27,8 @@ export const Title = styled.span`
 `;
 export const Icons = styled.div`
   display: flex;
-  & svg {
-    font-size: 23px;
-    padding: 10px;
-    cursor: pointer;
-  }
+`;
+
+export const UnderWrapper = styled.div`
+  align-self: flex-end;
 `;
