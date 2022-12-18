@@ -1,5 +1,10 @@
 import React, { useState } from 'react';
-//import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import {
+  validateNickname,
+  validateEmail,
+  validatePassword,
+} from '../util/usefulFunctions';
 import {
   RegisterContainer,
   InnerBox,
@@ -13,75 +18,101 @@ import {
   SubmitBtn,
 } from './register-style';
 
+interface inputData {
+  nickname: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
+interface errorData {
+  nicknameError: string;
+  emailError: string;
+  passwordError: string;
+  confirmPasswordError: string;
+}
+
 const Register = () => {
-  const [state, setState] = useState({
+  const navigate = useNavigate();
+  const [info, setInfo] = useState<inputData>({
     nickname: '',
     email: '',
     password: '',
     confirmPassword: '',
   });
 
-  const [nicknameError, setNicknameError] = useState('');
-  const [emailError, setemailError] = useState('');
-  const [passwordError, setpasswordError] = useState('');
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [error, setError] = useState<errorData>({
+    nicknameError: '',
+    emailError: '',
+    passwordError: '',
+    confirmPasswordError: '',
+  });
 
-  const validateNickname = (e: string) => {
-    const Regex = /^[a-z][a-z0-9]*$/i;
-    return Regex.test(e);
-  };
-
-  const validateEmail = (e: string) => {
-    const Regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return Regex.test(e);
-  };
-
-  const validatePassword = (e: string) => {
-    return e.length > 7;
-  };
-
-  const validateConfirmPassword = (e: string) => {
-    return e === state.password;
+  const validateConfirmPassword = (password: string) => {
+    return password === info.password;
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'nickname') {
       if (!validateNickname(e.target.value)) {
-        setNicknameError('English only');
+        setError((prev) => ({
+          ...prev,
+          nicknameError: 'English only',
+        }));
       } else {
-        setNicknameError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          nicknameError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
       }
     } else if (e.target.name === 'email') {
       if (!validateEmail(e.target.value)) {
-        setemailError('This is not a valid email');
+        setError((prev) => ({
+          ...prev,
+          emailError: 'This is not a valid email',
+        }));
       } else {
-        setemailError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          emailError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
       }
     } else if (e.target.name === 'password') {
       if (!validatePassword(e.target.value)) {
-        setpasswordError('Must be at 8 characters');
+        setError((prev) => ({
+          ...prev,
+          passwordError: 'Must be at 8 characters',
+        }));
       } else {
-        setpasswordError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          passwordError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
       }
     } else if (e.target.name === 'confirmPassword') {
       if (!validateConfirmPassword(e.target.value)) {
-        setConfirmPasswordError('Passwords do not match');
+        setError((prev) => ({
+          ...prev,
+          confirmPasswordError: 'Passwords do not match',
+        }));
       } else {
-        setConfirmPasswordError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          confirmPasswordError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
@@ -91,13 +122,14 @@ const Register = () => {
 
   const handleSubmit = () => {
     if (
-      nicknameError === '' &&
-      emailError === '' &&
-      passwordError === '' &&
-      confirmPasswordError === ''
+      error.nicknameError === '' &&
+      error.emailError === '' &&
+      error.passwordError === '' &&
+      error.confirmPasswordError === ''
     ) {
-      alert('로그인 성공');
-      console.log(state);
+      alert('회원가입 성공');
+      console.log(info);
+      navigate('/login');
     } else {
       alert('내용확인!');
     }
@@ -115,7 +147,7 @@ const Register = () => {
             placeholder="nickname"
           />
           <Errormsg>
-            <p>{nicknameError}</p>
+            <p>{error.nicknameError}</p>
           </Errormsg>
           <Email
             type="text"
@@ -124,7 +156,7 @@ const Register = () => {
             placeholder="example@email.com"
           />
           <Errormsg>
-            <p>{emailError}</p>
+            <p>{error.emailError}</p>
           </Errormsg>
           <Password
             type="password"
@@ -133,7 +165,7 @@ const Register = () => {
             placeholder="password"
           />
           <Errormsg>
-            <p>{passwordError}</p>
+            <p>{error.passwordError}</p>
           </Errormsg>
           <ConfirnPassword
             type="password"
@@ -142,7 +174,7 @@ const Register = () => {
             placeholder="confirm password"
           />
           <Errormsg>
-            <p>{confirmPasswordError}</p>
+            <p>{error.confirmPasswordError}</p>
           </Errormsg>
         </Form>
         <SubmitBtn type="submit" onClick={handleSubmit}>

@@ -37,6 +37,10 @@ export const Label = styled.label`
   }
 `;
 
+export const InputBox = styled.div`
+  text-align: left;
+`;
+
 export const Input = styled.input`
   padding: 4px 8px;
   width: 360px;
@@ -48,6 +52,17 @@ export const Input = styled.input`
   &::placeholder {
     color: #b3b3b3;
     font-size: 14px;
+  }
+`;
+
+export const Errormsg = styled.div`
+  height: 20px;
+  margin-top: 10px;
+
+  & > p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #f05757;
   }
 `;
 
@@ -81,7 +96,6 @@ export const Button = styled.button`
   }
 `;
 
-//Account Style
 export const AccountContainer = styled.div`
   position: absolute;
   top: 20%;
@@ -136,6 +150,14 @@ export const Item = styled(Box)`
 
 export const Icon = styled.div`
   margin-right: 10px;
+`;
+
+export const MenuBtn = styled.button`
+  all: unset;
+
+  & > * {
+    all: unset;
+  }
 `;
 
 //Profile Style

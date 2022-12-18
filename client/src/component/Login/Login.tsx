@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { validateEmail, validatePassword } from '../util/usefulFunctions';
 import {
   LoginContainer,
   InnerBox,
@@ -12,42 +13,56 @@ import {
   Register,
 } from './login-style';
 
+interface inputData {
+  email: string;
+  password: string;
+}
+
+interface errorData {
+  emailError: string;
+  passwordError: string;
+}
+
 const Login = () => {
-  const [state, setState] = useState({
+  const [info, setInfo] = useState<inputData>({
     email: '',
     password: '',
   });
 
-  const [emailError, setemailError] = useState('');
-  const [passwordError, setpasswordError] = useState('');
-
-  const validateEmail = (e: string) => {
-    const Regex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return Regex.test(e);
-  };
-
-  const validatePassword = (e: string) => {
-    return e.length > 7;
-  };
+  const [error, setError] = useState<errorData>({
+    emailError: '',
+    passwordError: '',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'email') {
       if (!validateEmail(e.target.value)) {
-        setemailError('This is not a valid email');
+        setError((prev) => ({
+          ...prev,
+          emailError: 'This is not a valid email',
+        }));
       } else {
-        setemailError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          emailError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
       }
     } else if (e.target.name === 'password') {
       if (!validatePassword(e.target.value)) {
-        setpasswordError('Must be at 8 characters');
+        setError((prev) => ({
+          ...prev,
+          passwordError: 'Must be at 8 characters',
+        }));
       } else {
-        setpasswordError('');
-        setState((prev) => ({
+        setError((prev) => ({
+          ...prev,
+          passwordError: '',
+        }));
+        setInfo((prev) => ({
           ...prev,
           [e.target.name]: e.target.value,
         }));
@@ -56,9 +71,9 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    if (emailError === '' && passwordError === '') {
+    if (error.emailError === '' && error.passwordError === '') {
       alert('로그인 성공');
-      console.log(state);
+      console.log(info);
     } else {
       alert('내용확인!');
     }
@@ -76,7 +91,7 @@ const Login = () => {
             placeholder="example@email.com"
           />
           <Errormsg>
-            <p>{emailError}</p>
+            <p>{error.emailError}</p>
           </Errormsg>
           <Password
             type="password"
@@ -85,7 +100,7 @@ const Login = () => {
             placeholder="password"
           />
           <Errormsg>
-            <p>{passwordError}</p>
+            <p>{error.passwordError}</p>
           </Errormsg>
           <ForgotPassword>Forgot Password</ForgotPassword>
         </Form>
