@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
@@ -19,18 +19,11 @@ const MainMap = () => {
   const getPostData = () => {
     return axios({
       method: 'get',
-      url: 'http://localhost:3000/Data/post.json',
+      url: 'http://localhost:3001/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
   };
-
-  useEffect(() => {
-    const fetchData = async () => {
-      await getPostData();
-    };
-    fetchData();
-  }, []);
 
   const zoomInMarkers = data.map((content: any) => {
     return {
@@ -95,6 +88,7 @@ const MainMap = () => {
 
   const openModal = () => {
     setModalOpen(true);
+    getPostData();
   };
 
   const closeModal = () => {
