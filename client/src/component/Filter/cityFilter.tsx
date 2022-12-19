@@ -1,19 +1,13 @@
 import React, { useState } from 'react';
-import { FilterWrapper, FilterTitle, DropdownBar } from './CoutryDropdownStyle';
+import { FilterWrapper, FilterTitle, FilterInput, InputBox } from './cityStyle';
 
-// type DropdownProps = {
-//   country: string;
-// };
-
-const cityFilter = () => {
-  //   const [value, setValue] = useState('');
-  //   const handleChangeValue = (value: string) => {
-  //     setValue(value);
-  //   };
+const cityFilter = (props: any) => {
   return (
     <FilterWrapper>
-      <FilterTitle>country</FilterTitle>
-      <DropdownBar placeholder="where?" />
+      <FilterTitle>city</FilterTitle>
+      <InputBox>
+        <FilterInput placeholder="where?"></FilterInput>
+      </InputBox>
     </FilterWrapper>
   );
 };

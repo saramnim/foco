@@ -8,24 +8,15 @@ import {
   Country,
   Content,
   Filter,
-  FilterTitle,
-  FilterInput,
-  ItemBox,
-  Item,
-  ItemStar,
   Scroll,
 } from './ScrapStyle';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiFillHeart } from 'react-icons/ai';
 import Dropdown from '../Filter/CoutryDropdown';
-// import cityFilter from '../Filter/cityFilter';
-// import TagFilter from '../Filter/TagFilter';
+import cityFilter from '../Filter/cityFilter';
+import TagFilter from '../Filter/TagFilter';
+import ItemComp from './Item';
 
 const Scrap = () => {
-  const [value, setValue] = useState('');
-
-  const handleChangeValue = (value: string) => {
-    setValue(value);
-  };
   const handleClick = () => {
     // 해당 이미지 상세페이지 url 받아서 open!
   };
@@ -43,36 +34,13 @@ const Scrap = () => {
       </TitleWrapper>
       <Content>
         <Filter>
-          {/* Detail
-            <FilterInput
-              placeholder="where?"
-              value={value}
-              // onChange={(string) => onchange()}
-            /> */}
+          <Dropdown></Dropdown>
           <Dropdown></Dropdown>
           {/* <cityFilter></cityFilter> */}
-          {/* <TagFilter
-            food={''}
-            mood={''}
-            onchange={function (food: string, mood: string): void {
-              throw new Error('Function not implemented.');
-            }}
-          ></TagFilter>
-          <TagFilter
-            food={''}
-            mood={''}
-            onchange={function (food: string, mood: string): void {
-              throw new Error('Function not implemented.');
-            }}
-          ></TagFilter> */}
+          <TagFilter></TagFilter>
+          <TagFilter></TagFilter>
         </Filter>
-        <ItemBox>
-          <Item src={require('./img1.png')} onClick={handleClick} />
-          <Item src={require('./img3.png')} onClick={handleClick} />
-          <Item src={require('./img3.png')} onClick={handleClick} />
-          <Item src={require('./img1.png')} onClick={handleClick} />
-          <Item src={require('./img1.png')} onClick={handleClick} />
-        </ItemBox>
+        <ItemComp />
         {/* <Scroll id="scrollBar" /> */}
       </Content>
     </ScrapPage>
@@ -80,24 +48,3 @@ const Scrap = () => {
 };
 
 export default Scrap;
-//
-// TitleWrapper 구역.div
-//   (
-//     Title.span(Mine),
-//   Icons.div(AiFillStar, AiFillStar),
-//   country.div(In Korea)
-//   )
-// 본문 구역.div
-// 왼쪽: 필터구역.div
-//   (
-//     detail.div(detail.input),
-//   food.div(food.input)
-//   price.div(price.input)
-//   )
-// 오른쪽: 상세페이지 구역.div
-//   (
-//     item.div(스크랩한 음식 대표 사진만 뜨도록),
-//     scroll.div(스크롤~!)
-//   )
-
-//   모달페이지에 좋아요/스크랩버튼이 필요할

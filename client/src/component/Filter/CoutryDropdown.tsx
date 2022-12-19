@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { FilterWrapper, FilterTitle, DropdownBar } from './CoutryDropdownStyle';
+import React, { useState, useEffect, useRef } from 'react';
+import {
+  FilterWrapper,
+  FilterTitle,
+  InputBox,
+  DropdownBar,
+} from './CoutryDropdownStyle';
+import axios from 'axios';
+import data from '../../../public/Data/post.json';
 
-// type DropdownProps = {
-//   country: string;
-// };
-
-const Dropdown = () => {
-  const [value, setValue] = useState('');
-  const handleChangeValue = (value: string) => {
-    setValue(value);
-  };
+const Dropdown = (props: any) => {
   return (
     <FilterWrapper>
       <FilterTitle>country</FilterTitle>
-      <DropdownBar placeholder="where?" value={value} />
+      <InputBox>
+        <DropdownBar placeholder="where?"></DropdownBar>
+      </InputBox>
     </FilterWrapper>
   );
 };

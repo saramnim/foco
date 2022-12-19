@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 import Header from '../Header/Header';
 import ReviewForm from '../PostForm/PostForm';
+import AddImg from '../PostForm/func/AddImg';
+import Img from '../PostForm/func/Img';
+
 import {
   ReviewButton,
   ReviewContainer,
@@ -27,12 +31,23 @@ const Post = () => {
     setModalOpen(true);
   };
 
+  const onSubmit: any = () => {
+    alert('submit??');
+  };
+
+  const onClose: any = (e: any) => {
+    // e.preventDefault();
+    setModalOpen(false);
+  };
+
   return (
     <ReviewPage>
-      {modalOpen && <ReviewForm />}
+      {modalOpen && <ReviewForm onSubmit={onSubmit} onClose={onClose} />}
       <Header />
       <ReviewContainer>
         <Title>review management</Title>
+        <Img></Img>
+        {/* <AddImg></AddImg> */}
         <ReviewManagement>
           <ReviewButton onClick={handleAddReview}>+ review</ReviewButton>
           <ReviewList>

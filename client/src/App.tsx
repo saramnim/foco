@@ -1,12 +1,14 @@
 import React, { StrictMode } from 'react';
 import './App.css';
+import { BrowserRouter, Router, Routes, Route } from 'react-router-dom';
+import { GlobalStyle } from './GlobalStyle';
 import Header from './component/Header/Header';
 import MainMap from './component/MainMap/MainMap';
-// import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { GlobalStyle } from './GlobalStyle';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-//components
+import Register from './component/Register/Register';
+import Login from './component/Login/Login';
+import Profile from './component/Account/Profile';
+import Security from './component/Account/Security';
+import Deactivate from './component/Account/Deactivate';
 import Review from './component/Post/Post';
 
 function App() {
@@ -17,7 +19,14 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<MainMap />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/account/profile" element={<Profile />} />
+          <Route path="/account/security" element={<Security />} />
+          <Route path="account/deactivate" element={<Deactivate />} />
           <Route path="/review" element={<Review />} />
+          <Route path="/scrap" element={<Scrap />} />
+          <Route path="/detailModal" element={<Detailmodal />} />
         </Routes>
       </BrowserRouter>
     </div>

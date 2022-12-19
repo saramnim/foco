@@ -28,16 +28,17 @@ export const ModalBg = styled.div`
   justify-content: center;
 `;
 export const ModalTitle = styled.div`
+  position: absolute;
   font-weight: 700;
   font-size: 40px;
   text-align: center;
   color: #000000;
-  margin-bottom: 20px;
+  margin-bottom: 80vh;
 `;
 export const Img = styled.img`
-  align-items: center;
-  width: 50%;
-  margin-bottom: 5px;
+  // align-items: center;
+  width: 15vw;
+  margin-top: auto;
 `;
 export const Box = styled.div`
   display: flex;
@@ -48,11 +49,11 @@ export const ItemBox = styled.div`
   text-align: center;
 `;
 export const Item = styled.img`
-  width: 80%;
+  width: 12vw;
   border-radius: 5px;
-
+  padding: 0.2vw;
   :hover {
-    width: 29.4vw;
+    width: 15vw;
     transform: scale(1.5);
     transition: transform 0.5s;
   }
@@ -81,16 +82,20 @@ export const TextBox = styled.div`
   // height: 100%;
   font-size: 20px;
 `;
-export const TextTitle = styled.ul`
+export const TextTitle = styled.span`
   margin-bottom: 0.5rem;
   text-align: center;
   font-weight: 400;
   font-size: 20px;
+  line-height: 100%;
 `;
-export const Text = styled.li`
+export const Text = styled.div`
   margin-top: 1rem;
   font-size: 16px;
   list-style-type: none;
+  + li {
+    padding: 0.5rem;
+  }
 `;
 export const Scroll = styled.div`
   width: 80%;
@@ -99,30 +104,3 @@ export const Scroll = styled.div`
   background: #d9d9d9;
   border-radius: 11px;
 `;
-
-// ModalBg 구역.div
-//   (
-//     Title.span(Receipt),
-//   Icons.div(AiOutlineDash),
-//   )
-// 본문 구역.div
-// 1 단락: 이미지구역.div
-//   (
-//     이미지.img
-//     스크롤.div
-//   )
-// 2 단락: 상세 정보 구역.div
-//   (
-//     ul(
-//         li(where, 상호명)
-//         li(who, 작성자)
-//         li(mood, 분위기)
-//         li(score, 별점)
-//     )
-//     Icons.div(AiOutlineDash),
-//     Comment.div
-//     Icons.div(AiOutlineDash),
-//     상세 주소.div
-//   )
-
-//   모달페이지에 좋아요/스크랩버튼이 필요할듯

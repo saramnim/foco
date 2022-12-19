@@ -1,5 +1,13 @@
+import { Link } from 'react-router-dom';
 import { HiUserCircle, HiShieldCheck, HiCog6Tooth } from 'react-icons/hi2';
-import { MenuContainer, ItemBox, Username, Item, Icon } from './account-style';
+import {
+  MenuContainer,
+  ItemBox,
+  Username,
+  Item,
+  Icon,
+  MenuBtn,
+} from './account-style';
 
 const Menu = () => {
   return (
@@ -10,19 +18,25 @@ const Menu = () => {
           <Icon>
             <HiUserCircle />
           </Icon>
-          Profile
+          <MenuBtn>
+            <Link to={'/account/profile'}>Profile</Link>
+          </MenuBtn>
         </Item>
         <Item>
           <Icon>
             <HiShieldCheck />
           </Icon>
-          Security
+          <MenuBtn>
+            <Link to={'/account/security'}>Security</Link>
+          </MenuBtn>
         </Item>
         <Item>
           <Icon>
             <HiCog6Tooth />
           </Icon>
-          Deactivate
+          <MenuBtn>
+            <Link to={'/account/deactivate'}>Deactivate</Link>
+          </MenuBtn>
         </Item>
       </ItemBox>
     </MenuContainer>
