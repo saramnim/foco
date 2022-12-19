@@ -1,21 +1,15 @@
 import React, { useState } from 'react';
-// import { FilterWrapper, FilterTitle, DropdownBar } from './CoutryDropdownStyle';
+import { FilterWrapper, FilterTitle, FilterInput, InputBox } from './cityStyle';
 
-// // type DropdownProps = {
-// //   country: string;
-// // };
+const cityFilter = (props: any) => {
+  return (
+    <FilterWrapper>
+      <FilterTitle>city</FilterTitle>
+      <InputBox>
+        <FilterInput placeholder="where?"></FilterInput>
+      </InputBox>
+    </FilterWrapper>
+  );
+};
 
-// const cityFilter = () => {
-//   const [city, setCity] = useState('');
-//   //   const handleChangeValue = (city: string) => {
-//   //     setCity(city);
-//   //   };
-//   return (
-//     <FilterWrapper>
-//       <FilterTitle>country</FilterTitle>
-//       <DropdownBar placeholder="where?" />
-//     </FilterWrapper>
-//   );
-// };
-
-// export default cityFilter;
+export default cityFilter;

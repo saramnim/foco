@@ -1,32 +1,20 @@
 import React, { useState } from 'react';
-// import { FilterWrapper, FilterTitle, DropdownBar } from './CoutryDropdownStyle';
+import { KeywardWrapper, KeywardTitle, KeywardInput, Button } from './TagStyle';
 
-// // type DropdownProps = {
-// //   country: string;
-// // };
+const SearchBar = () => {
+  const [keyward, setKeyward] = useState('');
+  const onChangeKeyward = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setKeyward(e.target.value);
+  };
+  return (
+    <KeywardWrapper>
+      <KeywardTitle>mood</KeywardTitle>
+      <KeywardInput type="text" onChange={onChangeKeyward} />
+      {/* <Button type="button" className="search">
+        <span>검색</span>
+      </Button> */}
+    </KeywardWrapper>
+  );
+};
 
-// type TagProps = {
-//   food: string;
-//   mood: string;
-//   onchange: (food: string, mood: string) => void;
-// };
-
-// // const TagFilter = ({ food, mood }: TagProps) => {
-// //   const [value, setValue] = useState('');
-// //   const handleChangeValue = (e) => {
-// //     onchange(e);
-// //     // setValue(value);
-// //   };
-//   return (
-//     <FilterWrapper>
-//       <FilterTitle></FilterTitle>
-//       <DropdownBar
-//         placeholder="where?"
-//         value={value}
-//         onChange={handleChangeValue}
-//       />
-//     </FilterWrapper>
-//   );
-// };
-
-// export default TagFilter;
+export default SearchBar;

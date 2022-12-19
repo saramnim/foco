@@ -104,30 +104,3 @@ export const Scroll = styled.div`
   background: #d9d9d9;
   border-radius: 11px;
 `;
-
-// ModalBg 구역.div
-//   (
-//     Title.span(Receipt),
-//   Icons.div(AiOutlineDash),
-//   )
-// 본문 구역.div
-// 1 단락: 이미지구역.div
-//   (
-//     이미지.img
-//     스크롤.div
-//   )
-// 2 단락: 상세 정보 구역.div
-//   (
-//     ul(
-//         li(where, 상호명)
-//         li(who, 작성자)
-//         li(mood, 분위기)
-//         li(score, 별점)
-//     )
-//     Icons.div(AiOutlineDash),
-//     Comment.div
-//     Icons.div(AiOutlineDash),
-//     상세 주소.div
-//   )
-
-//   모달페이지에 좋아요/스크랩버튼이 필요할듯
