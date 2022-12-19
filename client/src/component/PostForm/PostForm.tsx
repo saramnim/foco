@@ -4,14 +4,14 @@ import {
   Title,
   TitleInput,
   Line,
-  AddImg,
+  ImgsBox,
   InfosBox,
   InfoBox,
   InfoName,
   InfoInput,
   CommentBox,
   CommentName,
-  CommentInput,
+  CommentText,
   LocationBox,
   LocationName,
   LocationSearch,
@@ -22,53 +22,85 @@ import { TfiCheck, TfiClose } from 'react-icons/tfi';
 
 import LocationSearchInput from './func/LocationSearchInput';
 import StarRating from './func/StarRating';
+// import UploadImg from './func/UploadImg';
+// import UploadedImg from './func/UploadedImg';
+import Img from './func/Img';
+// import AddImg from './func/AddImg';
 
 import './style.css';
 
-const PostForm: React.FC = () => {
-  const handleSubmit: any = (e: any) => {};
+import { useState, useEffect } from 'react';
 
-  const handleClose: any = () => {};
+const PostForm: any = (props: any) => {
+  const [title, setTitle] = useState<string>('');
+  const [food, setFood] = useState<string>('');
+  const [mood, setMood] = useState<string>('');
+  const [star, setStar] = useState<number>();
+  const [comment, setComment] = useState<string>('');
+  // const [city, setCity] = useState<string>('');
+  // const [location, setLocation] = useState<string>('');
+
+  useEffect(() => {}, [title, food, mood, star, comment]);
 
   return (
     <Modal>
       <ModalBody>
         <Title>
-          <TitleInput placeholder="restaurant name"></TitleInput>
+          <TitleInput
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="restaurant name"
+          ></TitleInput>
         </Title>
         <Line />
-        <AddImg>이미지 들어올 영역</AddImg>
+        <ImgsBox>
+          {/* <AddImg></AddImg> */}
+          <Img></Img>
+        </ImgsBox>
         <InfosBox>
           <InfoBox>
             <InfoName>Food</InfoName>
-            <InfoInput placeholder="pizza"></InfoInput>
+            <InfoInput
+              onChange={(e) => setFood(e.target.value)}
+              placeholder="pizza"
+            ></InfoInput>
           </InfoBox>
           <InfoBox>
             <InfoName>Mood</InfoName>
-            <InfoInput placeholder="special"></InfoInput>
+            <InfoInput
+              onChange={(e) => setMood(e.target.value)}
+              placeholder="special"
+            ></InfoInput>
           </InfoBox>
           <InfoBox>
             <InfoName>Score</InfoName>
-            <StarRating />
+            <StarRating setStar={setStar}></StarRating>
           </InfoBox>
         </InfosBox>
         <Line />
         <CommentBox>
           <CommentName>Comment</CommentName>
-          <CommentInput rows={8} placeholder={'Out of this world!!'} />
+          <CommentText>
+            <textarea
+              onChange={(e) => setComment(e.target.value)}
+              maxLength={500}
+              rows={8}
+              placeholder={'Out of this world!!'}
+            />
+          </CommentText>
         </CommentBox>
         <Line />
         <LocationBox>
           <LocationName>Location</LocationName>
           <LocationSearch>
+            {/* <LocationSearchInput /> */}
             <LocationSearchInput />
           </LocationSearch>
         </LocationBox>
         <ButtonBox>
-          <FormButton onClick={handleSubmit}>
+          <FormButton onClick={props.onSubmit}>
             <TfiCheck />
           </FormButton>
-          <FormButton onClick={handleClose}>
+          <FormButton onClick={props.onClose}>
             <TfiClose />
           </FormButton>
         </ButtonBox>
