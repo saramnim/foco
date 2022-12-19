@@ -3,19 +3,18 @@ import { AiFillHeart } from 'react-icons/ai';
 import { ItemBox, Item, Likes, LikesCount, ItemWrapper } from './ScrapStyle';
 import Detailmodal from './../Detailmodal/Detailmodal';
 import axios from 'axios';
-import data from '../../../public/Data/post.json';
-// console.log(data);
+
 const ItemComp = () => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);
-
+  const [img, setImg] = useState<any[]>([]);
   const handleClick = useCallback(() => {
     setOpenModal(!isOpenModal);
   }, [isOpenModal]);
-  const [img, setImg] = useState<any[]>([]);
-  const getImg = () => {
+
+  const getData = () => {
     return axios({
       method: 'get',
-      url: 'http://localhost:3000/Data/img/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setImg(res.data.data.image);
     });

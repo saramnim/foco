@@ -6,9 +6,7 @@ import Scrap from './component/Scrap/Scrap';
 import Detailmodal from './component/Detailmodal/Detailmodal';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { GlobalStyle } from './GlobalStyle';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-//components
 import Review from './component/Post/Post';
 
 function App() {
