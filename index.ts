@@ -1,9 +1,20 @@
 import { app } from "./src/app";
-import { dbConnect } from "./src/db/index";
-import "dotenv/config";
+import { PORT, MONGODB_URI } from './src/config';
+import mongoose from "mongoose";
 
-dbConnect();
 
-app.listen(process.env.PORT, () => {
-  console.log("SERVER STARTED");
+
+mongoose.set("strictQuery", true).connect(MONGODB_URI);
+mongoose.connection.on('connected', ()=> {
+  console.log(`Successfully connected to MongoDB: ${MONGODB_URI}`);
 });
+
+
+app.listen(PORT, () => {
+  console.log(`
+################################################
+🛡️  Server listening on port: ${PORT}🛡️
+################################################
+`);
+});
+

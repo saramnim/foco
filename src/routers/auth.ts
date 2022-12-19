@@ -1,6 +1,6 @@
 import passport from "passport";
 import { Router } from "express";
-import { User } from "../db/models/userModel";
+import { User } from "../models/userModel";
 import { setUserToken } from "../utils/jwt";
 import { hashPassword } from "../utils/hash-password";
 import { asyncHandler } from "../utils/async-handler";

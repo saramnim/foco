@@ -1,14 +1,15 @@
 {
-  "include": ["src", "index.ts"], // 타입스크립트 사용할 폴더 지정
+"include": ["src", "index.ts"],
   "compilerOptions": {
-    "outDir": "build", // ts->js로 빌드될 폴더 지정
-    "target": "ES6", // 어떤 시점의 js로 빌드할지 지정
-    "lib": ["ES6"], // 타입스크립트에게 어떤 API를 사용하고 어떤 환경에서 코드를 실행하는 지를 지정
-    // "lib":["ES6","DOM"] => 브라우저에서 돌아감 document.querySelector 같은 브라우저API 자동완성 지원
-    "strict": true, // 모든 엄격한 타입 검사 옵션을 활성화. *핵심 기능이다*
-    "esModuleInterop": true, // import xx from "xxx" 형태의 불러오기를 가능하게 해준다
-    "module": "CommonJS",
+    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "commonjs",                                /* Specify what module code is generated. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
+    "strict": true,                                      /* Enable all strict type-checking options. */
+    "skipLibCheck": true,                                 /* Skip type checking all .d.ts files. */
+    "moduleResolution": "node",
+    "jsx": "react",
     "noImplicitAny": false,
-    "allowJs": true //=> 타입스크립트에서 자바스크립트를 사용가능하게 해준다
+    "allowJs": true
   }
 }

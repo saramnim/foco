@@ -1,5 +1,5 @@
 import passportLocal from "passport-local";
-import { User } from "../../db/models/userModel";
+import { User } from "../../models/userModel";
 import { hashPassword } from "../../utils/hash-password";
 
 const LocalStrategy = passportLocal.Strategy;
