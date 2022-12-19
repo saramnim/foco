@@ -21,9 +21,6 @@ app.use(jwtMiddle);
 app.use(express.json());
 app.use(endPoint.post, postRouter);
 
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "pug");
-
 
 //화면요청
 app.use(viewsRouter);
