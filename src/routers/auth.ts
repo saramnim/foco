@@ -19,7 +19,7 @@ authRouter.post(
     });
 
     if (exists) {
-      throw new Error("이미가입된 메일입니데이");
+      throw new Error("이미 가입된 메일입니다.");
     }
 
     await User.create({
@@ -31,15 +31,36 @@ authRouter.post(
   })
 );
 
+
+//로그인 요청 핸들러
 authRouter.post(
   "/login",
   passport.authenticate(local, {
     session: false,
-  }),
+  }), asyncHandler(
   (req, res, next) => {
     setUserToken(res, req.user);
     res.redirect("/");
-  }
+  })
 );
+
+//회원정보 수정 요청 핸들러
+authRouter.put(
+  '/myPage/:shortd', asyncHandler(async(req,res,next)=>{
+    const shortId = req.params.shortId;
+    const { country, name } = req.body;
+    const user = await User.findOneAndUpdate({shortId}, {country, name});
+    res.json(user);
+  })
+)
+
+//회원탈퇴 요청 핸들러
+authRouter.delete(
+  '/myPage/:shortId', asyncHandler(async(req,res,next)=>{
+    const shortId = req.params.shortId;
+    const deletedUser = await User.findOneAndDelete({shortId});
+    res.json(deletedUser);
+  })
+)
 
 export { authRouter };
