@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import {
   validateNickname,
   validateEmail,
@@ -17,12 +18,12 @@ import {
   Errormsg,
   SubmitBtn,
 } from './register-style';
+import { json } from 'stream/consumers';
 
-interface inputData {
+interface userData {
   nickname: string;
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
 interface errorData {
@@ -34,11 +35,10 @@ interface errorData {
 
 const Register = () => {
   const navigate = useNavigate();
-  const [info, setInfo] = useState<inputData>({
+  const [info, setInfo] = useState<userData>({
     nickname: '',
     email: '',
     password: '',
-    confirmPassword: '',
   });
 
   const [error, setError] = useState<errorData>({
@@ -112,26 +112,28 @@ const Register = () => {
           ...prev,
           confirmPasswordError: '',
         }));
-        setInfo((prev) => ({
-          ...prev,
-          [e.target.name]: e.target.value,
-        }));
       }
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
     if (
       error.nicknameError === '' &&
       error.emailError === '' &&
       error.passwordError === '' &&
       error.confirmPasswordError === ''
     ) {
-      alert('회원가입 성공');
-      console.log(info);
-      navigate('/login');
-    } else {
-      alert('내용확인!');
+      try {
+        const res = await axios.post(
+          'http://localhost:3000/Data/userData.json',
+          JSON.stringify(info)
+        )
+        alert('회원가입 성공');
+        navigate('/login');
+      } catch (err) {
+        console.error(err);
+      }
     }
   };
 

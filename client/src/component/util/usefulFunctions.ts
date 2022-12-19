@@ -10,6 +10,6 @@ export const validateEmail = (email: string) => {
   return Regex.test(email);
 };
 
-export const validatePassword = (e: string) => {
-  return e.length > 7;
+export const validatePassword = (password: string) => {
+  return password.length > 7;
 };
