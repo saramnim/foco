@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { FaGoogle } from 'react-icons/fa';
 import { validateEmail, validatePassword } from '../util/usefulFunctions';
 import {
   LoginContainer,
@@ -11,6 +13,9 @@ import {
   ForgotPassword,
   SubmitBtn,
   Register,
+  SocialLoin,
+  GoogleBtn,
+  Border,
 } from './login-style';
 
 interface inputData {
@@ -71,7 +76,12 @@ const Login = () => {
   };
 
   const handleSubmit = () => {
-    if (error.emailError === '' && error.passwordError === '') {
+    if (
+      error.emailError === '' &&
+      error.passwordError === '' &&
+      info.email !== '' &&
+      info.password !== ''
+    ) {
       alert('로그인 성공');
       console.log(info);
     } else {
@@ -108,8 +118,18 @@ const Login = () => {
           Log in
         </SubmitBtn>
         <Register>
-          Don't have an account? <span>Register</span>
+          Don't have an account?{' '}
+          <span>
+            <Link to={'/register'}>Register</Link>
+          </span>
         </Register>
+        <Border>OR</Border>
+        <SocialLoin>
+          <GoogleBtn>
+            <FaGoogle />
+            <span>Login with Google</span>
+          </GoogleBtn>
+        </SocialLoin>
       </InnerBox>
     </LoginContainer>
   );
