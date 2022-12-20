@@ -19,7 +19,7 @@ const MainMap = () => {
   const getPostData = () => {
     return axios({
       method: 'get',
-      url: 'http://localhost:3001/Data/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -78,9 +78,9 @@ const MainMap = () => {
   ));
 
   const showWholeMap = () => {
-    gsap.to(`#worldMap`, 1, {
+    gsap.to(`.map`, 1, {
       attr: {
-        viewBox: `1000px 1000px`,
+        viewBox: ` -180 140 1150 200`,
       },
     });
     closeModal();
@@ -146,11 +146,11 @@ const MainMap = () => {
                   }}
                   style={{
                     default: {
-                      fill: '#555',
+                      fill: '#517DA6',
                       outline: 'none',
                     },
                     hover: {
-                      fill: 'skyblue',
+                      fill: '#CEEDFF',
                       outline: 'none',
                       cursor: 'pointer',
                     },

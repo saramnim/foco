@@ -12,7 +12,16 @@
       "city": "Paris",
       "lat": 48.8566,
       "lng": 2.3522,
-      "price": 88
+      "price": 88,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "japn",
@@ -26,7 +35,16 @@
       "city": "Beiging",
       "lat": 39.9042,
       "lng": 116.4074,
-      "price": 88
+      "price": 88,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "japn",
@@ -40,7 +58,16 @@
       "city": "NewYork",
       "lat": 37.0902,
       "lng": 95.7129,
-      "price": 88
+      "price": 88,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "japn",
@@ -54,7 +81,16 @@
       "city": "Tokoy",
       "lat": 35.6762,
       "lng": 139.6503,
-      "price": 139.6503
+      "price": 139.6503,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -68,7 +104,16 @@
       "city": "Seoul",
       "lat": 37.5665,
       "lng": 126.9780,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -82,7 +127,16 @@
       "address": "부산",
       "lat": 35.1796,
       "lng": 129.0756,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -96,7 +150,16 @@
       "address": "전주",
       "lat": 35.8242,
       "lng": 127.1480,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -110,7 +173,16 @@
       "city": "Seoul",
       "lat": 37.5665,
       "lng": 126.9780,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -124,7 +196,16 @@
       "address": "부산",
       "lat": 35.1796,
       "lng": 129.0756,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -138,7 +219,16 @@
       "address": "전주",
       "lat": 35.8242,
       "lng": 127.1480,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -152,7 +242,16 @@
       "city": "Seoul",
       "lat": 37.5665,
       "lng": 126.9780,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -166,7 +265,16 @@
       "address": "부산",
       "lat": 35.1796,
       "lng": 129.0756,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     },
     {
       "user": "rabbitkim",
@@ -180,7 +288,16 @@
       "address": "전주",
       "lat": 35.8242,
       "lng": 127.1480,
-      "price": 10000
+      "price": 10000,
+      "foodType": [
+        "Korean food",
+        "yummy",
+        "pork cutlet"
+      ],
+      "mood": [
+        "comfort",
+        "home"
+      ]
     }
   ]
 }

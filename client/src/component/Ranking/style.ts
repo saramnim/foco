@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const RankingWrapper = styled.div`
-  width: 30vw;
+  width: 35vw;
   height: 80vh;
-  background-color: #fff;
-  margin: 0 50px;
-  padding: 30px;
+  margin: 0 20px;
+  padding: 40px;
   box-sizing: border-box;
+  border: 3px solid #eaeaea;
   border-radius: 10px;
   overflow-y: scroll;
   &::-webkit-scrollbar {

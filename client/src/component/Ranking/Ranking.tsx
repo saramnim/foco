@@ -27,8 +27,8 @@ interface Iprops {
 interface Icontent {
   country: string;
   like: number;
-  store: string;
-  image: string;
+  storeName: string;
+  img: string;
 }
 
 const Ranking = (props: Iprops) => {
@@ -38,7 +38,7 @@ const Ranking = (props: Iprops) => {
     return axios({
       method: 'get',
       // 임시 mock data 연결
-      url: 'http://localhost:3001/Data/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -67,10 +67,13 @@ const Ranking = (props: Iprops) => {
       <Link to={`/list/${country}`}>
         <MoreButton>more</MoreButton>
       </Link>
-      {data.map((content: Icontent, index: number) => {
-        return (
-          <Main key={index}>
-            {content.country === country ? (
+      {data
+        .filter((content: Icontent) => {
+          return content.country === country;
+        })
+        .map((content: Icontent, index: number) => {
+          return (
+            <Main key={index}>
               <ContentBox>
                 <Left>
                   <div>
@@ -80,16 +83,13 @@ const Ranking = (props: Iprops) => {
                       <TotalLike>{content.like}</TotalLike>
                     </Like>
                   </div>
-                  <StoreName>{content.store}</StoreName>
+                  <StoreName>{content.storeName}</StoreName>
                 </Left>
-                <img src={content.image} alt={content.store}></img>
+                <img src={content.img} alt={content.storeName}></img>
               </ContentBox>
-            ) : (
-              <></>
-            )}
-          </Main>
-        );
-      })}
+            </Main>
+          );
+        })}
     </RankingWrapper>
   );
 };

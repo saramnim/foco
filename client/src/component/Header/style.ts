@@ -7,9 +7,9 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   padding: 30px 50px;
-  color: #000;
 `;
 export const Title = styled.span`
+  color: #000;
   font-size: 40px;
   font-family: 'Rubik Spray Paint', cursive;
   cursor: pointer;
