@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   ModalBackground,
   ModalBg,
+  CloseWrapper,
   TitleWrapper,
   ModalTitle,
   IconsWrapper,
@@ -18,6 +19,7 @@ import axios from 'axios';
 import { Icontent } from './Icontent';
 import { AiFillHeart } from 'react-icons/ai';
 import { FaUtensilSpoon } from 'react-icons/fa';
+
 const Detailmodal = () => {
   const [val, setVal] = useState<any[]>([]);
   const getData = () => {
@@ -38,10 +40,12 @@ const Detailmodal = () => {
   }, []);
   return (
     <ModalBackground>
-      <IoClose />
       {val.map((detail: Icontent, index: number) => {
         return (
           <ModalBg key={index}>
+            <CloseWrapper>
+              <IoClose />
+            </CloseWrapper>
             <TitleWrapper>
               <ModalTitle>{detail.storeName}</ModalTitle>
               <IconsWrapper>

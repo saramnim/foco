@@ -3,13 +3,7 @@ import { AiFillHeart } from 'react-icons/ai';
 import { ItemBox, Item, Likes, LikesCount, ItemWrapper } from './ScrapStyle';
 import Detailmodal from './../Detailmodal/Detailmodal';
 import axios from 'axios';
-
-interface Icontent {
-  country: string;
-  like: number;
-  store: string;
-  img: string;
-}
+import { Icontent } from '../Detailmodal/Icontent';
 
 const ItemComp = () => {
   const [isOpenModal, setOpenModal] = useState<boolean>(false);

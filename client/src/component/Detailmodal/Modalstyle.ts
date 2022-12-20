@@ -6,10 +6,14 @@ export const ModalBackground = styled.div`
   left: 0;
   bottom: 0;
   right: 0;
-  // background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+export const CloseWrapper = styled.div`
+  // font-size: 12px;
+  // color: black;
 `;
 export const ModalBg = styled.div`
   background: no-repeat
