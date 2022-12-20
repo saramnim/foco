@@ -11,8 +11,8 @@ export const RegisterContainer = styled.div`
   transform: translate(-50%, -50%);
   margin: 20px;
   padding: 20px;
-  width: 450px;
-  height: 700px;
+  width: 460px;
+  height: 760px;
   //border: 1px solid #dfdfdf;
   border-radius: 30px;
   box-shadow: 10px 10px 20px 4px #dfdfdf;
@@ -41,7 +41,6 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   width: 80%;
-  margin-bottom: 40px;
 `;
 
 export const Input = styled.input`
@@ -61,19 +60,19 @@ export const Input = styled.input`
 `;
 
 export const Nickname = styled(Input)`
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 `;
 
 export const Email = styled(Input)`
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 `;
 
 export const Password = styled(Input)`
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 `;
 
 export const ConfirnPassword = styled(Input)`
-  margin-bottom: 15px;
+  margin-bottom: 6px;
 `;
 
 export const Errormsg = styled.div`
@@ -87,6 +86,13 @@ export const Errormsg = styled.div`
     font-weight: 600;
     color: #f05757;
   }
+`;
+
+export const CountrySelect = styled.div`
+  width: 100%;
+  height: 40px;
+  text-align: left;
+  font: 18px;
 `;
 
 export const SubmitBtn = styled.button`
@@ -105,16 +111,48 @@ export const SubmitBtn = styled.button`
   }
 `;
 
-export const Register = styled.p`
-  margin-top: 60px;
-  color: #b3b3b3;
+export const SocialLoin = styled.div`
+  width: 100%;
+`;
 
+export const GoogleBtn = styled(SubmitBtn)`
+  border: 1px solid #000000;
+  background-color: white;
+  color: #000000;
   & > span {
-    font-weight: bold;
-    color: #212121;
+    margin-left: 10px;
   }
-  &>span: hover {
-    color: #fe9c56;
-    cursor: pointer;
+  &:hover {
+    background-color: white;
+    border-color: #fe9c56;
+  }
+`;
+
+export const Border = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 30px 0px;
+  width: 80%;
+  color: #b3b3b3;
+  font-size: 12px;
+
+  &::before {
+    content: '';
+    flex-grow: 1;
+    background: #d9d9d9;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin-right: 16px;
+  }
+
+  &::after {
+    content: '';
+    flex-grow: 1;
+    background: #d9d9d9;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin-left: 16px;
   }
 `;
