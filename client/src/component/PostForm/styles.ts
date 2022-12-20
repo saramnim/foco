@@ -20,13 +20,13 @@ export const ModalBody = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-content: center;
+  align-items: center;
 `;
 
 export const Title = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 export const TitleInput = styled.input`
@@ -42,9 +42,12 @@ export const Line = styled.hr`
   border-top: 3px dotted black;
 `;
 
-export const AddImg = styled.div`
-  width: 100%;
-  height: 150px;
+export const ImgsBox = styled.div`
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+  width: 90%;
+  height: 260px;
 `;
 
 export const InfosBox = styled.div`
@@ -71,13 +74,12 @@ export const InfoInput = styled.input`
 `;
 
 export const CommentBox = styled.div`
-  width: 60%;
-  height: 300px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  align-items: center;
   justify-content: center;
-  margin-left: 192px;
+  margin: 30px 0;
 `;
 
 export const CommentName = styled.span`
@@ -86,18 +88,26 @@ export const CommentName = styled.span`
   margin-bottom: 15px;
 `;
 
-export const CommentInput = styled.textarea`
-  padding: 8px;
-  font-size: 16px;
+export const CommentText = styled.div`
+  background-color: teal;
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & textarea {
+    width: 100%;
+    padding: 7px;
+  }
 `;
 
 export const LocationBox = styled.div`
   width: 100%;
-  height: 150px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin: 30px 0;
 `;
 
 export const LocationName = styled.span`
@@ -107,7 +117,11 @@ export const LocationName = styled.span`
 
 export const LocationSearch = styled.div`
   display: flex;
-  height: 40px;
+  flex-direction: column;
+
+  & input:first-child {
+    margin-bottom: 10px;
+  }
 `;
 
 export const ButtonBox = styled.div`
@@ -131,4 +145,94 @@ export const FormButton = styled.button`
     background-color: #e6ddc4;
     cursor: pointer;
   }
+`;
+
+// -------------------------- AddImg --------------------------
+
+// -------------------------- UploadImg --------------------------
+
+export const ImgUploadBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 10px;
+  width: 220px;
+`;
+
+export const ImgHeader = styled.div``;
+
+export const AddImg = styled.div`
+  width: 100%;
+  height
+`;
+
+export const ImgButtonHeader = styled.button`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 140px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+
+  svg {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+`;
+// background-color: rgba(0, 0, 0, 0);
+
+export const ImgButton = styled.button``;
+
+export const ImgInfo = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6px;
+
+  & input {
+    margin-left: 10px;
+    width: 140px;
+  }
+
+  & label:last-of-type {
+    margin-top: 7px;
+
+    & input {
+      margin-left: 15px;
+    }
+  }
+`;
+
+export const ImgLabel = styled.label`
+  display: flex;
+
+  & span {
+  }
+`;
+
+export const ImgInput = styled.input``;
+
+export const ImgButtonBox = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  & button {
+    padding: 4px 8px;
+
+    &:nth-child(2) {
+      margin-left: 10px;
+    }
+  }
+`;
+
+// -------------------------- UploadedImg --------------------------
+
+export const Img = styled.img`
+  height: 140px;
 `;

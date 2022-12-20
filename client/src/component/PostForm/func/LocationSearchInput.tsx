@@ -11,7 +11,7 @@ const LocationSearchInput: React.FC = () => {
     setAddress(address);
   };
 
-  const handleSelect: any = (adr: any) => {
+  const handleSelect: any = (address: any) => {
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
       .then((latLng) => console.log('Success', latLng))
@@ -44,6 +44,7 @@ const LocationSearchInput: React.FC = () => {
                 : { backgroundColor: '#ffffff', cursor: 'pointer' };
               return (
                 <div
+                  // key={suggestion.id}
                   {...getSuggestionItemProps(suggestion, {
                     className,
                     style,

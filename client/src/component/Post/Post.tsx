@@ -16,7 +16,7 @@ import {
 } from './style';
 
 const Post = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
+  const [modalOpen, setModalOpen] = useState<boolean>(true);
   const [reviews, setReviews] = useState<never[]>([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ const Post = () => {
 
   return (
     <ReviewPage>
-      {modalOpen && <ReviewForm onSubmit={onSubmit} onClose={onClose} />}
+      {true && <ReviewForm onSubmit={onSubmit} onClose={onClose} />}
       <Header />
       <ReviewContainer>
         <Title>review management</Title>

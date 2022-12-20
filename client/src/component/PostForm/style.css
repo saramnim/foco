@@ -21,3 +21,69 @@
 .filled-icons {
   color: rgb(76, 76, 76) !important;
 }
+
+/* upload img */
+.img-btn-box {
+  margin-bottom: 16px;
+}
+
+.img-btn-box button:first-child {
+  margin-right: 10px;
+}
+
+.imgList {
+  display: flex;
+  padding: 20px;
+  border: 1px solid gray;
+  border-radius: 10px;
+}
+
+.image-item {
+  width: 200px;
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.img-box {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: contain;
+  margin-bottom: 10px;
+  border: 1px solid rgb(188, 188, 188);
+  border-radius: 3px;
+}
+
+.img-box img {
+  width: auto;
+  height: auto;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.image-item__btn-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.image-item__btn-wrapper button:first-child {
+  margin-right: 10px;
+}
+
+.upload__image-wrapper button {
+  padding: 5px 8px;
+}
+
+.img-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img-input input {
+  margin-top: 5px;
+}
