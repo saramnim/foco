@@ -22,6 +22,29 @@ export const Title = styled.div`
 
 export const SelectBoxWrapper = styled.div`
   display: flex;
+  justify-content: space-around;
+  width: 1000px;
+  margin-bottom: 70px;
+  & .autocomplete-dropdown-container {
+    width: 322px;
+    margin-top: 5px;
+    border-radius: 7px;
+    color: #000;
+  }
+
+  & .suggestion-item {
+    padding: 15px;
+  }
+
+  & .location-search-input {
+    width: 300px;
+    border: 1px solid #d8d8d8;
+    border-radius: 7px;
+  }
+
+  & .selectBox {
+    width: 300px;
+  }
 `;
 
 export const ContentsWrapper = styled.span`
@@ -83,7 +106,7 @@ export const City = styled.span`
 export const Icons = styled.div`
   & svg {
     margin-left: 10px;
-    font-size: 25px;
+    font-size: 20px;
     color: gray;
     cursor: pointer;
 
@@ -98,4 +121,17 @@ export const Icons = styled.div`
       }
     }
   }
+`;
+
+export const LikeWrapper = styled.div`
+  position: absolute;
+  top: 80%;
+  right: 30px;
+  & svg {
+    color: #f13b3b;
+  }
+`;
+export const TotalLike = styled.span`
+  color: #000;
+  margin-left: 5px;
 `;

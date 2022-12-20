@@ -9,14 +9,15 @@ import {
   Content,
   HoverContent,
   Icons,
+  LikeWrapper,
+  TotalLike,
 } from './style';
 import ImgShawdow from './imgshawdow.png';
 import { useParams } from 'react-router';
 import { HiHeart } from 'react-icons/hi';
 import { ImSpoonKnife } from 'react-icons/im';
 import Select from 'react-select';
-
-// import Autocomplete from '../PostForm/func/LocationSearchInput';
+import Autocomplete from '../PostForm/func/LocationSearchInput';
 import axios from 'axios';
 
 interface Icontent {
@@ -29,7 +30,7 @@ interface Icontent {
 
 const Country = () => {
   const [data, setData] = useState<any[]>([]);
-
+  const [value, setValue] = useState<string>('');
   const params = useParams();
   const country = params.country;
   console.log(country);
@@ -37,7 +38,7 @@ const Country = () => {
     return axios({
       method: 'get',
       // 임시 mock data 연결
-      url: 'http://localhost:3000/Data/post.json',
+      url: 'http://localhost:3001/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -58,7 +59,7 @@ const Country = () => {
 
   const moodOptions = [
     { value: 'romantic', label: 'romantic' },
-    { value: 'comfort', label: 'confort' },
+    { value: 'comfort', label: 'comfort' },
     { value: 'healing', label: 'healing' },
     { value: 'party', label: 'party' },
   ];
@@ -66,10 +67,10 @@ const Country = () => {
   return (
     <CountryWrapper>
       <Title>{country}</Title>
-      {/* <Autocomplete /> */}
       <SelectBoxWrapper>
-        <Select isMulti={true} options={foodOptions} />
-        <Select isMulti={true} options={moodOptions} />
+        <Autocomplete />
+        <Select isMulti={true} options={foodOptions} className="selectBox" />
+        <Select isMulti={true} options={moodOptions} className="selectBox" />
       </SelectBoxWrapper>
       <ContentsWrapper>
         {data
@@ -90,6 +91,10 @@ const Country = () => {
                   </HoverBottom>
                 </HoverContent>
                 <img src={content.img} alt={content.storeName}></img>
+                <LikeWrapper>
+                  <HiHeart />
+                  <TotalLike>{content.like}</TotalLike>
+                </LikeWrapper>
               </Content>
             );
           })}
