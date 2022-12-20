@@ -7,17 +7,14 @@ export const MapWrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  padding: 120px;
-  background-color: #222;
+  background-color: #fff;
   & .map {
-    width: 60vw;
-    height: 70vh;
+    width: 100vw;
+    height: 850px;
   }
 `;
 
-export const TopWrapper = styled.div`
-  /* align-self: flex-end; */
-`;
+export const TopWrapper = styled.div``;
 
 export const BottomWrapper = styled.div`
   display: flex;
