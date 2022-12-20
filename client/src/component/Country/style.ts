@@ -5,9 +5,10 @@ export const CountryWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 98vw;
   padding: 0 50px;
   padding-top: 120px;
+  overflow-x: hidden;
 `;
 
 export const Title = styled.div`
@@ -67,6 +68,7 @@ export const Content = styled.span`
   display: flex;
   justify-content: center;
   width: 400px;
+  max-height: 320px;
   border-radius: 10px;
   cursor: pointer;
   img {
