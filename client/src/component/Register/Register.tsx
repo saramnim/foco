@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Select from 'react-select';
+import { FaGoogle } from 'react-icons/fa';
 import {
   validateNickname,
   validateEmail,
@@ -16,14 +18,18 @@ import {
   Password,
   ConfirnPassword,
   Errormsg,
+  CountrySelect,
   SubmitBtn,
+  SocialLoin,
+  GoogleBtn,
+  Border,
 } from './register-style';
-import { json } from 'stream/consumers';
 
 interface userData {
   nickname: string;
   email: string;
   password: string;
+  country: string;
 }
 
 interface errorData {
@@ -31,14 +37,17 @@ interface errorData {
   emailError: string;
   passwordError: string;
   confirmPasswordError: string;
+  countryError: string;
 }
 
 const Register = () => {
   const navigate = useNavigate();
+  const [countries, setCountries] = useState<any[]>([]);
   const [info, setInfo] = useState<userData>({
     nickname: '',
     email: '',
     password: '',
+    country: '',
   });
 
   const [error, setError] = useState<errorData>({
@@ -46,11 +55,34 @@ const Register = () => {
     emailError: '',
     passwordError: '',
     confirmPasswordError: '',
+    countryError: '',
   });
 
   const validateConfirmPassword = (password: string) => {
     return password === info.password;
   };
+
+  const getCountriesName = async () => {
+    const res = await axios({
+      method: 'get',
+      url: 'http://localhost:3000/Data/worldmap.json',
+    });
+    setCountries(res.data.objects.world.geometries);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getCountriesName();
+    };
+    fetchData();
+  }, []);
+
+  const options = countries.map((x) => {
+    return {
+      value: x.properties.name,
+      label: x.properties.name,
+    };
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === 'nickname') {
@@ -116,24 +148,30 @@ const Register = () => {
     }
   };
 
-  const handleSubmit = async (e: { preventDefault: () => void }) => {
+  const countryChange = (select: any) => {
+    setInfo((prev) => ({
+      ...prev,
+      country: select.value,
+    }));
+  };
+
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (
       error.nicknameError === '' &&
       error.emailError === '' &&
       error.passwordError === '' &&
-      error.confirmPasswordError === ''
+      error.confirmPasswordError === '' &&
+      error.countryError === '' &&
+      info.nickname !== '' &&
+      info.email !== '' &&
+      info.password !== '' &&
+      info.country !== ''
     ) {
-      try {
-        const res = await axios.post(
-          'http://localhost:3000/Data/userData.json',
-          JSON.stringify(info)
-        )
-        alert('회원가입 성공');
-        navigate('/login');
-      } catch (err) {
-        console.error(err);
-      }
+      alert('회원가입 성공');
+      navigate('/login');
+    } else {
+      alert('가입실패');
     }
   };
 
@@ -178,10 +216,28 @@ const Register = () => {
           <Errormsg>
             <p>{error.confirmPasswordError}</p>
           </Errormsg>
+          <CountrySelect>
+            <Select
+              name="country"
+              placeholder="Select your country"
+              options={options}
+              onChange={countryChange}
+            />
+          </CountrySelect>
+          <Errormsg>
+            <p>{error.countryError}</p>
+          </Errormsg>
         </Form>
         <SubmitBtn type="submit" onClick={handleSubmit}>
           Register
         </SubmitBtn>
+        <Border>OR</Border>
+        <SocialLoin>
+          <GoogleBtn>
+            <FaGoogle />
+            <span>Login with Google</span>
+          </GoogleBtn>
+        </SocialLoin>
       </InnerBox>
     </RegisterContainer>
   );

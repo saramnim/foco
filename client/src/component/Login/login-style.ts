@@ -11,9 +11,8 @@ export const LoginContainer = styled.div`
   transform: translate(-50%, -50%);
   margin: 20px;
   padding: 20px;
-  width: 450px;
-  height: 600px;
-  //border: 1px solid #dfdfdf;
+  width: 460px;
+  height: 630px;
   border-radius: 30px;
   box-shadow: 10px 10px 20px 4px #dfdfdf;
   text-align: center;
@@ -81,7 +80,7 @@ export const Errormsg = styled.div`
 
 export const ForgotPassword = styled.p`
   align-self: flex-end;
-  margin: 30px 0 20px 0;
+  margin: 16px 0;
   text-align: right;
   font-weight: 600;
   color: #212121;
@@ -109,7 +108,7 @@ export const SubmitBtn = styled.button`
 `;
 
 export const Register = styled.p`
-  margin-top: 60px;
+  margin-top: 24px;
   color: #b3b3b3;
 
   & > span {
@@ -119,5 +118,51 @@ export const Register = styled.p`
   &>span: hover {
     color: #fe9c56;
     cursor: pointer;
+  }
+`;
+
+export const SocialLoin = styled.div`
+  width: 100%;
+`;
+
+export const GoogleBtn = styled(SubmitBtn)`
+  border: 1px solid #000000;
+  background-color: white;
+  color: #000000;
+  & > span {
+    margin-left: 10px;
+  }
+  &:hover {
+    background-color: white;
+    border-color: #fe9c56;
+  }
+`;
+
+export const Border = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 30px 0px;
+  width: 80%;
+  color: #b3b3b3;
+  font-size: 12px;
+
+  &::before {
+    content: '';
+    flex-grow: 1;
+    background: #d9d9d9;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0 16px;
+  }
+
+  &::after {
+    content: '';
+    flex-grow: 1;
+    background: #d9d9d9;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0 16px;
   }
 `;
