@@ -28,7 +28,7 @@ const MainMap = () => {
   const zoomInMarkers = data.map((content: any) => {
     return {
       markerOffset: 15,
-      name: content.location,
+      name: content.city,
       coordinates: [content.lng, content.lat],
     };
   });
@@ -80,7 +80,7 @@ const MainMap = () => {
   const showWholeMap = () => {
     gsap.to(`.map`, 1, {
       attr: {
-        viewBox: ` -180 140 1150 200`,
+        viewBox: `-180 140 1150 200`,
       },
     });
     closeModal();
