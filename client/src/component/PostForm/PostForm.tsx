@@ -24,7 +24,6 @@ import LocationSearchInput from './func/LocationSearchInput';
 import StarRating from './func/StarRating';
 // import UploadImg from './func/UploadImg';
 // import UploadedImg from './func/UploadedImg';
-import Img from './func/Img';
 // import AddImg from './func/AddImg';
 
 import './style.css';
@@ -52,9 +51,7 @@ const PostForm: any = (props: any) => {
           ></TitleInput>
         </Title>
         <Line />
-        <ImgsBox>
-          <Img></Img>
-        </ImgsBox>
+        <ImgsBox></ImgsBox>
         <InfosBox>
           <InfoBox>
             <InfoName>Food</InfoName>
