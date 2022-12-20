@@ -7,7 +7,7 @@ export const HeaderWrapper = styled.div`
   position: fixed;
   width: 100%;
   padding: 30px 50px;
-  color: #fff;
+  color: #000;
 `;
 export const Title = styled.span`
   font-size: 40px;
