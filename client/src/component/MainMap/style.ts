@@ -7,10 +7,11 @@ export const MapWrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding-bottom: 100px;
   background-color: #fff;
   & .map {
-    width: 100vw;
-    height: 850px;
+    width: 60vw;
+    height: 70vh;
   }
 `;
 

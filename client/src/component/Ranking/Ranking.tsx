@@ -27,8 +27,8 @@ interface Iprops {
 interface Icontent {
   country: string;
   like: number;
-  store: string;
-  image: string;
+  storeName: string;
+  img: string;
 }
 
 const Ranking = (props: Iprops) => {
@@ -80,9 +80,9 @@ const Ranking = (props: Iprops) => {
                       <TotalLike>{content.like}</TotalLike>
                     </Like>
                   </div>
-                  <StoreName>{content.store}</StoreName>
+                  <StoreName>{content.storeName}</StoreName>
                 </Left>
-                <img src={content.image} alt={content.store}></img>
+                <img src={content.img} alt={content.storeName}></img>
               </ContentBox>
             ) : (
               <></>
