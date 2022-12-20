@@ -12,8 +12,10 @@ export const ModalBackground = styled.div`
   justify-content: center;
 `;
 export const CloseWrapper = styled.div`
-  // font-size: 12px;
-  // color: black;
+  position: absolute;
+  margin-left: 45vw;
+  padding-bottom: 85vh;
+  font-size: 30px;
 `;
 export const ModalBg = styled.div`
   background: no-repeat
@@ -38,7 +40,7 @@ export const TitleWrapper = styled.div`
   // margin-bottom: 700px;
   padding-top: 7vh;
   height: 90vh;
-  width: 650px;
+  width: 725px;
 `;
 export const ModalTitle = styled.div`
   // position: absolute;

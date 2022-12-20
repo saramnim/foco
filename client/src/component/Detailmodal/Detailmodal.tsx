@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   ModalBackground,
   ModalBg,
@@ -14,6 +14,7 @@ import {
 } from './Modalstyle';
 import ItemSet from './ModalItem';
 import ContentWrapper from './Content';
+import useOpenModal from './useOpenModal';
 import { IoClose } from 'react-icons/io5';
 import axios from 'axios';
 import { Icontent } from './Icontent';
@@ -21,7 +22,9 @@ import { AiFillHeart } from 'react-icons/ai';
 import { FaUtensilSpoon } from 'react-icons/fa';
 
 const Detailmodal = () => {
+  const closeModal = useOpenModal();
   const [val, setVal] = useState<any[]>([]);
+  // const outside = useRef<boolean>(true);
   const getData = () => {
     return axios({
       method: 'get',
