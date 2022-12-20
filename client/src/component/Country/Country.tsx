@@ -17,7 +17,6 @@ import { useParams } from 'react-router';
 import { HiHeart } from 'react-icons/hi';
 import { ImSpoonKnife } from 'react-icons/im';
 import Select from 'react-select';
-import Autocomplete from '../PostForm/func/LocationSearchInput';
 import axios from 'axios';
 
 interface Icontent {
@@ -26,19 +25,25 @@ interface Icontent {
   city: string;
   storeName: string;
   img: string;
+  foodType: string[];
+  mood: string[];
+}
+
+interface Iselect {
+  value: string;
+  label: string;
 }
 
 const Country = () => {
-  const [data, setData] = useState<any[]>([]);
-  const [value, setValue] = useState<string>('');
+  const [data, setData] = useState<Icontent[]>([]);
   const params = useParams();
   const country = params.country;
-  console.log(country);
+
   const getPostData = () => {
     return axios({
       method: 'get',
       // 임시 mock data 연결
-      url: 'http://localhost:3001/Data/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -50,27 +55,51 @@ const Country = () => {
     fetchData();
   }, []);
 
-  const foodOptions = [
-    { value: 'Korean', label: 'Korean' },
-    { value: 'Japanese', label: 'Japanese' },
-    { value: 'Western', label: 'Western' },
-    { value: 'Chinese', label: 'Chinese' },
-  ];
+  // 서버 기능 연결하기 전 임시로 mock 데이터를 불러오기 위한 함수
+  // TODO : 서버 기능 완료시, 각 데이터마다 요청 url을 작성해야함
+  const cityType = () => {
+    const allCityTypes = data.map((content: Icontent) => {
+      return content.city;
+    });
+    return Array.from(new Set(allCityTypes.flat())).map((type: string) => {
+      return {
+        value: type,
+        label: type,
+      };
+    });
+  };
 
-  const moodOptions = [
-    { value: 'romantic', label: 'romantic' },
-    { value: 'comfort', label: 'comfort' },
-    { value: 'healing', label: 'healing' },
-    { value: 'party', label: 'party' },
-  ];
+  const foodType = () => {
+    const allFoodTypes = data.map((content: Icontent) => {
+      return content.foodType;
+    });
+    return Array.from(new Set(allFoodTypes.flat())).map((type: string) => {
+      return {
+        value: type,
+        label: type,
+      };
+    });
+  };
+
+  const moodType = () => {
+    const allMoodTypes = data.map((content: Icontent) => {
+      return content.mood;
+    });
+    return Array.from(new Set(allMoodTypes.flat())).map((type: string) => {
+      return {
+        value: type,
+        label: type,
+      };
+    });
+  };
 
   return (
     <CountryWrapper>
       <Title>{country}</Title>
       <SelectBoxWrapper>
-        <Autocomplete />
-        <Select isMulti={true} options={foodOptions} className="selectBox" />
-        <Select isMulti={true} options={moodOptions} className="selectBox" />
+        <Select isMulti={true} options={cityType()} className="selectBox" />
+        <Select isMulti={true} options={foodType()} className="selectBox" />
+        <Select isMulti={true} options={moodType()} className="selectBox" />
       </SelectBoxWrapper>
       <ContentsWrapper>
         {data

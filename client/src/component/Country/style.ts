@@ -27,22 +27,21 @@ export const SelectBoxWrapper = styled.div`
   width: 1000px;
   margin-bottom: 70px;
   & .autocomplete-dropdown-container {
+    position: absolute;
+    z-index: 3;
     width: 322px;
     margin-top: 5px;
     border-radius: 7px;
     color: #000;
   }
-
   & .suggestion-item {
     padding: 15px;
   }
-
   & .location-search-input {
     width: 300px;
     border: 1px solid #d8d8d8;
     border-radius: 7px;
   }
-
   & .selectBox {
     width: 300px;
   }
@@ -54,11 +53,10 @@ export const ContentsWrapper = styled.span`
   flex-wrap: wrap;
   width: 100%;
   height: 90vh;
-
-  @media screen and (max-width: 1300px) {
+  @media screen and (max-width: 1310px) {
     height: 150vh;
   }
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 910px) {
     height: 230vh;
   }
 `;
