@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import Header from '../Header/Header';
 import ReviewForm from '../PostForm/PostForm';
-import AddImg from '../PostForm/func/AddImg';
+// import AddImg from '../PostForm/func/AddImg';
 import Img from '../PostForm/func/Img';
 
 import {

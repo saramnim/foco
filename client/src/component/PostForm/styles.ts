@@ -42,6 +42,14 @@ export const Line = styled.hr`
   border-top: 3px dotted black;
 `;
 
+export const ImgsBox = styled.div`
+  display: flex;
+  border: 1px solid black;
+  padding: 10px;
+  width: 90%;
+  height: 260px;
+`;
+
 export const AddImg = styled.div`
   width: 100%;
   height: 150px;
@@ -78,6 +86,19 @@ export const CommentBox = styled.div`
   align-content: center;
   justify-content: center;
   margin-left: 192px;
+`;
+
+export const CommentText = styled.div`
+  background-color: teal;
+  width: 550px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & textarea {
+    width: 100%;
+    padding: 7px;
+  }
 `;
 
 export const CommentName = styled.span`

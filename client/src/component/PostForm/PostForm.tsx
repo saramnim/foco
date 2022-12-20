@@ -53,7 +53,6 @@ const PostForm: any = (props: any) => {
         </Title>
         <Line />
         <ImgsBox>
-          {/* <AddImg></AddImg> */}
           <Img></Img>
         </ImgsBox>
         <InfosBox>
@@ -73,7 +72,7 @@ const PostForm: any = (props: any) => {
           </InfoBox>
           <InfoBox>
             <InfoName>Score</InfoName>
-            <StarRating setStar={setStar}></StarRating>
+            <StarRating></StarRating>
           </InfoBox>
         </InfosBox>
         <Line />
