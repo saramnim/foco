@@ -101,6 +101,9 @@ export const City = styled.span`
   color: #fff;
   font-size: 18px;
   font-weight: 400;
+  & svg {
+    margin-right: 5px;
+  }
 `;
 
 export const Icons = styled.div`

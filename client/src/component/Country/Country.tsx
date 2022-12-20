@@ -16,6 +16,7 @@ import ImgShawdow from './imgshawdow.png';
 import { useParams } from 'react-router';
 import { HiHeart } from 'react-icons/hi';
 import { ImSpoonKnife } from 'react-icons/im';
+import { MdLocationOn } from 'react-icons/md';
 import Select from 'react-select';
 import axios from 'axios';
 
@@ -112,7 +113,10 @@ const Country = () => {
                 <HoverContent>
                   <img src={ImgShawdow} />
                   <HoverBottom>
-                    <City>{content.city}</City>
+                    <City>
+                      <MdLocationOn />
+                      {content.city}
+                    </City>
                     <Icons>
                       <HiHeart />
                       <ImSpoonKnife />
