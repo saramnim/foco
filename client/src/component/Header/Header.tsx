@@ -1,7 +1,7 @@
 import { HeaderWrapper, Title, Icons } from './style';
 import { HiUser } from 'react-icons/hi2';
-import { FaSistrix } from 'react-icons/fa';
 import { MdOutlineLanguage } from 'react-icons/md';
+import { ImSpoonKnife } from 'react-icons/im';
 
 const Header: React.FC = () => {
   return (
@@ -9,8 +9,8 @@ const Header: React.FC = () => {
       <Title>FoCo</Title>
       <Icons>
         <MdOutlineLanguage />
-        <FaSistrix />
         <HiUser />
+        <ImSpoonKnife />
       </Icons>
     </HeaderWrapper>
   );

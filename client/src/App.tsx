@@ -11,6 +11,7 @@ import Deactivate from './component/Account/Deactivate';
 import Review from './component/Post/Post';
 import Detailmodal from './component/Detailmodal/Detailmodal';
 import Scrap from './component/Scrap/Scrap';
+import Country from './component/Country/Country';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainMap />} />
+        <Route path="/list/:country" element={<Country />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/account/profile" element={<Profile />} />
