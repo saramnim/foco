@@ -131,7 +131,7 @@ const MainMap = () => {
         <ComposableMap
           className="map"
           projection="geoEquirectangular"
-          projectionConfig={{ scale: 170 }}
+          projectionConfig={{ scale: 180 }}
         >
           <Geographies geography="/Data/worldmap.json">
             {({ geographies }) =>
