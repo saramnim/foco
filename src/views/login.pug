@@ -4,7 +4,7 @@ html
     title= title
     
   body
-    form(action="/api/login" method="post" onsubmit="return check()")
+    form(action="/auth/login" method="post" onsubmit="return check()")
       table
         tbody
           tr
@@ -17,6 +17,12 @@ html
             td: a(href="/join")
               button(type="button") 회원가입
             td: input(type="submit" value="로그인")
+    form(action="/auth/google" method="get" )
+      table
+        tbody
+          tr
+            td 구글로그인
+            td: input(type="submit" value="구글로그인")
     script.
       function check() {
         const email = document.querySelector('[name="email"]').value
