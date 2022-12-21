@@ -6,15 +6,13 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   position: fixed;
   width: 100%;
-  padding: 30px 50px;
-<<<<<<< HEAD
-=======
+  padding: 20px 50px;
+  background-color: white;
   color: #000000;
   z-index: 100;
   & > a {
     all: unset;
   }
->>>>>>> feature/FE/userpage
 `;
 export const Title = styled.span`
   color: #000;
