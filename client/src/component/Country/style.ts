@@ -21,32 +21,6 @@ export const Title = styled.div`
     0px -3.5px black;
 `;
 
-export const SelectBoxWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 1000px;
-  margin-bottom: 70px;
-  & .autocomplete-dropdown-container {
-    position: absolute;
-    z-index: 3;
-    width: 322px;
-    margin-top: 5px;
-    border-radius: 7px;
-    color: #000;
-  }
-  & .suggestion-item {
-    padding: 15px;
-  }
-  & .location-search-input {
-    width: 300px;
-    border: 1px solid #d8d8d8;
-    border-radius: 7px;
-  }
-  & .selectBox {
-    width: 300px;
-  }
-`;
-
 export const ContentsWrapper = styled.span`
   display: flex;
   justify-content: center;
