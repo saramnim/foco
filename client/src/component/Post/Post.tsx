@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import ReviewForm from '../PostForm/PostForm';
 import AddImg from '../PostForm/func/AddImg';
-import Img from '../PostForm/func/Img';
+import PostFormModal from '../PostFormMoal/PostFormModal';
+// import Img from '../PostForm/func/Img';
 
 import {
   ReviewButton,
@@ -16,13 +17,13 @@ import {
 } from './style';
 
 const Post = () => {
-  const [modalOpen, setModalOpen] = useState<boolean>(true);
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [reviews, setReviews] = useState<never[]>([]);
 
   useEffect(() => {
     const getReviews = async () => {
-      const res = await axios.get('http://localhost:3000/Data/postList.json');
-      setReviews(res.data);
+      const res = await axios.get('http://localhost:3000/Data/post.json');
+      setReviews(res.data.data);
     };
     getReviews();
   }, []);
@@ -31,9 +32,9 @@ const Post = () => {
     setModalOpen(true);
   };
 
-  const onSubmit: any = () => {
-    alert('submit??');
-  };
+  // const onSubmit: any = () => {
+  //   alert('submit??');
+  // };
 
   const onClose: any = (e: any) => {
     // e.preventDefault();
@@ -42,19 +43,18 @@ const Post = () => {
 
   return (
     <ReviewPage>
-      {true && <ReviewForm onSubmit={onSubmit} onClose={onClose} />}
+      {modalOpen && <PostFormModal onClose={onClose} />}
+      {/* onSubmit={onSubmit} */}
       <Header />
       <ReviewContainer>
         <Title>review management</Title>
-        <Img></Img>
-        {/* <AddImg></AddImg> */}
         <ReviewManagement>
           <ReviewButton onClick={handleAddReview}>+ review</ReviewButton>
           <ReviewList>
-            {reviews.map(({ id, name, src }) => (
+            {reviews.map(({ id, store, image }) => (
               <div key={id} className="review">
-                <img src={src} alt="plz" />
-                <div>{name}</div>
+                <img src={image} alt="plz" />
+                <div>{store}</div>
               </div>
             ))}
           </ReviewList>
