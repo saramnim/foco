@@ -50,7 +50,7 @@ const Header = () => {
           <HiUser />
           {show ? <LoginUserComponent /> : null}
         </UserBox>
-        <Link to={'/scrap'}>
+        <Link to={'/bookmark'}>
           <ImSpoonKnife />
         </Link>
       </Icons>
