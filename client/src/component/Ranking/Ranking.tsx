@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import {
   RankingWrapper,
   Header,
@@ -16,7 +17,7 @@ import {
 } from './style';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { HiHeart } from 'react-icons/hi';
-import axios from 'axios';
+import Detailmodal from './../Detailmodal/Detailmodal';
 
 interface Iprops {
   country: string;
@@ -34,6 +35,8 @@ interface Icontent {
 const Ranking = (props: Iprops) => {
   const { country, closeModal, showWholeMap } = props;
   const [data, setData] = useState<any[]>([]);
+  const [OpenModal, setOpenModal] = useState<boolean>(false);
+
   const getPostData = () => {
     return axios({
       method: 'get',
@@ -50,8 +53,13 @@ const Ranking = (props: Iprops) => {
     fetchData();
   }, []);
 
+  const handleClick = useCallback(() => {
+    setOpenModal(!OpenModal);
+  }, [OpenModal]);
+
   return (
     <RankingWrapper>
+      {OpenModal && <Detailmodal />}
       <Header>
         <Title>{country}</Title>
         <Button
@@ -73,7 +81,7 @@ const Ranking = (props: Iprops) => {
         })
         .map((content: Icontent, index: number) => {
           return (
-            <Main key={index}>
+            <Main key={index} onClick={handleClick}>
               <ContentBox>
                 <Left>
                   <div>
