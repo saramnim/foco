@@ -9,7 +9,6 @@ import Profile from './component/Account/Profile';
 import Security from './component/Account/Security';
 import Deactivate from './component/Account/Deactivate';
 import Review from './component/Post/Post';
-import Detailmodal from './component/Detailmodal/Detailmodal';
 import BookMark from './component/BookMark/BookMark';
 import Country from './component/Country/Country';
 import PostForm from './component/PostForm/PostForm';
@@ -27,7 +26,6 @@ function App() {
         <Route path="account/deactivate" element={<Deactivate />} />
         <Route path="/review" element={<Review />} />
         <Route path="/bookmark" element={<BookMark />} />
-        <Route path="/detailModal" element={<Detailmodal />} />
         <Route path="/postform" element={<PostForm />} />
       </Routes>
     </div>

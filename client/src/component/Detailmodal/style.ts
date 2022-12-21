@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { AccountContainer } from './../Account/account-style';
 
 // 모달창 배경
 export const ModalBackground = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.8);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 `;
 // 모달
 export const ModalWrapper = styled.div`
@@ -20,7 +20,6 @@ export const ModalWrapper = styled.div`
   border-radius: 30px;
   background-color: #fff;
   overflow: auto;
-  font-family: 'Rubik Bubbles';
 `;
 // 상단 타이틀
 export const TitleWrapper = styled.div`
@@ -36,21 +35,42 @@ export const IconsWrapper = styled.div`
   display: flex;
   flex-direction: row;
   font-size: 1.5vh;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 export const Icons = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const Icon = styled.div`
   + div {
     margin-left: 10px;
   }
   .heart {
+    color: pink;
+    cursor: pointer;
+    &:hover {
+      color: red;
+      scale: 1.5;
+    }
+  }
+  .heart.active {
     color: red;
+    scale: 1.5;
   }
   .spoon {
-    color: gold;
+    color: lightgray;
+    cursor: pointer;
+    &:hover {
+      color: gold;
+      scale: 1.5;
+    }
   }
 `;
 export const CloseIcon = styled.div`
-  padding-left: 39vw;
+  cursor: pointer;
+  &:hover {
+    scale: 1.5;
+  }
 `;
 // 상단(가게 이름 + 주소 + 평점)
 export const TitleBox = styled.div`
@@ -62,7 +82,7 @@ export const TitleBox = styled.div`
   justify-content: space-around;
 `;
 export const TitleBlock = styled.div`
-  font-size: 10rem;
+  font-size: 9rem;
   font-weight: 1;
   margin-right: 1rem;
 `;
@@ -75,9 +95,10 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Rubik Bubbles';
 `;
 export const StoreName = styled.div`
-  font-weight: 900;
+  font-weight: 400;
   font-size: 5vh;
   font-family: 'Rubik Bubbles';
 `;
@@ -85,7 +106,7 @@ export const Address = styled.div`
   font-size: 1.8vh;
   margin-top: 0.5vh;
   color: #868686;
-  font-family: 'Inter';
+  // font-family: 'Inter';
 `;
 export const Score = styled.div`
   font-size: 1.8vh;
@@ -102,10 +123,11 @@ export const Profile = styled.img`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
+  font-family: 'Rubik Bubbles';
 `;
 // 본문- 이미지 왔다갔다
 export const ImgPage = styled.div`
-  height: 40%;
+  height: 25vh;
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -123,12 +145,11 @@ export const ItemBox = styled.div`
   //   padding: 10px;
   margin: 1rem;
   padding: 0.5rem;
-  overflow-x: scroll;
 `;
 // 본문- 아이템 이미지
 export const Item = styled.img`
-  width: 14vw;
-  height: 22vh;
+  width: 15vw;
+  height: 20vh;
   flex-direction: row;
   border-radius: 10%;
   + img {

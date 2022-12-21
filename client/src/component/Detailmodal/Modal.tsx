@@ -1,15 +1,25 @@
-import { ModalBackground, ModalWrapper, TitleWrapper, Box } from './style';
+import {
+  ModalBackground,
+  ModalWrapper,
+  TitleWrapper,
+  Box,
+  CloseIcon,
+} from './style';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 import useOpenModal from './useOpenModal';
 import { Icontent } from './Icontent';
 import IconComp from './IconComp';
 import TitleComp from './TitleComp';
 import ContentComp from './ContentComp';
 import ItemComp from './ItemComp';
-
-const Detailmodal = () => {
-  const closeModal = useOpenModal();
+import { IoClose } from 'react-icons/io5';
+interface props {
+  open: boolean;
+  close: (v: boolean) => void;
+}
+const Detailmodal = (props: props) => {
+  const { open, close } = props;
   const [val, setVal] = useState<any[]>([]);
   // const outside = useRef<boolean>(true);
   const getData = () => {

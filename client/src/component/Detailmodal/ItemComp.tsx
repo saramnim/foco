@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { GoTriangleLeft, GoTriangleRight } from 'react-icons/go';
 import { Icontent } from './Icontent';
 import { ImgArrow, ImgPage, Item, ItemBox } from './style';
+import ScrollHorizontal from 'react-scroll-horizontal';
 
 const ItemComp = () => {
   const [val, setVal] = useState<any[]>([]);
@@ -28,9 +29,11 @@ const ItemComp = () => {
         <GoTriangleLeft />
       </ImgArrow>
       <ItemBox>
-        {val.map((detail: Icontent, index: number) => {
-          return <Item key={index} src={detail.src} />;
-        })}
+        <ScrollHorizontal>
+          {val.map((detail: Icontent, index: number) => {
+            return <Item key={index} src={detail.src} />;
+          })}
+        </ScrollHorizontal>
       </ItemBox>
       <ImgArrow>
         <GoTriangleRight />
