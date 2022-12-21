@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-export const SelectBoxWrapper = styled.div`
+export const MultiSelectBoxWrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  width: 1000px;
+  flex-wrap: wrap;
   margin-bottom: 70px;
   & .autocomplete-dropdown-container {
     position: absolute;
@@ -23,5 +23,6 @@ export const SelectBoxWrapper = styled.div`
   }
   & .selectBox {
     width: 300px;
+    margin: 20px;
   }
 `;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { SelectBoxWrapper } from './style';
+import { MultiSelectBoxWrapper } from './style';
 import Select from 'react-select';
 import axios from 'axios';
 
@@ -71,11 +71,11 @@ const MultiSelectBox = () => {
   };
 
   return (
-    <SelectBoxWrapper>
+    <MultiSelectBoxWrapper>
       <Select isMulti={true} options={cityType()} className="selectBox" />
       <Select isMulti={true} options={foodType()} className="selectBox" />
       <Select isMulti={true} options={moodType()} className="selectBox" />
-    </SelectBoxWrapper>
+    </MultiSelectBoxWrapper>
   );
 };
 
