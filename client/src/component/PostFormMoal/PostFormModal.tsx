@@ -38,10 +38,10 @@ const PostFormModal: any = (props: any) => {
         <Main>
           <Intro>
             <Title>
-              <Input
+              <input
                 className="store"
                 placeholder="wirte store name..."
-              ></Input>
+              ></input>
             </Title>
             <Address>
               <Input placeholder="write address..."></Input>

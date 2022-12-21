@@ -6,7 +6,10 @@ import {
   ImageItemButton,
   ImageInfo,
 } from '../style';
-import { useState } from 'react';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { LeftArrow, RightArrow } from './ScrollFunc/Arrows';
+
+import { useState, useEffect } from 'react';
 
 const AddImages: any = () => {
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
@@ -35,6 +38,8 @@ const AddImages: any = () => {
     setSelectedImages([]);
   };
 
+  useEffect(() => {}, [selectedImages]);
+
   const renderImages = (source: any) => {
     return source.map((src: any, idx: number) => {
       return (
@@ -53,6 +58,27 @@ const AddImages: any = () => {
       );
     });
   };
+
+  type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
+
+  const onWheel = (
+    apiObj: scrollVisibilityApiType,
+    ev: React.WheelEvent
+  ): void => {
+    const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
+
+    if (isThouchpad) {
+      ev.stopPropagation();
+      return;
+    }
+
+    if (ev.deltaY < 0) {
+      apiObj.scrollNext();
+    } else if (ev.deltaY > 0) {
+      apiObj.scrollPrev();
+    }
+  };
+
   return (
     <div>
       <ImageButton>
@@ -65,7 +91,15 @@ const AddImages: any = () => {
         />
         <button onClick={handleRemoveAllImages}>전체 삭제</button>
       </ImageButton>
-      <ImageList>{renderImages(selectedImages)}</ImageList>
+      <ImageList>
+        <ScrollMenu
+          onWheel={onWheel}
+          LeftArrow={LeftArrow}
+          RightArrow={RightArrow}
+        >
+          {renderImages(selectedImages)}
+        </ScrollMenu>
+      </ImageList>
     </div>
   );
 };

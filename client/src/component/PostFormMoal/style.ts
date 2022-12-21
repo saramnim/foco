@@ -72,7 +72,13 @@ export const Intro = styled.div`
   }
 `;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+  width: 100%;
+
+  & input {
+    width: 100%;
+  }
+`;
 
 export const ImageBox = styled.div`
   display: flex;
@@ -100,6 +106,35 @@ export const ImageButton = styled.div`
 export const ImageList = styled.div`
   display: flex;
   width: 100%;
+  overflow: auto;
+
+  & .react-horizontal-scrolling-menu--wrapper {
+    width: 100%;
+
+    & ::-webkit-scrollbar {
+      height: 14px;
+    }
+
+    & ::-webkit-scrollbar-track {
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    & ::-webkit-scrollbar-thumb {
+      background-color: #eaeaea;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+
+    & .react-horizontal-scrolling-menu--arrow-right button,
+    .react-horizontal-scrolling-menu--arrow-left button {
+      z-index: 99;
+      border: none;
+      background-color: white;
+      box-shadow: 0px 0px 25px 30px white;
+    }
+  }
 `;
 
 export const ImageItem = styled.div`
