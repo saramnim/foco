@@ -1,89 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import {
-  ContentsWrapper,
-  CountryWrapper,
-  Title,
-  City,
-  HoverBottom,
-  Content,
-  HoverContent,
-  Icons,
-  LikeWrapper,
-  TotalLike,
-} from './style';
-import ImgShawdow from './imgshawdow.png';
-import MultiSelectBox from '../MultiSelectBox/MultiSelectBox';
+import React, { useState } from 'react';
 import { useParams } from 'react-router';
-import { HiHeart } from 'react-icons/hi';
-import { ImSpoonKnife } from 'react-icons/im';
-import { MdLocationOn } from 'react-icons/md';
-import axios from 'axios';
-
-interface Icontent {
-  country: string;
-  like: number;
-  city: string;
-  storeName: string;
-  img: string;
-  foodType: string[];
-  mood: string[];
-}
+import { CountryWrapper, Title } from './style';
+import MultiSelectBox from '../MultiSelectBox/MultiSelectBox';
+import Content from '../Content/Content';
 
 const Country = () => {
-  const [data, setData] = useState<Icontent[]>([]);
+  // TODO : type error 해결해야함
+  // const [country, setCountry] = useState<any>('');
   const params = useParams();
   const country = params.country;
-
-  const getPostData = () => {
-    return axios({
-      method: 'get',
-      // 임시 mock data 연결
-      url: 'http://localhost:3000/Data/post.json',
-    }).then((res) => {
-      setData(res.data.data);
-    });
-  };
-  useEffect(() => {
-    const fetchData = async () => {
-      await getPostData();
-    };
-    fetchData();
-  }, []);
+  // console.log(typeof countryName) //string
+  //setCountry(countryName);
 
   return (
     <CountryWrapper>
       <Title>{country}</Title>
       <MultiSelectBox />
-      <ContentsWrapper>
-        {data
-          .filter((content: Icontent) => {
-            return content.country === country;
-          })
-          .map((content: Icontent, index: number) => {
-            return (
-              <Content key={index}>
-                <HoverContent>
-                  <img src={ImgShawdow} />
-                  <HoverBottom>
-                    <City>
-                      <MdLocationOn />
-                      {content.city}
-                    </City>
-                    <Icons>
-                      <HiHeart />
-                      <ImSpoonKnife />
-                    </Icons>
-                  </HoverBottom>
-                </HoverContent>
-                <img src={content.img} alt={content.storeName}></img>
-                <LikeWrapper>
-                  <HiHeart />
-                  <TotalLike>{content.like}</TotalLike>
-                </LikeWrapper>
-              </Content>
-            );
-          })}
-      </ContentsWrapper>
+      <Content country={country}></Content>
     </CountryWrapper>
   );
 };
