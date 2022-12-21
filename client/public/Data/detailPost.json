@@ -2,18 +2,19 @@
   "data": [
     {
       "name": "식당1",
-      "src": "./Data/img/food.png",
+      "src": "https://cdn.discordapp.com/attachments/1050007695899496478/1052472544067846255/9982993D5AFA860034.png",
       "user": "japn",
       "storeName": "han's pork",
       "review": "very very delicious!! I recommend this food.",
       "address": "Paris",
       "city": "Paris",
       "price": 88,
-      "food": "#steak, #pasta",
-      "mood": "#date, #romantic",
+      "food": ["#Korean food", "#yummy", "#pork cutlet"],
+      "mood": ["#comfort", "#home"],
       "like": 110,
       "grade": "4",
-      "scrap": 75
+      "scrap": 75,
+      "profile": "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
     }
   ]
 }

@@ -9,7 +9,6 @@ import Profile from './component/Account/Profile';
 import Security from './component/Account/Security';
 import Deactivate from './component/Account/Deactivate';
 import Review from './component/Post/Post';
-import Detailmodal from './component/Detailmodal/Detailmodal';
 import Scrap from './component/Scrap/Scrap';
 import Country from './component/Country/Country';
 
@@ -27,7 +26,6 @@ function App() {
         <Route path="account/deactivate" element={<Deactivate />} />
         <Route path="/review" element={<Review />} />
         <Route path="/scrap" element={<Scrap />} />
-        <Route path="/detailModal" element={<Detailmodal />} />
       </Routes>
     </div>
   );

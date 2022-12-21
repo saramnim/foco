@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { AiFillHeart } from 'react-icons/ai';
 import { ItemBox, Item, Likes, LikesCount, ItemWrapper } from './ScrapStyle';
-import Detailmodal from './../Detailmodal/Detailmodal';
+// import Detailmodal from './../Detailmodal/Detailmodal';
+import Detailmodal from './../Detailmodal/NewModal';
 import axios from 'axios';
 import { Icontent } from '../Detailmodal/Icontent';
 

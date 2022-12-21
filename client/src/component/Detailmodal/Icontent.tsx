@@ -17,4 +17,5 @@ export interface Icontent {
   mood: string;
   user: string;
   scrap: number;
+  profile: string;
 }
