@@ -11,6 +11,7 @@ import {
 } from 'react-simple-maps';
 import { MapWrapper, SVG, TopWrapper, BottomWrapper } from './style';
 import DropDown from '../DropDown/DropDown';
+
 const MainMap = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [country, setCountry] = useState<string>('');
