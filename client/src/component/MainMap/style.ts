@@ -7,6 +7,7 @@ export const MapWrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding-top: 140px;
   padding-bottom: 100px;
   background-color: #fff;
   & .map {
@@ -15,7 +16,9 @@ export const MapWrapper = styled.div`
   }
 `;
 
-export const TopWrapper = styled.div``;
+export const TopWrapper = styled.div`
+  margin: 40px;
+`;
 
 export const BottomWrapper = styled.div`
   display: flex;
