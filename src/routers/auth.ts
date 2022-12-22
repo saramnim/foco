@@ -9,6 +9,7 @@ import { google } from '../passport/strategies/google';
 import { generateRandomPassword } from '../utils/generate-random-password';
 import { sendMail } from '../utils/send-mail';
 import { loginRequired } from '../middlewares/login-required';
+import { userInfo } from 'os';
 
 const authRouter = Router();
 
@@ -70,27 +71,6 @@ authRouter.get(
   })
 );
 
-//회원정보 수정 요청 핸들러
-authRouter.put(
-  '/myPage/:shortId',
-  asyncHandler(async (req, res, next) => {
-    const shortId = req.params.shortId;
-    const { country, name } = req.body;
-    const user = await User.findOneAndUpdate({ shortId }, { country, name });
-    res.json(user);
-  })
-);
-
-//회원탈퇴 요청 핸들러
-authRouter.delete(
-  '/myPage/:shortId',
-  asyncHandler(async (req, res, next) => {
-    const shortId = req.params.shortId;
-    const deletedUser = await User.findOneAndDelete({ shortId });
-    res.json(deletedUser);
-  })
-);
-
 //비밀번호찾기 페이지 요청 핸들러
 authRouter.get('/reset-password', (req, res, next) => {
   res.render('reset-password');
@@ -149,6 +129,38 @@ authRouter.post(
     );
 
     res.redirect('/logout');
+  })
+);
+
+//마이페이지 계정
+authRouter.get(
+  '/myAccount',
+  loginRequired,
+  asyncHandler(async (req, res, next) => {
+    const { shortId } = req.user;
+    const user = await User.findOne({ shortId });
+    res.render('myAccount', { user });
+  })
+);
+
+//회원정보 수정 요청 핸들러
+authRouter.post(
+  '/myAccount/:shortId',
+  asyncHandler(async (req, res, next) => {
+    const shortId = req.params.shortId;
+    const { country, name } = req.body;
+    const user = await User.findOneAndUpdate({ shortId }, { country, name });
+    res.json(user);
+  })
+);
+
+//회원탈퇴 요청 핸들러
+authRouter.delete(
+  '/myAccount/:shortId',
+  asyncHandler(async (req, res, next) => {
+    const shortId = req.params.shortId;
+    const deletedUser = await User.findOneAndDelete({ shortId });
+    res.json(deletedUser);
   })
 );
 
