@@ -65,7 +65,7 @@ const Register = () => {
   const getCountriesName = async () => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:3000/Data/worldmap.json',
+      url: 'http://localhost:3001/Data/worldmap.json',
     });
     setCountries(res.data.objects.world.geometries);
   };

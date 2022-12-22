@@ -1,0 +1,19 @@
+import dotenv from "dotenv";
+
+const envFound = dotenv.config();
+
+if(envFound.error) {
+    throw new Error('.env를 찾을수 엄서용');
+}
+
+if(process.env.MONGODB_URI === undefined) {
+    throw new Error('MONGODB_URI를 설정해주세용');
+}
+
+const PORT = parseInt(process.env.PORT ?? '8000');
+const MONGODB_URI = process.env.MONGODB_URI;
+
+export {
+    PORT,
+    MONGODB_URI
+}
