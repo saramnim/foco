@@ -18,8 +18,8 @@ interface props {
   open: boolean;
   close: (v: boolean) => void;
 }
-const Detailmodal = (props: props) => {
-  const { open, close } = props;
+const Detailmodal = () => {
+  // const { open, close } = props;
   const [val, setVal] = useState<any[]>([]);
   // const outside = useRef<boolean>(true);
   const getData = () => {

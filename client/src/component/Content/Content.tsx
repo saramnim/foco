@@ -73,7 +73,7 @@ const Content = (props: Iprops): ReactElement => {
   // }
   return (
     <ContentsWrapper>
-      {OpenModal && <Detailmodal open={OpenModal} close={closeModal} />}
+      {OpenModal && <Detailmodal />}
       {data
         .filter((content: Icontent) => {
           return content.country === country;
