@@ -23,6 +23,12 @@ html
           tr
             td 구글로그인
             td: input(type="submit" value="구글로그인")
+    form(action="/auth/reset-password" method="get" )
+      table
+        tbody
+          tr
+            td 비밀번호찾기
+            td: input(type="submit" value="비밀번호찾기")
     script.
       function check() {
         const email = document.querySelector('[name="email"]').value
