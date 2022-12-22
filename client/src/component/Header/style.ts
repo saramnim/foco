@@ -43,7 +43,7 @@ export const UserBox = styled.div`
   }
 `;
 
-export const UserMenu = styled.div`
+export const MenuBox = styled.div`
   position: absolute;
   right: 0;
   padding: 10px;
