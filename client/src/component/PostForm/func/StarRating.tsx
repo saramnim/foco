@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
-const StarRating: React.FC = () => {
+const StarRating = () => {
   const [rating, setRating] = useState<number>(0);
 
   const handleRating = (rate: number) => {

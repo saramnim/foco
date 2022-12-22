@@ -4,17 +4,17 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-const LocationSearchInput: React.FC = () => {
+const LocationSearchInput = () => {
   const [address, setAddress] = useState('');
 
-  const handleChange: any = (address: any) => {
+  const handleChange: any = (address: string) => {
     setAddress(address);
   };
 
   const handleSelect: any = (adr: any) => {
     geocodeByAddress(address)
       .then((results) => getLatLng(results[0]))
-      .then((latLng) => console.log('Success', latLng))
+      .then((latLng) => console.log('Success', console.log(latLng), latLng))
       .catch((error) => console.error('Error', error));
   };
 
