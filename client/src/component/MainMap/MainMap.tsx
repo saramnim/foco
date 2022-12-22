@@ -73,7 +73,7 @@ const MainMap = () => {
     let height;
     let font;
     if (name === currentCity) {
-      color = '#2d88dd';
+      color = '#97c6f3';
     }
 
     path.map((content: any) => {
@@ -131,7 +131,7 @@ const MainMap = () => {
               textAnchor="start"
               style={{
                 fontFamily: 'NanumSquareRound',
-                fill: '#2c4052',
+                fill: color,
                 fontSize: `${font}px`,
                 fontWeight: `700`,
               }}
