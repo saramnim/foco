@@ -13,7 +13,6 @@ import {
   Icon,
   MenuBtn,
 } from './account-style';
-import profile from './img/basic_profile.jpg';
 
 interface inputData {
   email: string;
