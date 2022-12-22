@@ -63,9 +63,6 @@ export const ContentBox = styled.div`
     width: 60%;
     border-radius: 10px;
   }
-  /* &:hover {
-    fill: red;
-  } */
 `;
 
 export const Left = styled.div`
