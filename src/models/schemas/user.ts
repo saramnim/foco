@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-import { shortId } from "./types/short-id";
+import { Schema } from 'mongoose';
+import { shortId } from './types/short-id';
 
 const UserSchema = new Schema(
   {
@@ -16,18 +16,22 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    country : {
+    passwordReset: {
+      type: Boolean,
+      default: false,
+    },
+    country: {
       type: String,
       required: true,
     },
     role: {
       type: String,
       required: false,
-      default: "basic-user",
+      default: 'basic-user',
     },
   },
   {
-    collection: "users",
+    collection: 'users',
     timestamps: true,
   }
 );

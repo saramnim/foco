@@ -1,6 +1,6 @@
 const loginRequired = (req, res, next) => {
-  if (!req.cookies.token) {
-    res.redirect("/");
+  if (!req.user) {
+    res.redirect('/');
     return;
   }
 
