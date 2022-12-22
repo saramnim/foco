@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import '../../GlobalStyle';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -6,15 +7,13 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   position: fixed;
   width: 100%;
-  padding: 30px 50px;
-<<<<<<< HEAD
-=======
+  padding: 20px 50px;
+  background-color: white;
   color: #000000;
   z-index: 100;
   & > a {
     all: unset;
   }
->>>>>>> feature/FE/userpage
 `;
 export const Title = styled.span`
   color: #000;
@@ -30,7 +29,7 @@ export const Icons = styled.div`
     cursor: pointer;
   }
   & > a:hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
   & > a {
     all: unset;
@@ -40,7 +39,7 @@ export const Icons = styled.div`
 export const UserBox = styled.div`
   position: relative;
   &>svg: hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
 `;
 
@@ -56,7 +55,7 @@ export const UserMenu = styled.div`
     all: unset;
   }
   & > a:hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
 `;
 

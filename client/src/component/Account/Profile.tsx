@@ -1,33 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Select from 'react-select';
 import { validateNickname } from '../util/usefulFunctions';
 import Menu from './Menu';
+import { FaCamera } from 'react-icons/fa';
 import {
   AccountContainer,
   ContentsBox,
   Title,
   MainContainer,
   ProfileBox,
+  PhotoBox,
+  PhotoInner,
+  Photo,
+  UploadBtn,
+  UploadInput,
   InfoItem,
   Label,
   InputBox,
   Input,
   Errormsg,
-  Seclect,
   FixedValue,
+  CountrySelect,
   Button,
 } from './account-style';
 
 interface inputData {
-  nickname: string;
+  email: string;
+  name: string;
   country: string;
+  img: string;
 }
 
 const Profile = () => {
   const [info, setInfo] = useState<inputData>({
-    nickname: '',
+    email: '',
+    name: '',
     country: '',
+    img: '',
   });
+  const [countries, setCountries] = useState<any[]>([]);
   const [error, setError] = useState<string>('');
+  const [previewImg, setPreviewImg] = useState<any>();
+
+  const getUserData = async () => {
+    const res = await axios.get('http://localhost:3000/Data/user.json');
+    setInfo(res.data[0]);
+  };
+
+  const getCountriesName = async () => {
+    const res = await axios.get('http://localhost:3000/Data/worldmap.json');
+    setCountries(res.data.objects.world.geometries);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await getUserData();
+      await getCountriesName();
+    };
+    fetchData();
+  }, []);
+
+  console.log(info);
+
+  const options = countries.map((x) => {
+    return {
+      value: x.properties.name,
+      label: x.properties.name,
+    };
+  });
 
   const handleChange = (e: any) => {
     if (e.target.name === 'nickname') {
@@ -35,21 +76,57 @@ const Profile = () => {
         setError('English only');
       } else {
         setError('');
-        setInfo((prev) => ({ ...prev, nickname: e.target.value }));
+        setInfo((prev) => ({ ...prev, name: e.target.value }));
       }
     } else if (e.target.name === 'country') {
       setInfo((prev) => ({ ...prev, country: e.target.value }));
     }
   };
 
+  const countryChange = (select: any) => {
+    setInfo((prev) => ({
+      ...prev,
+      country: select.value,
+    }));
+  };
+
+  // const handleImagePreview = (e: any) => {
+  //   e.preventDefault();
+  //   const reader = new FileReader();
+  //   const file = e.target.files[0];
+
+  //   if (e.target.files[0]) {
+  //     reader.readAsDataURL(file);
+  //   }
+
+  //   reader.onloadend = () => {
+  //     const resultImage = reader.result;
+  //     setPreviewImg(resultImage);
+  //   };
+  // };
+
+  const encodeFileToBase64 = (e: any) => {
+    const reader = new FileReader();
+    const file = e.target.filed[0];
+    reader.readAsDataURL(file);
+
+    return new Promise<void>((resolve) => {
+      reader.onload = () => {
+        setPreviewImg(reader.result);
+        resolve();
+      };
+    });
+  };
+
   const handleSubmit = () => {
     if (error === '') {
       alert('정보 변경 성공');
-      console.log(info);
     } else {
       alert('내용확인!');
     }
   };
+
+  console.log(info);
 
   return (
     <AccountContainer>
@@ -59,13 +136,39 @@ const Profile = () => {
         <MainContainer>
           <ProfileBox>
             <InfoItem>
+              <Label htmlFor="photo">
+                <p>Photo</p>
+                <PhotoBox>
+                  <PhotoInner>
+                    <Photo src={info.img} />
+                  </PhotoInner>
+                  <UploadInput
+                    type="file"
+                    id="avatar"
+                    name="avatar"
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={encodeFileToBase64}
+                  />
+                  <UploadBtn htmlFor="file">
+                    <FaCamera />
+                  </UploadBtn>
+                </PhotoBox>
+              </Label>
+            </InfoItem>
+            <InfoItem>
+              <Label htmlFor="email">
+                <p>Email</p>
+                <FixedValue>{info.email}</FixedValue>
+              </Label>
+            </InfoItem>
+            <InfoItem>
               <Label htmlFor="nickname">
                 <p>Nickname</p>
                 <InputBox>
                   <Input
                     type="text"
                     name="nickname"
-                    placeholder="Kailey"
+                    placeholder={info.name}
                     onChange={handleChange}
                   />
                   <Errormsg>
@@ -75,19 +178,16 @@ const Profile = () => {
               </Label>
             </InfoItem>
             <InfoItem>
-              <Label htmlFor="email">
-                <p>Email</p>
-                <FixedValue>kailey224@gmail.com</FixedValue>
-              </Label>
-            </InfoItem>
-            <InfoItem>
               <Label htmlFor="country">
                 <p>Country</p>
-                <Seclect name="country" onChange={handleChange}>
-                  <option value="Koea">Koea</option>
-                  <option value="China">China</option>
-                  <option value="Japan">Japan</option>
-                </Seclect>
+                <CountrySelect>
+                  <Select
+                    name="country"
+                    placeholder={info.country}
+                    options={options}
+                    onChange={countryChange}
+                  />
+                </CountrySelect>
               </Label>
             </InfoItem>
           </ProfileBox>
