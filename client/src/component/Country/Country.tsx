@@ -5,12 +5,8 @@ import MultiSelectBox from '../MultiSelectBox/MultiSelectBox';
 import Content from '../Content/Content';
 
 const Country = () => {
-  // TODO : type error 해결해야함
-  // const [country, setCountry] = useState<any>('');
   const params = useParams();
-  const country = params.country;
-  // console.log(typeof countryName) //string
-  //setCountry(countryName);
+  const country: string = params.country as string;
 
   return (
     <CountryWrapper>
