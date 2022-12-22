@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Rating } from 'react-simple-star-rating';
 
 const StarRating: any = (props: any) => {
-  const [rating, setRating] = useState<number>(0);
+  const [rating, setRating] = useState<number | undefined>(0);
 
-  const handleRating = (rate: number) => {
+  const handleRating = (rate: number): void => {
     setRating(rate);
     props.setStars(rate);
   };

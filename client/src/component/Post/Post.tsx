@@ -2,19 +2,25 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 import Header from '../Header/Header';
-import ReviewForm from '../PostForm/PostForm';
-import AddImg from '../PostForm/func/AddImg';
 import PostFormModal from '../PostFormMoal/PostFormModal';
-// import Img from '../PostForm/func/Img';
 
 import {
   ReviewButton,
   ReviewContainer,
   ReviewList,
+  ReviewItem,
+  ReviewImageBox,
+  ImageHover,
+  Image,
   Title,
   ReviewManagement,
   ReviewPage,
+  ManagementBox,
+  Likes,
 } from './style';
+
+import { MdOutlineModeEdit } from 'react-icons/md';
+import { RiDeleteBin6Fill } from 'react-icons/ri';
 
 const Post = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
@@ -22,40 +28,55 @@ const Post = () => {
 
   useEffect(() => {
     const getReviews = async () => {
-      const res = await axios.get('http://localhost:3000/Data/post.json');
-      setReviews(res.data.data);
+      const res = await axios.get('http://localhost:3000/Data/postList.json');
+      setReviews(res.data);
     };
     getReviews();
   }, []);
 
-  const handleAddReview: any = () => {
+  const handleAddReview = (): void => {
     setModalOpen(true);
   };
 
-  // const onSubmit: any = () => {
-  //   alert('submit??');
-  // };
-
-  const onClose: any = (e: any) => {
-    // e.preventDefault();
+  const onClose = (e: React.ChangeEvent<any>): void => {
     setModalOpen(false);
+  };
+
+  const handleEdit = (): void => {
+    alert('edit');
+  };
+
+  const handleDelete = (): void => {
+    alert('delete');
   };
 
   return (
     <ReviewPage>
       {modalOpen && <PostFormModal onClose={onClose} />}
-      {/* onSubmit={onSubmit} */}
       <Header />
       <ReviewContainer>
         <Title>review management</Title>
         <ReviewManagement>
           <ReviewButton onClick={handleAddReview}>+ review</ReviewButton>
           <ReviewList>
-            {reviews.map(({ id, store, image }) => (
-              <div key={id} className="review">
-                <img src={image} alt="plz" />
-                <div>{store}</div>
-              </div>
+            {reviews.map(({ id, name, src }) => (
+              <ReviewItem key={id}>
+                <ReviewImageBox>
+                  <ImageHover className="imageHover">
+                    <ManagementBox>
+                      <button onClick={handleEdit}>
+                        <MdOutlineModeEdit />
+                      </button>
+                      <button onClick={handleDelete}>
+                        <RiDeleteBin6Fill />
+                      </button>
+                    </ManagementBox>
+                    <Likes>컴포넌트 삽입</Likes>
+                  </ImageHover>
+                  <Image src={src} alt="thumbnail" />
+                </ReviewImageBox>
+                <div>{name}</div>
+              </ReviewItem>
             ))}
           </ReviewList>
         </ReviewManagement>

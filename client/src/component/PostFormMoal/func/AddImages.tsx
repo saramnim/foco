@@ -3,18 +3,21 @@ import {
   ImageList,
   ImageItem,
   Image,
+  ImageOver,
   ImageItemButton,
   ImageInfo,
 } from '../style';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
-import { LeftArrow, RightArrow } from './ScrollFunc/Arrows';
+import { LeftArrow, RightArrow } from './Arrows';
 
 import { useState, useEffect } from 'react';
 
-const AddImages: any = () => {
+import { RiCloseFill } from 'react-icons/ri';
+
+const AddImages = (props: any) => {
   const [selectedImages, setSelectedImages] = useState<string[]>([]);
 
-  const handleImgChange = (e: any) => {
+  const handleImgChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (e.target.files) {
       const fileArray: string[] = Array.from(e.target.files).map((file: any) =>
         URL.createObjectURL(file)
@@ -27,33 +30,39 @@ const AddImages: any = () => {
     }
   };
 
-  const handleRemoveImage: any = (idx: number) => {
+  const handleRemoveImage: any = (idx: number): void => {
     setSelectedImages([
       ...selectedImages.slice(0, idx),
       ...selectedImages.slice(idx + 1, selectedImages.length),
     ]);
   };
 
-  const handleRemoveAllImages = () => {
+  const handleRemoveAllImages = (): void => {
     setSelectedImages([]);
   };
 
-  useEffect(() => {}, [selectedImages]);
+  useEffect(() => {
+    props.setImageList(selectedImages);
+  }, [selectedImages]);
 
-  const renderImages = (source: any) => {
+  const renderImages = (source: string[]) => {
     return source.map((src: any, idx: number) => {
       return (
         <ImageItem className="imgItem" key={src}>
           <Image>
             <img src={src} alt="이미지 로드 실패" />
           </Image>
-          <ImageItemButton>
-            <button onClick={() => handleRemoveImage(idx)}>remove</button>
-          </ImageItemButton>
-          <ImageInfo>
-            <input placeholder="ex) steak" />
-            <input placeholder="ex) 15,000" />
-          </ImageInfo>
+          <ImageOver>
+            <ImageItemButton>
+              <button onClick={() => handleRemoveImage(idx)}>
+                <RiCloseFill />
+              </button>
+            </ImageItemButton>
+            <ImageInfo>
+              <input placeholder="ex) steak" />
+              <input placeholder="ex) 15,000" />
+            </ImageInfo>
+          </ImageOver>
         </ImageItem>
       );
     });
@@ -82,23 +91,28 @@ const AddImages: any = () => {
   return (
     <div>
       <ImageButton>
-        <input
-          onChange={handleImgChange}
-          id="imgInput"
-          type="file"
-          accept="image/*"
-          multiple
-        />
+        <label>
+          Add Images
+          <input
+            onChange={handleImgChange}
+            id="imgInput"
+            type="file"
+            accept="image/*"
+            multiple
+          />
+        </label>
         <button onClick={handleRemoveAllImages}>전체 삭제</button>
       </ImageButton>
       <ImageList>
-        <ScrollMenu
-          onWheel={onWheel}
-          LeftArrow={LeftArrow}
-          RightArrow={RightArrow}
-        >
-          {renderImages(selectedImages)}
-        </ScrollMenu>
+        {selectedImages.length !== 0 && (
+          <ScrollMenu
+            onWheel={onWheel}
+            LeftArrow={LeftArrow}
+            RightArrow={RightArrow}
+          >
+            {renderImages(selectedImages)}
+          </ScrollMenu>
+        )}
       </ImageList>
     </div>
   );

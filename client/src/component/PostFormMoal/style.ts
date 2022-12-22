@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GlobalStyle } from '../../GlobalStyle';
 
 export const Modal = styled.div`
   width: 100vw;
@@ -42,6 +43,7 @@ export const Close = styled.button`
   background-color: white;
   cursor: pointer;
 `;
+
 export const Main = styled.div`
   width: 100%;
   height: 100%;
@@ -85,22 +87,30 @@ export const ImageBox = styled.div`
   flex-direction: column;
   width: 100%;
   height: 22vh;
-  border: 1px solid black;
   margin-bottom: 15px;
   display: flex;
-
-  //   div {
-  //     border: 1px solid black;
-  //     width: 14vw;
-  //     height: 100%;
-  //     margin-right: 15px;
-  //   }
 `;
 
 //  260vw //
 
 export const ImageButton = styled.div`
   padding: 10px;
+
+  & label,
+  button {
+    font-size: 12px;
+    padding: 6px 15px;
+    background-color: white;
+    border-radius: 4px;
+    border: 1px solid gray;
+    color: gray;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+
+  & input {
+    display: none;
+  }
 `;
 
 export const ImageList = styled.div`
@@ -133,6 +143,7 @@ export const ImageList = styled.div`
       border: none;
       background-color: white;
       box-shadow: 0px 0px 25px 30px white;
+      color: gray;
     }
   }
 `;
@@ -142,16 +153,18 @@ export const ImageItem = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-right: 15px;
+  padding-bottom: 10px;
 `;
 
 export const Image = styled.div`
   border: 1px solid gray;
-  width: 220px;
-  height: 130px;
+  width: 300px;
+  height: 220px;
   display: flex;
   justify-content: center;
   align-items: center;
   //   background-color: pink;
+  position: relative;
 
   & img {
     width: auto;
@@ -161,9 +174,51 @@ export const Image = styled.div`
   }
 `;
 
-export const ImageItemButton = styled.div`
+export const ImageOver = styled.div`
+  z-index: 999;
+
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 300px;
+  height: 220px;
+  position: absolute;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 20, 20, 0) 10%,
+    rgba(20, 20, 20, 0.1) 25%,
+    rgba(20, 20, 20, 0.2) 50%,
+    rgba(20, 20, 20, 0.4) 75%,
+    rgba(20, 20, 20, 1) 100%
+  );
+`;
+
+export const ImageItemButton = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 20px;
+
+  & button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    cursor: pointer;
+
+    & svg {
+      color: white;
+    }
+  }
 `;
 
 export const ImageInfo = styled.div`
@@ -171,6 +226,10 @@ export const ImageInfo = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
 
   & input:first-child {
     margin-bottom: 5px;
@@ -203,11 +262,36 @@ export const Review = styled.div`
 
   & textarea {
     width: 100%;
-    height: 50%;
+    height: 60%;
     padding: 7px;
     font-size: 1.5vh;
+    margin-bottom: 5px;
+    resize: none;
+    border-color: gray;
+
+    &::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #eaeaea;
+      border-radius: 10px;
+      background-clip: padding-box;
+      border: 2px solid transparent;
+    }
+  }
+
+  & span {
+    color: gray;
+    align-self: flex-end;
   }
 `;
+
 export const Button = styled.div`
   display: flex;
   justify-content: center;
@@ -227,7 +311,32 @@ export const Button = styled.div`
 `;
 
 export const Address = styled.div`
+  display: flex;
   font-size: 1.6vh;
+
+  & input:first-child {
+    margin-right: 20px;
+  }
+
+  & .location-search-input {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  & .autocomplete-dropdown-container {
+    // border: 1px solid gray;
+    width: 26vw;
+    position: absolute;
+    z-index: 2;
+    color: gray;
+    font-size: 16px;
+  }
+
+  & .suggestion-item {
+    padding-top: 5px;
+    margin-bottom: 4px;
+  }
 `;
+
 export const Rate = styled.div``;
 export const Input = styled.input``;

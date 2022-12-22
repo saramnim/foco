@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import {
   Modal,
   ModalBody,
@@ -18,13 +20,59 @@ import {
 import StarRating from './func/StarRating';
 import { IoIosClose } from 'react-icons/io';
 
-import { useState, useEffect } from 'react';
 import AddImages from './func/AddImages';
+import LocationSearchInput from './func/LocationSearchInput';
+import axios from 'axios';
 
-const PostFormModal: any = (props: any) => {
-  const [stars, setStars] = useState<number>();
+const PostFormModal = (props: any) => {
+  // interface formDataType
+  const [storeName, setStoreName] = useState<string | undefined>('');
+  const [review, SetReview] = useState<string | undefined>('');
+  const [stars, setStars] = useState<number | undefined>();
+  const [address, setAddress] = useState<string | undefined>();
+  const [imageList, setImageList] = useState<string[] | undefined>();
 
-  useEffect(() => {}, []);
+  const [strLength, setStrLength] = useState<number | undefined>(0);
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setStoreName(e.target.value);
+  };
+
+  const handleReviewChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    SetReview(e.target.value);
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    e.preventDefault();
+    alert('submit??');
+    let body = {
+      storeName,
+      review,
+      stars,
+      address,
+      imageList,
+    };
+    console.log(body);
+    // axios.post('/', body).then((res) => console.log(res));
+  };
+
+  const checkString = (): void => {
+    setStrLength(review?.length);
+    if (strLength !== undefined && strLength > 500) {
+      setStrLength(500);
+    }
+  };
+
+  useEffect(() => {}, [
+    storeName,
+    review,
+    stars,
+    address,
+    imageList,
+    strLength,
+  ]);
 
   return (
     <Modal>
@@ -39,20 +87,21 @@ const PostFormModal: any = (props: any) => {
           <Intro>
             <Title>
               <input
+                onChange={handleTitleChange}
                 className="store"
                 placeholder="wirte store name..."
               ></input>
             </Title>
             <Address>
-              <Input placeholder="write address..."></Input>
               <Input placeholder="city"></Input>
+              <LocationSearchInput setAddress={setAddress} />
             </Address>
             <Rate>
               <StarRating name="rate" setStars={setStars}></StarRating>
             </Rate>
           </Intro>
           <ImageBox>
-            <AddImages></AddImages>
+            <AddImages setImageList={setImageList}></AddImages>
           </ImageBox>
           <Tag>
             <input name="mood" type="text" placeholder="#special" />
@@ -60,16 +109,20 @@ const PostFormModal: any = (props: any) => {
           </Tag>
           <Review>
             <textarea
+              onKeyUp={checkString}
+              onChange={handleReviewChange}
               maxLength={500}
-              rows={4}
+              rows={5}
               placeholder={
                 'I’m pleasure to recommend this restaurant to you:) It’s very delicious! What a Nice Day!'
               }
             />
-            <span>500자</span>
+            <span>( {strLength} / 500 )</span>
           </Review>
           <Button>
-            <button>submit</button>
+            <button type="submit" onClick={handleSubmit}>
+              submit
+            </button>
           </Button>
         </Main>
       </ModalBody>
