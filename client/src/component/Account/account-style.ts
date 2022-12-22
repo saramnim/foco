@@ -166,7 +166,7 @@ export const Item = styled(Box)`
   font-weight: 600;
   cursor: pointer;
 
-  &: hover {
+  &:hover {
     color: var(--primary-color);
   }
 `;
