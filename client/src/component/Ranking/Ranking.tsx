@@ -7,7 +7,6 @@ import {
   Title,
   Button,
   MoreButton,
-  Main,
   Number,
   ContentBox,
   Left,
@@ -23,6 +22,7 @@ interface Iprops {
   country: string;
   closeModal: () => void;
   showWholeMap: () => void;
+  changeFill: (city: string) => void;
 }
 
 interface Icontent {
@@ -30,18 +30,20 @@ interface Icontent {
   like: number;
   storeName: string;
   img: string;
+  city: string;
 }
 
 const Ranking = (props: Iprops) => {
-  const { country, closeModal, showWholeMap } = props;
+  const { country, closeModal, showWholeMap, changeFill } = props;
   const [data, setData] = useState<any[]>([]);
   const [OpenModal, setOpenModal] = useState<boolean>(false);
+  const [city, setCity] = useState<string>('');
 
   const getPostData = () => {
     return axios({
       method: 'get',
       // 임시 mock data 연결
-      url: 'http://localhost:3000/Data/post.json',
+      url: 'http://localhost:3001/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -81,21 +83,24 @@ const Ranking = (props: Iprops) => {
         })
         .map((content: Icontent, index: number) => {
           return (
-            <Main key={index} onClick={handleClick}>
-              <ContentBox>
-                <Left>
-                  <div>
-                    <Number>{index + 1}</Number>
-                    <Like>
-                      <HiHeart />
-                      <TotalLike>{content.like}</TotalLike>
-                    </Like>
-                  </div>
-                  <StoreName>{content.storeName}</StoreName>
-                </Left>
-                <img src={content.img} alt={content.storeName}></img>
-              </ContentBox>
-            </Main>
+            <ContentBox
+              key={index}
+              onClick={() => {
+                changeFill(content.city);
+              }}
+            >
+              <Left>
+                <div>
+                  <Number>{index + 1}</Number>
+                  <Like>
+                    <HiHeart />
+                    <TotalLike>{content.like}</TotalLike>
+                  </Like>
+                </div>
+                <StoreName>{content.storeName}</StoreName>
+              </Left>
+              <img src={content.img} alt={content.storeName}></img>
+            </ContentBox>
           );
         })}
     </RankingWrapper>
