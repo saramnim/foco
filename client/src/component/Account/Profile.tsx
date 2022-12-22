@@ -41,7 +41,6 @@ const Profile = () => {
   });
   const [countries, setCountries] = useState<any[]>([]);
   const [error, setError] = useState<string>('');
-  const [previewImg, setPreviewImg] = useState<any>();
 
   const getUserData = async () => {
     const res = await axios.get('http://localhost:3000/Data/user.json');
@@ -60,8 +59,6 @@ const Profile = () => {
     };
     fetchData();
   }, []);
-
-  console.log(info);
 
   const options = countries.map((x) => {
     return {
@@ -90,32 +87,22 @@ const Profile = () => {
     }));
   };
 
-  // const handleImagePreview = (e: any) => {
-  //   e.preventDefault();
-  //   const reader = new FileReader();
-  //   const file = e.target.files[0];
-
-  //   if (e.target.files[0]) {
-  //     reader.readAsDataURL(file);
-  //   }
-
-  //   reader.onloadend = () => {
-  //     const resultImage = reader.result;
-  //     setPreviewImg(resultImage);
-  //   };
-  // };
-
-  const encodeFileToBase64 = (e: any) => {
+  const inserImg = (e: any) => {
     const reader = new FileReader();
-    const file = e.target.filed[0];
-    reader.readAsDataURL(file);
 
-    return new Promise<void>((resolve) => {
-      reader.onload = () => {
-        setPreviewImg(reader.result);
-        resolve();
-      };
-    });
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+    }
+
+    reader.onloadend = () => {
+      const previewImgUrl = reader.result;
+      if (previewImgUrl) {
+        setInfo((prev) => ({
+          ...prev,
+          img: String(previewImgUrl),
+        }));
+      }
+    };
   };
 
   const handleSubmit = () => {
@@ -125,8 +112,6 @@ const Profile = () => {
       alert('내용확인!');
     }
   };
-
-  console.log(info);
 
   return (
     <AccountContainer>
@@ -142,16 +127,18 @@ const Profile = () => {
                   <PhotoInner>
                     <Photo src={info.img} />
                   </PhotoInner>
-                  <UploadInput
-                    type="file"
-                    id="avatar"
-                    name="avatar"
-                    accept="image/png, image/jpeg, image/jpg"
-                    onChange={encodeFileToBase64}
-                  />
-                  <UploadBtn htmlFor="file">
-                    <FaCamera />
-                  </UploadBtn>
+                  <form encType="multipart/form-data">
+                    <UploadInput
+                      type="file"
+                      id="file"
+                      name="avatar"
+                      accept="image/*"
+                      onChange={inserImg}
+                    />
+                    <UploadBtn htmlFor="file">
+                      <FaCamera />
+                    </UploadBtn>
+                  </form>
                 </PhotoBox>
               </Label>
             </InfoItem>
