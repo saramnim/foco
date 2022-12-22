@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import '../../GlobalStyle';
 
 export const LoginContainer = styled.div`
   display: flex;
@@ -86,7 +87,7 @@ export const ForgotPassword = styled.p`
   color: #212121;
 
   &:hover {
-    color: #fe9c56;
+    color: var(--primary-color);
     cursor: pointer;
   }
 `;
@@ -96,13 +97,13 @@ export const SubmitBtn = styled.button`
   width: 80%;
   height: 50px;
   border-radius: 30px;
-  background-color: #212121;
+  background-color: var(--primary-color);
   font-weight: bold;
   color: #ffffff;
   cursor: pointer;
 
   &:hover {
-    background-color: #fe9c56;
+    background-color: var(--secondary-color);
     color: #000000;
   }
 `;
@@ -116,8 +117,11 @@ export const Register = styled.p`
     color: #212121;
   }
   &>span: hover {
-    color: #fe9c56;
+    color: var(--primary-color);
     cursor: pointer;
+  }
+  & > span > a {
+    all: unset;
   }
 `;
 
@@ -126,15 +130,15 @@ export const SocialLoin = styled.div`
 `;
 
 export const GoogleBtn = styled(SubmitBtn)`
-  border: 1px solid #000000;
+  border: 2px solid var(--secondary-color);
   background-color: white;
   color: #000000;
   & > span {
     margin-left: 10px;
   }
   &:hover {
+    border: 2px solid var(--primary-color);
     background-color: white;
-    border-color: #fe9c56;
   }
 `;
 

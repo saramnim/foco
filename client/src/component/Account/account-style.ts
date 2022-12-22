@@ -1,36 +1,59 @@
 import styled from 'styled-components';
 
 //Common Style
-export const MainContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex-grow: 10;
-  padding: 150px 50px;
-  height: 100%;
-`;
-
 export const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+export const AccountContainer = styled.div`
+  padding: 100px 50px 0 50px;
+  width: 100vw;
+`;
+
+export const ContentsBox = styled(Box)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 40px 0;
+  height: 700px;
+`;
+
+export const Title = styled.h2`
+  margin: 10px 0 60px 0;
+  text-align: center;
+  font-family: 'Rubik Spray Paint', cursive;
+  font-size: 50px;
+  font-weight: 100;
+`;
+
+export const MainContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 200px;
+  height: 100%;
+`;
+
 export const InfoItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 40px;
+  width: 100%;
+  margin-bottom: 26px;
 `;
 
 export const Label = styled.label`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
 
   & > p {
-    margin-right: 60px;
+    margin: 14px 30px 0 0;
     width: 150px;
     font-weight: 600;
     font-size: 18px;
@@ -43,14 +66,16 @@ export const InputBox = styled.div`
 
 export const Input = styled.input`
   padding: 4px 8px;
-  width: 360px;
-  height: 35px;
+  width: 300px;
+  height: 30px;
+  border-radius: 6px;
+  border: 1px solid #cccccc;
 
   &:focus {
-    outline: none;
+    outline: 2px solid #2684ff;
   }
   &::placeholder {
-    color: #b3b3b3;
+    color: #828282;
     font-size: 14px;
   }
 `;
@@ -66,16 +91,13 @@ export const Errormsg = styled.div`
   }
 `;
 
-export const Seclect = styled.select`
-  padding: 4px 8px;
-  width: 378px;
-  height: 45px;
-`;
-
-export const FixedValue = styled.p`
+export const FixedValue = styled.div`
+  margin: 10px 0 10px 0;
   padding: 4px 8px;
   width: 360px;
   height: 35px;
+  font-weight: 600;
+  font-size: 18px;
   text-align: left;
 `;
 
@@ -87,74 +109,77 @@ export const Button = styled.button`
   text-align: center;
   font-weight: bold;
   color: #ffffff;
-  background-color: #212121;
+  background-color: var(--primary-color);
   cursor: pointer;
 
   &:hover {
-    background-color: #fe9c56;
+    background-color: var(--secondary-color);
     color: #000000;
   }
 `;
 
-export const AccountContainer = styled.div`
-  position: absolute;
-  top: 20%;
-  left: 10%;
-  transform: translate(-10%, -10%);
-  width: 100vw;
-`;
-
-export const ContentsBox = styled(Box)`
-  height: 100vh;
-`;
-
-export const Title = styled.h2`
-  margin: 10px 0 40px 0;
-  text-align: center;
-  font-family: 'Rubik Spray Paint', cursive;
-  font-size: 50px;
-  font-weight: 100;
-`;
-
 //Menu Style
 export const MenuContainer = styled.div`
-  flex-grow: 1;
-  padding: 60px 50px;
+  padding: 60px 0 60px 60px;
+  width: 300px;
   height: 100%;
-  border-top-right-radius: 20px;
-  box-shadow: 0px 16px 30px 10px #dfdfdf;
+  border-right: 2px solid #f3f3f3;
+`;
+
+export const UserBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 40px 30px 0;
+`;
+
+export const ImgBox = styled.div`
+  margin-bottom: 10px;
+  border-radius: 100px;
+  overflow: hidden;
+`;
+
+export const Img = styled.img`
+  display: block;
+  witdh: 70px;
+  height: 70px;
+`;
+
+export const Username = styled.div`
+  margin-top: 10px;
+  font-family: 'Rubik Spray Paint', cursive;
+  font-size: 24px;
+  font-weight: 100;
 `;
 
 export const ItemBox = styled(Box)`
   flex-direction: column;
-  align-items: flex-start;
-`;
-
-export const Username = styled.div`
-  margin-bottom: 80px;
-  font-family: 'Rubik Spray Paint', cursive;
-  font-size: 30px;
-  font-weight: 100;
 `;
 
 export const Item = styled(Box)`
-  margin-bottom: 40px;
+  justify-content: flex-start;
+  margin: 18px 0;
+  padding: 6px 0 6px 10px;
+  width: 100%;
+  // border-right: 2px solid var(--primary-color);
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
 
   &: hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
 `;
 
 export const Icon = styled.div`
   margin-right: 10px;
+  & > svg {
+    font-size: 24px;
+  }
 `;
 
 export const MenuBtn = styled.button`
   all: unset;
-
   & > * {
     all: unset;
   }
@@ -164,7 +189,58 @@ export const MenuBtn = styled.button`
 export const ProfileBox = styled(Box)`
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+`;
+
+export const PhotoBox = styled(UserBox)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0;
+`;
+
+export const PhotoInner = styled(ImgBox)`
+  margin: 0;
+  border-radius: 100px;
+  overflow: hidden;
+`;
+
+export const Photo = styled(Img)`
+  display: block;
+  witdh: 100px;
+  height: 100px;
+`;
+
+export const UploadInput = styled.input`
+  display: none;
+`;
+
+export const UploadBtn = styled.label`
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: 4px solid white;
+  background-color: var(--primary-color);
+  cursor: pointer;
+
+  & > svg {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    padding-top: 1px;
+    font-size: 16px;
+    color: white;
+  }
+`;
+
+export const CountrySelect = styled.div`
+  width: 320px;
+  text-align: left;
+  font: 18px;
 `;
 
 //Security Style

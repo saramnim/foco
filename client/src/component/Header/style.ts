@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import '../../GlobalStyle';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -28,7 +29,7 @@ export const Icons = styled.div`
     cursor: pointer;
   }
   & > a:hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
   & > a {
     all: unset;
@@ -38,7 +39,7 @@ export const Icons = styled.div`
 export const UserBox = styled.div`
   position: relative;
   &>svg: hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
 `;
 
@@ -54,7 +55,7 @@ export const UserMenu = styled.div`
     all: unset;
   }
   & > a:hover {
-    color: #fe9c56;
+    color: var(--primary-color);
   }
 `;
 
