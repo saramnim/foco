@@ -16,7 +16,7 @@ import {
 } from './style';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { HiHeart } from 'react-icons/hi';
-import Detailmodal from './../Detailmodal/Detailmodal';
+import Detailmodal from './../Detailmodal/Modal';
 
 interface Iprops {
   country: string;
