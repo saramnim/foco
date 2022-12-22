@@ -8,7 +8,7 @@ export const MapWrapper = styled.div`
   width: 100vw;
   height: 100vh;
   padding-top: 140px;
-  padding-bottom: 100px;
+  padding-bottom: 145px;
   background-color: #fff;
   & .map {
     width: 60vw;
@@ -22,11 +22,4 @@ export const TopWrapper = styled.div`
 
 export const BottomWrapper = styled.div`
   display: flex;
-`;
-
-export const SVG = styled.svg`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 70vh;
 `;
