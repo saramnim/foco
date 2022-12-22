@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import '../../GlobalStyle';
 
-export const RegisterContainer = styled.div`
+export const ForgotPasswordContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,8 +13,7 @@ export const RegisterContainer = styled.div`
   margin: 20px;
   padding: 20px;
   width: 460px;
-  height: 760px;
-  //border: 1px solid #dfdfdf;
+  height: 630px;
   border-radius: 30px;
   box-shadow: 10px 10px 20px 4px #dfdfdf;
   text-align: center;
@@ -29,11 +28,24 @@ export const InnerBox = styled.div`
   height: 100%;
 `;
 
-export const Greeting = styled.h2`
-  margin: 20px 0 50px 0;
+export const TextBox = styled.div`
+  margin-bottom: 60px;
+  padding: 0 40px;
+  text-align: left;
+`;
+
+export const Title = styled.h2`
+  margin: 0 0 30px 0;
   font-family: 'Rubik Spray Paint', cursive;
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 100;
+`;
+
+export const SubTxt = styled.p`
+  font-size: 18px;
+  text-align: left;
+  line-height: 26px;
+  color: #828282;
 `;
 
 export const Form = styled.form`
@@ -60,20 +72,8 @@ export const Input = styled.input`
   }
 `;
 
-export const Nickname = styled(Input)`
-  margin-bottom: 8px;
-`;
-
 export const Email = styled(Input)`
-  margin-bottom: 8px;
-`;
-
-export const Password = styled(Input)`
-  margin-bottom: 8px;
-`;
-
-export const ConfirnPassword = styled(Input)`
-  margin-bottom: 8px;
+  margin-bottom: 40px;
 `;
 
 export const Errormsg = styled.div`
@@ -86,14 +86,6 @@ export const Errormsg = styled.div`
     font-weight: 600;
     color: #f05757;
   }
-`;
-
-export const CountrySelect = styled.div`
-  margin-top: 20px;
-  width: 100%;
-  height: 40px;
-  text-align: left;
-  font: 18px;
 `;
 
 export const SubmitBtn = styled.button`
@@ -109,51 +101,5 @@ export const SubmitBtn = styled.button`
   &:hover {
     background-color: var(--secondary-color);
     color: #000000;
-  }
-`;
-
-export const SocialLoin = styled.div`
-  width: 100%;
-`;
-
-export const GoogleBtn = styled(SubmitBtn)`
-  border: 2px solid var(--secondary-color);
-  background-color: white;
-  color: #000000;
-  & > span {
-    margin-left: 10px;
-  }
-  &:hover {
-    border: 2px solid var(--primary-color);
-    background-color: white;
-  }
-`;
-
-export const Border = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 30px 0px;
-  width: 80%;
-  color: #b3b3b3;
-  font-size: 12px;
-
-  &::before {
-    content: '';
-    flex-grow: 1;
-    background: #d9d9d9;
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin-right: 16px;
-  }
-
-  &::after {
-    content: '';
-    flex-grow: 1;
-    background: #d9d9d9;
-    height: 1px;
-    font-size: 0px;
-    line-height: 0px;
-    margin-left: 16px;
   }
 `;

@@ -144,13 +144,13 @@ authRouter.get(
 );
 
 //회원정보 수정 요청 핸들러
-authRouter.post(
+authRouter.patch(
   '/myAccount/:shortId',
   asyncHandler(async (req, res, next) => {
     const shortId = req.params.shortId;
     const { country, name } = req.body;
     const user = await User.findOneAndUpdate({ shortId }, { country, name });
-    res.json(user);
+    res.redirect('/');
   })
 );
 
@@ -160,7 +160,7 @@ authRouter.delete(
   asyncHandler(async (req, res, next) => {
     const shortId = req.params.shortId;
     const deletedUser = await User.findOneAndDelete({ shortId });
-    res.json(deletedUser);
+    res.redirect('/');
   })
 );
 
