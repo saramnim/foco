@@ -28,7 +28,7 @@ import { MdLocationOn } from 'react-icons/md';
 // }
 
 interface Iprops {
-  country: string | undefined;
+  country: string;
 }
 
 const Content = (props: Iprops): ReactElement => {

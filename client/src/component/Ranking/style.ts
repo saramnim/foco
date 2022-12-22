@@ -49,8 +49,6 @@ export const MoreButton = styled(Button)`
   }
 `;
 
-export const Main = styled.div``;
-
 export const ContentBox = styled.div`
   display: flex;
   justify-content: space-between;
@@ -60,6 +58,7 @@ export const ContentBox = styled.div`
   box-sizing: border-box;
   background-color: #f5f5f5;
   border-radius: 10px;
+  cursor: pointer;
   & img {
     width: 60%;
     border-radius: 10px;
@@ -79,11 +78,6 @@ export const StoreName = styled.span`
 export const Number = styled.div`
   font-size: 25px;
   font-weight: bold;
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
 
 export const Like = styled.div`
