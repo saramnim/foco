@@ -9,7 +9,7 @@ import {
   Geography,
   Marker,
 } from 'react-simple-maps';
-import { MapWrapper, SVG, TopWrapper, BottomWrapper } from './style';
+import { MapWrapper, TopWrapper, BottomWrapper } from './style';
 import DropDown from '../DropDown/DropDown';
 
 // TODO : 타입 에러 해결해야함
@@ -97,14 +97,19 @@ const MainMap = () => {
       <Marker key={name} coordinates={coordinates} className="markWrapper">
         {modalOpen && (
           <Link to={`/list/country/${country}/${name}`}>
-            <SVG
+            <svg
               version="1.0"
               xmlns="http://www.w3.org/2000/svg"
               width={width}
               height={height}
               viewBox="0 0 640 1280"
             >
-              <g transform="translate(-80,1280) scale(0.1,-0.1)" fill={color}>
+              <g
+                transform="
+               translate(-80,1280)
+               scale(0.1,-0.1)"
+                fill={color}
+              >
                 <path
                   d="M3042 12790 c-296 -42 -555 -181 -802 -429 -386 -389 -613 -947 -660
                   -1622 -19 -267 9 -658 66 -939 98 -477 289 -854 570 -1119 109 -103 219 -176
@@ -121,7 +126,7 @@ const MainMap = () => {
                   -308 26 -396 14z"
                 />
               </g>
-            </SVG>
+            </svg>
             <text
               textAnchor="start"
               style={{

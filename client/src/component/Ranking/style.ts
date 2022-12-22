@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { SVG } from '../MainMap/style';
 
 export const RankingWrapper = styled.div`
   width: 35vw;
