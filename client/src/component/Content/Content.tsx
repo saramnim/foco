@@ -12,7 +12,6 @@ import {
 } from './style';
 import ImgShawdow from './imgshawdow.png';
 import Detailmodal from './../Detailmodal/Detailmodal';
-
 import { HiHeart } from 'react-icons/hi';
 import { ImSpoonKnife } from 'react-icons/im';
 import { MdLocationOn } from 'react-icons/md';
@@ -28,7 +27,7 @@ interface Icontent {
 }
 
 interface Iprops {
-  country: string | undefined;
+  country: string;
 }
 
 const Content = (props: Iprops) => {
