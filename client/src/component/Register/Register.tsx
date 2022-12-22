@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import GoogleLogin from 'react-google-login';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Select from 'react-select';
@@ -65,7 +66,7 @@ const Register = () => {
   const getCountriesName = async () => {
     const res = await axios({
       method: 'get',
-      url: 'http://localhost:3001/Data/worldmap.json',
+      url: 'http://localhost:4000/Data/worldmap.json',
     });
     setCountries(res.data.objects.world.geometries);
   };
@@ -168,8 +169,15 @@ const Register = () => {
       info.password !== '' &&
       info.country !== ''
     ) {
-      alert('회원가입 성공');
-      navigate('/login');
+      axios
+        .post('/join', info)
+        .then((res) => {
+          alert('회원가입 성공');
+          navigate('/login');
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } else {
       alert('가입실패');
     }
@@ -237,6 +245,7 @@ const Register = () => {
             <FaGoogle />
             <span>Login with Google</span>
           </GoogleBtn>
+          <GoogleLogin clientId="417953778150-gg3gfoi2v7rtl2k3u0voffb4fnu3ejst.apps.googleusercontent.com" />
         </SocialLoin>
       </InnerBox>
     </RegisterContainer>

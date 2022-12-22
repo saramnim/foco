@@ -1,7 +1,7 @@
 import { setegid } from 'process';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { validateEmail, validatePassword } from '../util/usefulFunctions';
+import { validateEmail } from '../util/usefulFunctions';
 import {
   ForgotPasswordContainer,
   InnerBox,
