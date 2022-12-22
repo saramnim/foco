@@ -112,7 +112,9 @@ const Login = () => {
           <Errormsg>
             <p>{error.passwordError}</p>
           </Errormsg>
-          <ForgotPassword>Forgot Password</ForgotPassword>
+          <ForgotPassword>
+            <Link to={'/forgotpassword'}>Forgot Password</Link>
+          </ForgotPassword>
         </Form>
         <SubmitBtn type="submit" onClick={handleSubmit}>
           Log in

@@ -86,6 +86,10 @@ export const ForgotPassword = styled.p`
   font-weight: 600;
   color: #212121;
 
+  & > a {
+    all: unset;
+  }
+
   &:hover {
     color: var(--primary-color);
     cursor: pointer;

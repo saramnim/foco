@@ -30,7 +30,7 @@ import './style.css';
 
 import { useState, useEffect } from 'react';
 
-const PostForm: any = (props: any) => {
+const PostForm = (props: any) => {
   const [title, setTitle] = useState<string>('');
   const [food, setFood] = useState<string>('');
   const [mood, setMood] = useState<string>('');

@@ -3,12 +3,31 @@ import { Link } from 'react-router-dom';
 import { HiUser } from 'react-icons/hi2';
 import { MdOutlineLanguage } from 'react-icons/md';
 import { ImSpoonKnife } from 'react-icons/im';
-import { FaPen, FaCog, FaSignInAlt } from 'react-icons/fa';
-import { HeaderWrapper, Title, Icons, UserBox, UserMenu, Menu } from './style';
+import { FaPen, FaCog, FaSignInAlt, FaPowerOff, FaKey } from 'react-icons/fa';
+import { HeaderWrapper, Title, Icons, UserBox, MenuBox, Menu } from './style';
 
-const LoginUserComponent = () => {
+const LoginMenu = () => {
   return (
-    <UserMenu>
+    <MenuBox>
+      <Link to={'/login'}>
+        <Menu>
+          <FaPowerOff />
+          <span>Log in</span>
+        </Menu>
+      </Link>
+      <Link to={'/register'}>
+        <Menu>
+          <FaKey />
+          <span>Register</span>
+        </Menu>
+      </Link>
+    </MenuBox>
+  );
+};
+
+const UserMenu = () => {
+  return (
+    <MenuBox>
       <Link to={'/review'}>
         <Menu>
           <FaPen />
@@ -27,7 +46,7 @@ const LoginUserComponent = () => {
           <span>Log out</span>
         </Menu>
       </Link>
-    </UserMenu>
+    </MenuBox>
   );
 };
 
@@ -48,7 +67,7 @@ const Header = () => {
           onMouseOut={() => setShow(false)}
         >
           <HiUser />
-          {show ? <LoginUserComponent /> : null}
+          {show ? <UserMenu /> : null}
         </UserBox>
         <Link to={'/bookmark'}>
           <ImSpoonKnife />
