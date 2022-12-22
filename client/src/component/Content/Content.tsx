@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, ReactElement } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import {
   ContentsWrapper,
@@ -11,27 +11,26 @@ import {
   TotalLike,
 } from './style';
 import ImgShawdow from './imgshawdow.png';
-import Detailmodal from '../Detailmodal/Modal';
-import { Icontent } from '../Detailmodal/Icontent';
+import Modal from './../Detailmodal/Modal';
 import { HiHeart } from 'react-icons/hi';
 import { ImSpoonKnife } from 'react-icons/im';
 import { MdLocationOn } from 'react-icons/md';
 
-// interface Icontent {
-//   country: string;
-//   like: number;
-//   city: string;
-//   storeName: string;
-//   img: string;
-//   foodType: string[];
-//   mood: string[];
-// }
+interface Icontent {
+  country: string;
+  like: number;
+  city: string;
+  storeName: string;
+  img: string;
+  foodType: string[];
+  mood: string[];
+}
 
 interface Iprops {
   country: string;
 }
 
-const Content = (props: Iprops): ReactElement => {
+const Content = (props: Iprops) => {
   const [data, setData] = useState<Icontent[]>([]);
   const [OpenModal, setOpenModal] = useState<boolean>(false);
   const { country } = props;
@@ -52,28 +51,18 @@ const Content = (props: Iprops): ReactElement => {
     fetchData();
   }, []);
 
-  // const handleClick = useCallback(() => {
-  //   setOpenModal(!OpenModal);
-  //   openModal();
-  // }, [OpenModal]);
-  const openModal = () => {
-    // 배경 안움직이게 하는 함수
-    setOpenModal(true);
-    document.body.style.overflow = 'hidden';
-  };
+  const handleClick = useCallback(() => {
+    setOpenModal(!OpenModal);
+  }, [OpenModal]);
+
   const closeModal = () => {
     setOpenModal(false);
-    document.body.style.overflow = 'unset';
+    console.log('click!');
   };
-  // function openModal() {
-  //   setOpenModal(true);
-  // }
-  // function closeModal() {
-  //   setOpenModal(false);
-  // }
+
   return (
     <ContentsWrapper>
-      {OpenModal && <Detailmodal />}
+      {OpenModal && <Modal closeModal={closeModal} />}
       {data
         .filter((content: Icontent) => {
           return content.country === country;
@@ -81,7 +70,7 @@ const Content = (props: Iprops): ReactElement => {
         .map((content: Icontent, index: number) => {
           return (
             <ContentWrapper key={index}>
-              <HoverContent onClick={openModal}>
+              <HoverContent onClick={handleClick}>
                 <img src={ImgShawdow} />
                 <HoverBottom>
                   <City>

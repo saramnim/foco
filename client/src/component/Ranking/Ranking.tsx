@@ -16,7 +16,6 @@ import {
 } from './style';
 import { IoCloseCircleOutline } from 'react-icons/io5';
 import { HiHeart } from 'react-icons/hi';
-import Detailmodal from './../Detailmodal/Modal';
 
 interface Iprops {
   country: string;
@@ -43,7 +42,7 @@ const Ranking = (props: Iprops) => {
     return axios({
       method: 'get',
       // 임시 mock data 연결
-      url: 'http://localhost:3001/Data/post.json',
+      url: 'http://localhost:3000/Data/post.json',
     }).then((res) => {
       setData(res.data.data);
     });
@@ -61,7 +60,6 @@ const Ranking = (props: Iprops) => {
 
   return (
     <RankingWrapper>
-      {OpenModal && <Detailmodal />}
       <Header>
         <Title>{country}</Title>
         <Button

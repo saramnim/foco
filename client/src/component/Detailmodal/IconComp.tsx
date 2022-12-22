@@ -7,7 +7,11 @@ import { AiFillHeart } from 'react-icons/ai';
 import { FaUtensilSpoon } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 
-const IconComp = () => {
+interface Iprops {
+  closeModal: () => void;
+}
+
+const IconComp = (props: Iprops) => {
   const [val, setVal] = useState<any[]>([]);
   const [count, setCount] = useState(0);
   const [heart, setHeart] = useState<string>('curr');
@@ -19,7 +23,6 @@ const IconComp = () => {
       url: 'http://localhost:3000/Data/detailPost.json',
     }).then((res) => {
       setVal(res.data.data);
-      // const itemList = res.data;
       console.log(val);
     });
   };
@@ -32,16 +35,6 @@ const IconComp = () => {
   const clickHeart = () => {
     setHeart('curr');
     onIncrease();
-    // axios
-    //   .put('http://localhost:3000/Data/detailPost.json', {
-    //     like: count,
-    //   })
-    //   .then(() => {
-    //     alert('좋아요 누름');
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   return (
@@ -63,7 +56,7 @@ const IconComp = () => {
               </Icon>
             </Icons>
             <CloseIcon>
-              <IoClose />
+              <IoClose onClick={props.closeModal} />
             </CloseIcon>
           </IconsWrapper>
         );

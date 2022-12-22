@@ -20,7 +20,6 @@ const TitleComp = () => {
       url: 'http://localhost:3000/Data/detailPost.json',
     }).then((res) => {
       setVal(res.data.data);
-      // const itemList = res.data;
       console.log(val);
     });
   };

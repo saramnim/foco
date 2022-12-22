@@ -95,18 +95,16 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Rubik Bubbles';
+  font-family: 'Rubik Spray Paint', cursive;
 `;
 export const StoreName = styled.div`
   font-weight: 400;
   font-size: 5vh;
-  font-family: 'Rubik Bubbles';
 `;
 export const Address = styled.div`
   font-size: 1.8vh;
   margin-top: 0.5vh;
   color: #868686;
-  // font-family: 'Inter';
 `;
 export const Score = styled.div`
   font-size: 1.8vh;
@@ -123,7 +121,6 @@ export const Profile = styled.img`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Rubik Bubbles';
 `;
 // 본문- 이미지 왔다갔다
 export const ImgPage = styled.div`

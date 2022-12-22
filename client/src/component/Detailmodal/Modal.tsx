@@ -13,23 +13,19 @@ import IconComp from './IconComp';
 import TitleComp from './TitleComp';
 import ContentComp from './ContentComp';
 import ItemComp from './ItemComp';
-import { IoClose } from 'react-icons/io5';
-interface props {
-  open: boolean;
-  close: (v: boolean) => void;
+
+interface Iprops {
+  closeModal: () => void;
 }
-const Detailmodal = () => {
-  // const { open, close } = props;
+
+const Modal = (props: Iprops) => {
   const [val, setVal] = useState<any[]>([]);
-  // const outside = useRef<boolean>(true);
   const getData = () => {
     return axios({
       method: 'get',
       url: 'http://localhost:3000/Data/detailPost.json',
     }).then((res) => {
       setVal(res.data.data);
-      // const itemList = res.data;
-      console.log(val);
     });
   };
   useEffect(() => {
@@ -44,7 +40,7 @@ const Detailmodal = () => {
         return (
           <ModalWrapper key={index}>
             <TitleWrapper>
-              <IconComp />
+              <IconComp closeModal={props.closeModal} />
               <TitleComp />
             </TitleWrapper>
             <Box>
@@ -58,4 +54,4 @@ const Detailmodal = () => {
   );
 };
 
-export default Detailmodal;
+export default Modal;
