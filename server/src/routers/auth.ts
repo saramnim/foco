@@ -40,15 +40,10 @@ authRouter.post(
 //로그인 요청 핸들러
 authRouter.post(
   '/login',
-  (req, res, next) => {
-    console.log(req.body);
-    next();
-  },
   passport.authenticate(local, {
     session: false,
   }),
   asyncHandler((req, res, next) => {
-    console.log(req.user);
     setUserToken(res, req.user);
     if (req.user.passwordReset) {
       //res.redirect('/auth/change-password');
