@@ -53,7 +53,7 @@ export const Icon = styled.div`
       scale: 1.5;
     }
   }
-  .heart.active {
+  .heart.likeFill {
     color: red;
     scale: 1.5;
   }
@@ -95,7 +95,7 @@ export const Title = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: 'Rubik Bubbles';
+  // font-family: 'Rubik Bubbles';
 `;
 export const StoreName = styled.div`
   font-weight: 400;
@@ -123,7 +123,7 @@ export const Profile = styled.img`
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
-  font-family: 'Rubik Bubbles';
+  // font-family: 'Rubik Bubbles';
 `;
 // 본문- 이미지 왔다갔다
 export const ImgPage = styled.div`
@@ -174,4 +174,16 @@ export const TextBox = styled.div`
   margin-top: 3.5rem;
   font-size: 1.5vh;
   width: 90%;
+  line-height: 1.8vh;
+  letter-spacing: 2px;
+  word-spacing: 3px;
+  height: 100%;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #ccc;
+  }
 `;

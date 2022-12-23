@@ -3,14 +3,14 @@ import { IconsWrapper, Icons, CloseIcon, Icon } from './style';
 import axios from 'axios';
 import { useState, useEffect, ReactElement } from 'react';
 import { Icontent } from './Icontent';
-import { AiFillHeart } from 'react-icons/ai';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { FaUtensilSpoon } from 'react-icons/fa';
 import { IoClose } from 'react-icons/io5';
 
 const IconComp = () => {
   const [val, setVal] = useState<any[]>([]);
   const [count, setCount] = useState(0);
-  const [heart, setHeart] = useState<string>('curr');
+  const [heart, setHeart] = useState<boolean>(false);
   const onIncrease = () => setCount(count + 1);
   const onDecrease = () => setCount(count - 1);
   const getData = () => {
@@ -29,9 +29,15 @@ const IconComp = () => {
     };
     fetchData();
   }, []);
+
   const clickHeart = () => {
-    setHeart('curr');
-    onIncrease();
+    setHeart(!heart);
+    const heartDefault = document.getElementsByClassName('heart');
+    {
+      // heart ? heartDefault.classList.add('likeFill');
+    // setHeart('true');
+    // alert('좋아요를 눌렀어요');
+    // onIncrease();
     // axios
     //   .put('http://localhost:3000/Data/detailPost.json', {
     //     like: count,
@@ -43,6 +49,7 @@ const IconComp = () => {
     //     console.log(error);
     //   });
   };
+  // function fillHeart();
 
   return (
     <div>
@@ -52,9 +59,11 @@ const IconComp = () => {
             <Icons>
               <Icon>
                 <AiFillHeart
-                  className={`heart ${heart === 'curr' ? 'active' : ''}`}
-                  onClick={() => setHeart('curr')}
+                  id='heart'
+                  className={heart ? 'heart likeFill' : 'heart'}
+                  onClick={() => setHeart('true')}
                 />
+                {/* <AiOutlineHeart /> */}
                 &nbsp;
                 {detail.like}
               </Icon>
